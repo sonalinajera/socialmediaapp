@@ -1,17 +1,28 @@
-.login-form-wrapper {}
+.login-form-wrapper {
+    margin: 20vh auto;
+}
 
 .login-form {
-    padding: 40px;
-    margin: 20vh 10px;
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
+    margin: 0 10px;
 }
 
-#password {
-    margin-bottom: 10px;
+.login-form input {
+    width: 80vw;
 }
 
-.login-h2 {
-    text-align: center;
+
+
+@media screen and (min-width:500px) {
+    .login-form input {
+        width: 40vw;
+    }
+    .login-form {
+        margin: 0 30vw;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .login-form input {
+        width: 25vw;
+    }
 }

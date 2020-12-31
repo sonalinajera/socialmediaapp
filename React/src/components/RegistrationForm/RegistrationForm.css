@@ -1,0 +1,26 @@
+.registration-wrapper {
+    margin: 20vh auto;
+}
+
+.registration-form {
+    margin: 0 10px;
+}
+
+.registration-form input {
+    width: 80vw;
+}
+
+@media screen and (min-width:500px) {
+    .registration-form input {
+        width: 40vw;
+    }
+    .registration-form {
+        margin: 0 30vw;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .registration-form input {
+        width: 25vw;
+    }
+}
