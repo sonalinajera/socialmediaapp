@@ -1,0 +1,16 @@
+.search-results li {
+    list-style-type: none;
+}
+
+@media screen and (min-width: 992px) {
+    .search-bar-and-results {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .search-results {
+        border: 1px solid black;
+        display: flex;
+        align-items: center;
+        margin-bottom: -17vh;
+    }
+}
