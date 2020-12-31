@@ -48,6 +48,18 @@ public class User implements Serializable {
 	public User() {
 	}
 
+	public User(String username, String password, String firstName, String lastName, String email,
+			byte[] picture, List<Post> posts) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.picture = picture;
+		this.posts = posts;
+	}
+	
 	public User(int userId, String username, String password, String firstName, String lastName, String email,
 			byte[] picture, List<Post> posts) {
 		super();
