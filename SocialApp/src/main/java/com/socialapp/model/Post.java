@@ -16,33 +16,42 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name="Post")
+@Table(name = "Post")
 public class Post implements Serializable {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="post_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "post_id")
 	private int postId;
-	
-	@Column(name="post_date", nullable=false)
+
+	@Column(name = "post_date", nullable = false)
 	private Timestamp postDate;
-	
-	@Column(name="message", nullable=false)
+
+	@Column(name = "message", nullable = false)
 	private String message;
-	
-	@Column(name="picture", nullable=true)
+
+	@Column(name = "picture", nullable = true)
 	private byte[] picture;
-	
-	@Column(name="likes")
+
+	@Column(name = "likes")
 	@ColumnDefault("0")
 	private int likes;
-	
+
 	@ManyToOne
-	@JoinColumn(name="FK_User_Id")
+	@JoinColumn(name = "FK_User_Id")
 	private User user;
-	
+
 	public Post() {
-		
+
+	}
+
+	public Post(Timestamp postDate, String message, byte[] picture, int likes, User user) {
+		super();
+		this.postDate = postDate;
+		this.message = message;
+		this.picture = picture;
+		this.likes = likes;
+		this.user = user;
 	}
 
 	public Post(int postId, Timestamp postDate, String message, byte[] picture, int likes, User user) {
@@ -108,6 +117,5 @@ public class Post implements Serializable {
 		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
 				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user + "]";
 	}
-	
-	
+
 }
