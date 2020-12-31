@@ -1,0 +1,17 @@
+.login-form-wrapper {}
+
+.login-form {
+    padding: 40px;
+    margin: 20vh 10px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+#password {
+    margin-bottom: 10px;
+}
+
+.login-h2 {
+    text-align: center;
+}

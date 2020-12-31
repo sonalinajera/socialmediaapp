@@ -1,15 +1,16 @@
-import React from 'react';
+import React from 'react'
+import { LoginForm } from '../../components/LoginForm/LoginForm';
 import './App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-        <h1>Hello from V2</h1>
-      </header>
+    <div>
+      <LoginForm />
     </div>
-  );
+  )
 }
 
 export default App;
+
+
