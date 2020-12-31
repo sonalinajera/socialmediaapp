@@ -1,0 +1,11 @@
+.login-header-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page-h2 {
+    margin-top: 7vh;
+    margin-bottom: -9vh;
+}
