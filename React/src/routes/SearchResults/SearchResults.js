@@ -10,7 +10,7 @@ const SearchResults = ({ filteredFriends }) => {
             <div className="search-results">
                 <ul>
                     {filteredFriends.map((friend) => {
-                        return <li key={friend.id}>{friend.name.toLowerCase()}</li>
+                        return <li key={friend.id}>{friend.firstName.toLowerCase()} {friend.lastName.toLowerCase()}</li>
                     })}
                 </ul>
             </div>

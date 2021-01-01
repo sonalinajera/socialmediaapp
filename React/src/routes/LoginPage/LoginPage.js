@@ -6,7 +6,6 @@ import './LoginPage.css'
 const LoginPage = () => {
     return (
         <div>
-            <Navbar />
             <div className="login-header-form">
                 <h2 className="login-page-h2">Welcome! Please Login</h2>
                 <LoginForm />

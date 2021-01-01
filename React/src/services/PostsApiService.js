@@ -1,34 +1,32 @@
-import React from 'react'
-
 const myDummyData = [
     {
         id: 1,
-        name: 'Orkun',
-        hairColor: 'brown'
+        firstName: 'Orkun',
+        lastName: 'Ozekin'
     },
 
     {
         id: 2,
-        name: 'Corbin',
-        hairColor: 'Brown'
+        firstName: 'Corbin',
+        lastName: 'Creedon'
     },
 
     {
         id: 3,
-        name: 'Sonali',
-        hairColor: 'Brown'
+        firstName: 'Sonali',
+        lastName: 'Najera'
     },
 
     {
         id: 4,
-        name: 'Cody',
-        hairColor: 'Brown'
+        firstName: 'Cody',
+        lastName: 'Moody'
     },
 
     {
         id: 5,
-        name: 'Tim',
-        hairColor: 'Gold'
+        firstName: 'Tim',
+        lastName: 'Hammes'
     }
 ]
 
