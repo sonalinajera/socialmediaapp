@@ -7,9 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Downshift from 'downshift';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    document.getElementById('root')
 );
 
