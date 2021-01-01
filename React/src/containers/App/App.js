@@ -18,10 +18,12 @@ const App = () => {
     )
 =======
 import SearchResults from '../../routes/SearchResults/SearchResults'
+import Nav from '../../components/Navbar/Navbar'
 
 const App = () => {
   return (
     <div className="App">
+      <Nav />
       <Switch>
         <Route exact path='/search-results' component={SearchResults} />
         <Route exact path='/' component={LoginPage} />
