@@ -1,5 +1,19 @@
 package com.socialapp.dao;
 
-public interface PostDao {
+/* Can do:
+ * 		
+ * 
+ * 
+ * 
+ */
 
+public interface PostDao {
+	// CREATE
+	
+	// READ
+	
+	// UPDATE
+	
+	// DELETE
+	
 }
