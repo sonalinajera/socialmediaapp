@@ -2,6 +2,17 @@
     list-style-type: none;
 }
 
+.search-results-hidden {
+    display: none;
+    
+}
+
+.col-md-6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-width: 992px) {
     .search-bar-and-results {
         display: flex;
@@ -10,12 +21,13 @@
         align-items: center;
     }
     .search-results {
-        
         border: 1px solid black;
+        flex-flow: column nowrap;
         display: flex;
-        align-items: center;
-        margin-bottom: -17vh;
+        justify-content: center;
+        margin-bottom: -21.5vh;
         height: 17vh;
+        width: 20vw;
     }
     .search-result-item {
         list-style-type: none;

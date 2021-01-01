@@ -19,6 +19,8 @@ const SearchBar = (props) => {
     const [inputItems, setInputItems] = useState([])
     const [friends, setFriends] = useState([])
 
+    const [searching, setSearching] = useState(false)
+
     useEffect(() => {
         const dummyData = PostsApiService.getDummyData()
         console.log(dummyData)
@@ -46,18 +48,22 @@ const SearchBar = (props) => {
         },
     })
 
-
+    const toggleSearching = () => {
+        setSearching(true);
+    }
 
     return (
+
+
         <div className="search-bar-and-results">
             <MDBCol md="6">
                 <div className="active-pink-3 active-pink-4 mb-4" {...getComboboxProps()}>
-                    <input className="form-control" type="text" placeholder="Search" {...getInputProps()} />
+                    <input onChange={() => toggleSearching()} className="form-control" type="text" placeholder="Search" {...getInputProps()} />
                 </div>
             </MDBCol>
 
             {/*This is the results (Unless SearchResults component can be integrated in"*/}
-            <ul {...getMenuProps()}>
+            {searching ? <ul className="search-results"{...getMenuProps()}>
                 {isOpen &&
                     inputItems.map((item, index) => (
                         <li className="search-result-item"
@@ -71,7 +77,22 @@ const SearchBar = (props) => {
                         </li>
 
                     ))}
-            </ul>
+            </ul> : <ul className="search-results-hidden"{...getMenuProps()}>
+                    {isOpen &&
+                        inputItems.map((item, index) => (
+                            <li className="search-result-item"
+                                style={
+                                    highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}
+                                }
+                                key={`${item}${index}`}
+                                {...getItemProps({ item, index })}
+                            >
+                                {item.name}
+                            </li>
+
+                        ))}
+                </ul>}
+
         </div>
     )
 
