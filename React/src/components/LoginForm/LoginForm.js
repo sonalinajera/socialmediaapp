@@ -20,6 +20,7 @@ const LoginForm = () => {
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
                 <Link to="/user/registration">Don't have an account?</Link><br /> <br />
+                <Link to="/user/reset-password">Reset password</Link><br /> <br />
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
