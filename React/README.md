@@ -1,9 +1,14 @@
-# React Boilerplate - Social Media App#
+# Social Media App #
 
 ## Dependencies Pre-installed ##
 <ul>
     <li>Bootstrap</li>
+    <li>React Bootstrap</li>
     <li>React Router</li>
+    <li>Axios</li>
+    <li>MDBReact</li>
+    <li>Downshift</li>
+    
 </ul>
 
 
@@ -15,6 +20,9 @@
     <li>Footer</li>
     <li>LoginForm</li>
     <li>RegistrationForm</li>
+    <li>ProfilePic</li>
+    <li>ResetPassword</li>
+    <li>SearchBar</li>
 </ul>
 
 
@@ -28,6 +36,7 @@
 
 ### routes ###
 <ul>
+    <li>HomePage</li>
     <li>LoginPage</li>
     <li>NotFoundPage</li>
     <li>RegistrationPage</li>
@@ -38,4 +47,5 @@
 ### services ### 
 <ul>
     <li>auth-api-service.js</li>
+    <li>PostsApiService.js</li>
 </ul>
