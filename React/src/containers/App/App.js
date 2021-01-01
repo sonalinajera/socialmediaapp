@@ -7,9 +7,9 @@ import SearchResults from '../../routes/SearchResults/SearchResults'
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <Switch>
-        <Route exact path='/search-results' component={SearchResults}/>
+        <Route exact path='/search-results' component={SearchResults} />
         <Route exact path='/' component={LoginPage} />
         <Route exact path='/user/registration' component={RegistrationPage} />
       </Switch>

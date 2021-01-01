@@ -6,11 +6,26 @@
     .search-bar-and-results {
         display: flex;
         flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
     }
     .search-results {
+        
         border: 1px solid black;
         display: flex;
         align-items: center;
         margin-bottom: -17vh;
+        height: 17vh;
+    }
+    .search-result-item {
+        list-style-type: none;
+    }
+    .active-pink-4 input[type="text"]:focus:not([readonly]) {
+        border: 1px solid #f48fb1;
+        box-shadow: 0 0 0 1px #f48fb1;
+    }
+    .active-pink-3 input[type="text"] {
+        border: 1px solid #f48fb1;
+        box-shadow: 0 0 0 1px #f48fb1;
     }
 }
