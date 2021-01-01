@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Forwarding Servlet.
- */
-public class ForwardingServlet extends HttpServlet {
+public class MasterServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -23,4 +20,3 @@ public class ForwardingServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(RequestHelper.process(request)).forward(request, response);
 	}
-}
