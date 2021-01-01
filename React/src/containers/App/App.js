@@ -3,6 +3,7 @@ import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import './App.css'
 import { Route, Switch } from 'react-router-dom'
+<<<<<<< HEAD
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
 
 const App = () => {
@@ -15,6 +16,20 @@ const App = () => {
             </Switch>
         </div>
     )
+=======
+import SearchResults from '../../routes/SearchResults/SearchResults'
+
+const App = () => {
+  return (
+    <div className="App">
+      <Switch>
+        <Route exact path='/search-results' component={SearchResults} />
+        <Route exact path='/' component={LoginPage} />
+        <Route exact path='/user/registration' component={RegistrationPage} />
+      </Switch>
+    </div>
+  )
+>>>>>>> bb1282548cc337a36fcd8d6bcb4f5f3ea1cdd4de
 }
 
 export default App;
