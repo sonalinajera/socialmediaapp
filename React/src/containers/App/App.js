@@ -4,7 +4,6 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import './App.css'
 import { Route, Switch } from 'react-router-dom'
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
-import SearchResults from '../../routes/SearchResults/SearchResults'
 import Nav from '../../components/Navbar/Navbar'
 
 
@@ -13,7 +12,6 @@ const App = () => {
     <div>
       <Nav />
       <Switch>
-        <Route exact path='/search-results' component={SearchResults} />
         <Route exact path='/' component={LoginPage} />
         <Route exact path='/user/registration' component={RegistrationPage} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
