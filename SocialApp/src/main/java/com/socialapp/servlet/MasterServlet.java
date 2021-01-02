@@ -20,3 +20,4 @@ public class MasterServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(RequestHelper.process(request)).forward(request, response);
 	}
+}
