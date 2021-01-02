@@ -1,6 +1,5 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import { Navbar, Form, FormControl, Button } from 'react-bootstrap/'
 
 const Nav = () => {
 
