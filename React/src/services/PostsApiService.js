@@ -1,14 +1,14 @@
 const myDummyData = [
-    {
-        id: 1,
-        firstName: 'Orkun',
-        lastName: 'Ozekin'
-    },
 
     {
         id: 2,
         firstName: 'Corbin',
         lastName: 'Creedon'
+    },
+    {
+        id: 1,
+        firstName: 'Orkun',
+        lastName: 'Ozekin'
     },
 
     {

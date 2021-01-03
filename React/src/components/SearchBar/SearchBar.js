@@ -5,48 +5,44 @@ display as search results and allow the user to click to go to the selected user
 */
 import PostsApiService from '../../services/PostsApiService'
 import './SearchBar.css'
-import { Autocomplete } from 'react-materialize'
+//Do NOT delete the next line. "M" is necessary for using materialize css.
 import M from "materialize-css"
 import "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
-
+import Autocomplete from 'react-autocomplete'
 
 const SearchBar = (props) => {
-
-
+    //friends is an array of user objects that the current user needs to search for their friends.
     const [friends, setFriends] = useState([])
-    const [dataObj, setDataObj] = useState({})
-    let obj = {};
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         const dummyData = PostsApiService.getDummyData()
         console.log(dummyData)
         setFriends(dummyData)
-
-
     }, [])
 
-
-    const setObj = () => {
-        friends.map(friend => {
-            console.log(friend.firstName)
-            obj[friend.firstName] = null;
-        })
-        console.log(obj)
-    }
-
-
-    //Autcomplete is a materialize component
+    //Autocomplete is a component from a 3rd party library called 'react-autocomplete'.
     return (
-        <div onClick={() => setObj()} className="search-bar-and-results">
+        <div className="search-bar-and-results">
             <Autocomplete
-                id="Autocomplete-1"
-                options={{
-                    data:
-                        obj,
-                    onAutocomplete: () => console.log("This is where we redirect to the clicked friend's profile")
+                getItemValue={(item) => item.firstName + ' ' + item.lastName}
+                items={friends}
+                shouldItemRender={(item, search) => item.firstName.toLowerCase().indexOf(search.toLowerCase()) !== -1
+                    || item.lastName.toLowerCase().indexOf(search.toLowerCase()) !== -1}
+
+                renderItem={(item, isHighlighted) =>
+                    <div key={item.id} style={{ background: isHighlighted ? 'lightgray' : 'orange' }}>
+                        {/*This is where we grab the item's(friend's) id to redirect to that friend's page*/}
+                        <span onClick={() => console.log("Function to redirect to that friend")}>{item.firstName} {item.lastName}</span>
+                    </div>
+                }
+                value={search}
+                onChange={(e) => setSearch(e.target.value.substr(0, 20).toLowerCase())}
+                onSelect={(value) => {
+                    setSearch(value)
+                    console.log(value)
                 }}
-                placeholder="Search"
             />
         </div>
     )
@@ -55,14 +51,24 @@ const SearchBar = (props) => {
 export default SearchBar
 
 
-/////////KEEP THIS HERE IN CASE WE WANNA SWITCH BACK TO VANILLA
+/////////KEEP THIS HERE IN CASE WE WANNA SWITCH BACK TO Vanilla
+// const [searching, setSearching] = useState(false)
+
+{/* <input value={search} className="form-control" type="text" placeholder="Search" onChange={(ev) => {
+                updateSearch(ev)
+                toggleSearching(ev)
+            }} />
+            {!searching ? '' : <SearchResults filteredFriends={filteredFriends} />} */}
 
 
-//const [searching, setSearching] = useState(false)
-// const [search, setSearch] = useState('')
+  // //Get user's input and store that in the "search" property in the state
+// const updateSearch = (event) => {
+//     setSearch(event.target.value.substr(0, 20).toLowerCase())
+// }
 
-//display the results when searching, hide them afterwards.
-//  const toggleSearching = (ev) => {
+
+// //display the results when searching, hide them afterwards.
+// const toggleSearching = (ev) => {
 //     if (ev.target.value.length) {
 //         setSearching(true)
 //     }
@@ -71,21 +77,9 @@ export default SearchBar
 //     }
 // }
 
-// //Get user's input and store that in the "search" property in the state
-// const updateSearch = (event) => {
-//     setSearch(event.target.value.substr(0, 20).toLowerCase())
-// }
-
-// //Display only the results whose letters are included within the searched word(user's input)
+// // //Display only the results whose letters are included within the searched word(user's input)
 // let filteredFriends = friends.filter(
 //     (friend) => {
 //         return friend.firstName.toLowerCase().indexOf(search) !== -1;
 //     }
 // )
-
-
-{/* <input value={search} className="form-control" type="text" placeholder="Search" onChange={(ev) => {
-                    updateSearch(ev) 
-                    toggleSearching(ev)
-                }} /> */}
-                // {!searching ? '' : <SearchResults filteredFriends={filteredFriends} />}
