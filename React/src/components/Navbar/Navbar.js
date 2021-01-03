@@ -20,7 +20,7 @@ const Nav = () => {
                 <a className="nav-link" href="#">Link</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
+                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled (Test)</a>
               </li>
             </ul>
             <SearchBar />
