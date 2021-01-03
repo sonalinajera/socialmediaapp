@@ -1,5 +1,7 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
+///bad import for purpose of testing pipeline
+import BadThing from'../Thisdoesntexist/haha/zawarudo'
 
 const Nav = () => {
 
