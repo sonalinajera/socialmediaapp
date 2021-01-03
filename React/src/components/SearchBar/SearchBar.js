@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
 import SearchResults from '../../routes/SearchResults/SearchResults'
-
 /*The Sevice file from which the "users" JSON which carries the firstNames to 
 display as search results and allow the user to click to go to the selected user's profile. 
 */
@@ -16,24 +15,35 @@ const SearchBar = (props) => {
 
 
     const [friends, setFriends] = useState([])
+    const [dataObj, setDataObj] = useState({})
+    let obj = {};
 
     useEffect(() => {
         const dummyData = PostsApiService.getDummyData()
         console.log(dummyData)
         setFriends(dummyData)
+
+
     }, [])
 
 
+    const setObj = () => {
+        friends.map(friend => {
+            console.log(friend.firstName)
+            obj[friend.firstName] = null;
+        })
+        console.log(obj)
+    }
 
 
+    //Autcomplete is a materialize component
     return (
-        <div className="search-bar-and-results">
+        <div onClick={() => setObj()} className="search-bar-and-results">
             <Autocomplete
                 id="Autocomplete-1"
                 options={{
-                    data: {
-                        "orkunn": null
-                    },
+                    data:
+                        obj,
                     onAutocomplete: () => console.log("This is where we redirect to the clicked friend's profile")
                 }}
                 placeholder="Search"
