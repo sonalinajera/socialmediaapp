@@ -1,3 +1,6 @@
+//This is the api service file for handling users' posts.
+//Below is dummy data for user accounts.
+
 const myDummyData = [
 
     {

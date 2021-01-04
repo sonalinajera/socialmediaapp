@@ -16,9 +16,9 @@ const SearchBar = (props) => {
     const [friends, setFriends] = useState([])
     const [search, setSearch] = useState('')
 
+    //populate the friends in the state as soon as the component renders.
     useEffect(() => {
         const dummyData = PostsApiService.getDummyData()
-        console.log(dummyData)
         setFriends(dummyData)
     }, [])
 
@@ -34,9 +34,10 @@ const SearchBar = (props) => {
                 renderItem={(item, isHighlighted) =>
                     <div key={item.id} style={{ background: isHighlighted ? 'lightgray' : 'orange' }}>
                         {/*This is where we grab the item's(friend's) id to redirect to that friend's page*/}
-                        <span onClick={() => console.log("Function to redirect to that friend")}>{item.firstName} {item.lastName}</span>
+                        <span onClick={() => console.log("Function to redirect to that friend/ or in the onSelect attribute")}>{item.firstName} {item.lastName}</span>
                     </div>
                 }
+                inputProps={{ placeholder: "Find your friends" }}
                 value={search}
                 onChange={(e) => setSearch(e.target.value.substr(0, 20).toLowerCase())}
                 onSelect={(value) => {
