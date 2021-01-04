@@ -14,7 +14,12 @@ const App = () => {
     <div>
       <Nav />
       <Switch>
-        <Route exact path='/' component={LoginPage} />
+        <Route exact path='/' render={(routerProps) => {
+          console.log(routerProps)
+          return (
+            <LoginPage location={routerProps} />
+          )
+        }} />
         <Route exact path='/user/registration' component={RegistrationPage} />
         <Route exact path='/user/email-reset-password' component={Email} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
