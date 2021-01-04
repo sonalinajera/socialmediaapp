@@ -1,4 +1,5 @@
-//This is the api service file for handling users' posts.
+//This is the api service file for handling users' posts (functions, not storage)
+//Storage is going to be handled by REDUX
 //Below is dummy data for user accounts.
 
 const myDummyData = [
