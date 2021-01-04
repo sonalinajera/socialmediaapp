@@ -4,7 +4,8 @@ import './App.css'
 import Nav from '../../components/Navbar/Navbar'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
-import ResetPassword from '../../components/ResetPassword/ResetPassword'
+import Email from '../../components/ResetPassword/Email/Email'
+import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword'
 
 
 
@@ -15,6 +16,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={LoginPage} />
         <Route exact path='/user/registration' component={RegistrationPage} />
+        <Route exact path='/user/email-reset-password' component={Email} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
       </Switch>
     </div>
