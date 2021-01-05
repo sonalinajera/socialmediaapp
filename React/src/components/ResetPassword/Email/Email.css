@@ -10,9 +10,11 @@
     width: 80vw;
 }
 
-#send-email{
-   
+.reset-form-h3 {
+    margin-bottom: 10vh;
 }
+
+#send-email {}
 
 @media screen and (min-width:500px) {
     .reset-form input {

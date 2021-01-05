@@ -27,16 +27,15 @@ function ResetPassword(props) {
             message => alert(message)
         );
         userEmail.value = ''
-        
+
     }
     return (
         <div className="reset-form-wrapper">
+            <h3 className="reset-form-h3">Please enter your email address you use to login</h3>
             <Form onSubmit={(ev) => sendMail(ev)} className="reset-form">
-                <Form.Control name="userEmail" type="email" id="to-email" placeholder="Enter email" />
+                <Form.Control name="userEmail" type="email" id="to-email" placeholder="Enter email" required />
                 <br></br>
-                <Button variant="primary" type="submit">
-                    Send
-                </Button>
+                <Button variant="primary" type="submit">Send</Button>
             </Form>
         </div>
 
