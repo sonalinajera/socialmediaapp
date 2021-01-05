@@ -13,7 +13,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className="App">
       <Nav />
       <Switch>
         <Route exact path='/' render={(routerProps) => {
