@@ -1,9 +1,10 @@
 import React from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-import Navbar from '../../components/Navbar/Navbar'
 import './LoginPage.css'
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+
+
     return (
         <div>
             <div className="login-header-form">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import Nav from '../../components/Navbar/Navbar'
@@ -10,6 +10,8 @@ import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPas
 
 
 const App = () => {
+
+
   return (
     <div>
       <Nav />
@@ -26,7 +28,6 @@ const App = () => {
       </Switch>
     </div>
   )
-
 }
 
 export default App;

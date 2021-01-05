@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResetPassword.css'
+import './Email.css'
 import { Form, Button } from 'react-bootstrap'
 import emailjs from 'emailjs-com';
 import { init } from 'emailjs-com';
@@ -10,28 +10,34 @@ import { DesktopWindowsTwoTone } from '@material-ui/icons';
 function ResetPassword(props) {
 
 
-    const sendMail = () => {
-        let userEmail = document.getElementById('to-email').value;
+    const sendMail = (ev) => {
+        //keep the page from reloading after submission
+        ev.preventDefault()
+        const { userEmail } = ev.target
+        console.log(userEmail.value)
+        //  let userEmail = document.getElementById('to-email').value;
 
         window.Email.send({
             SecureToken: "6e849d89-435f-4ef6-8bd0-1f8385411022",
-            To: userEmail,
+            To: userEmail.value,
             From: "made4development@gmail.com",
             Subject: "This is the subject",
-            Body: "<html><h2>Hello,</h2><p>Click Here to <a href=\"https://www.google.com\">Reset Password </a></p></html>"
+            Body: "<html><h2>Hello,</h2><p>Click Here to <a href='http://localhost:3000/user/reset-password'>Reset Password </a></p></html>"
         }).then(
             message => alert(message)
         );
+        userEmail.value = ''
+        
     }
     return (
         <div className="reset-form-wrapper">
-            <Form className="reset-form">
-                <Form.Control type="email" id="to-email" placeholder="Enter email" />
+            <Form onSubmit={(ev) => sendMail(ev)} className="reset-form">
+                <Form.Control name="userEmail" type="email" id="to-email" placeholder="Enter email" />
                 <br></br>
-                <Button onClick={sendMail} variant="primary" type="submit">
+                <Button variant="primary" type="submit">
                     Send
                 </Button>
-            </Form >
+            </Form>
         </div>
 
 
