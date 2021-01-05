@@ -1,0 +1,30 @@
+.reset-form-wrapper {
+    margin: 40vh auto;
+}
+
+.reset-form {
+    margin: 0 10px;
+}
+
+.reset-form input {
+    width: 80vw;
+}
+
+#send-email{
+   
+}
+
+@media screen and (min-width:500px) {
+    .reset-form input {
+        width: 40vw;
+    }
+    .reset-form {
+        margin: 0 30vw;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .reset-form input {
+        width: 25vw;
+    }
+}
