@@ -9,7 +9,7 @@ import { Form, Button } from 'react-bootstrap'
 
 const ResetPassword = (props) => {
     return (
-        <div className="reset-password-wrapper">
+        <section className="reset-password-wrapper">
             <Form onSubmit={() => console.log(props.history)} className="reset-password-form">
                 <Form.Group controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
@@ -23,7 +23,7 @@ const ResetPassword = (props) => {
                     Submit
                 </Button>
             </Form>
-        </div>
+        </section>
     )
 }
 

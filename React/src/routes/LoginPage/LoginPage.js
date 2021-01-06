@@ -6,12 +6,12 @@ const LoginPage = (props) => {
 
 
     return (
-        <div>
+        <section className="login-page-wrapper">
             <div className="login-header-form">
                 <h2 className="login-page-h2">Welcome! Please Login</h2>
                 <LoginForm />
             </div>
-        </div>
+        </section>
     )
 }
 

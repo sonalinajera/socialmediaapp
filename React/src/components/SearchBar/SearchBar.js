@@ -24,7 +24,7 @@ const SearchBar = (props) => {
 
     //Autocomplete is a component from a 3rd party library called 'react-autocomplete'.
     return (
-        <div className="search-bar-and-results">
+        <section className="search-bar-and-results">
             <Autocomplete
                 getItemValue={(item) => item.firstName + ' ' + item.lastName}
                 items={friends}
@@ -45,7 +45,7 @@ const SearchBar = (props) => {
                     console.log(value)
                 }}
             />
-        </div>
+        </section>
     )
 }
 export default SearchBar

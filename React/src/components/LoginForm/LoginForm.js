@@ -11,7 +11,7 @@ const LoginForm = (props) => {
 
     return (
 
-        <div className="login-form-wrapper">
+        <section className="login-form-wrapper">
             <Form className="login-form" method="post" action="http://localhost:8080/SocialApp/forwarding/login">
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -28,7 +28,7 @@ const LoginForm = (props) => {
                     Submit
                 </Button>
             </Form>
-        </div>
+        </section>
     )
 }
 

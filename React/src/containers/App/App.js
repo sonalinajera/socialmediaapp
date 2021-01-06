@@ -6,14 +6,14 @@ import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import Email from '../../components/ResetPassword/Email/Email'
 import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword'
-import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 
 
 const App = () => {
 
 
   return (
-    <div className="App">
+    <section className="App">
       <Nav />
       <Switch>
         <Route exact path='/' render={(routerProps) => {
@@ -25,9 +25,9 @@ const App = () => {
         <Route exact path='/user/registration' component={RegistrationPage} />
         <Route exact path='/user/email-reset-password' component={Email} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
-        <Route component={NotFoundRoute} />
+        <Route component={NotFoundPage} />
       </Switch>
-    </div>
+    </section>
   )
 }
 

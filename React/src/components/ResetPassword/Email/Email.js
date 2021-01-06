@@ -9,7 +9,7 @@ import { DesktopWindowsTwoTone } from '@material-ui/icons';
 
 function ResetPassword(props) {
 
-
+    
     const sendMail = (ev) => {
         //keep the page from reloading after submission
         ev.preventDefault()
@@ -27,7 +27,6 @@ function ResetPassword(props) {
             message => alert(message)
         );
         userEmail.value = ''
-
     }
     return (
         <div className="reset-form-wrapper">
@@ -38,10 +37,7 @@ function ResetPassword(props) {
                 <Button variant="primary" type="submit">Send</Button>
             </Form>
         </div>
-
-
     )
-
 }
 
 export default ResetPassword;
