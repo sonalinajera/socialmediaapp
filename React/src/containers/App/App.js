@@ -5,6 +5,7 @@ import './App.css'
 import { Route, Switch } from 'react-router-dom'
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
 import Nav from '../../components/Navbar/Navbar'
+import Profile from '../../routes/Profile/Profile'
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
       <Nav />
       <Switch>
         <Route exact path='/' component={LoginPage} />
+        <Route exact path='/user/profile' component={Profile} />
         <Route exact path='/user/registration' component={RegistrationPage} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
       </Switch>
