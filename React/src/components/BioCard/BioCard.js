@@ -7,7 +7,7 @@ const BioCard = () => {
   return (
     <Container className="bioCard">
       <Row>
-        <Col xs={6} md={4}>
+        <Col xs={3} md={4}>
           <Image src={Avatar} thumbnail />
         </Col>
         <Col xs={10} md={6} className="bioDetails">
