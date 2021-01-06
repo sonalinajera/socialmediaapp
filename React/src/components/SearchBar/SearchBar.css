@@ -1,5 +1,6 @@
 .search-results li {
     list-style-type: none;
+    color: black;
 }
 
 @media screen and (min-width: 992px) {
@@ -10,12 +11,13 @@
         justify-content: center;
         align-items: center;
     }
-    .search-results {
+    /* .search-results {
         border: 3px solid salmon;
         display: flex;
         margin-top: 1vh;
         margin-bottom: -18vh;
         height: 17vh;
         width: 21vw;
-    }
+        align-items: center;
+    } */
 }

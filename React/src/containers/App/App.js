@@ -1,26 +1,37 @@
-import React from 'react'
-import LoginPage from '../../routes/LoginPage/LoginPage'
-import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
-import './App.css'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import ResetPassword from '../../components/ResetPassword/ResetPassword'
+import './App.css'
 import Nav from '../../components/Navbar/Navbar'
 import Profile from '../../routes/Profile/Profile'
+import LoginPage from '../../routes/LoginPage/LoginPage'
+import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
+import Email from '../../components/ResetPassword/Email/Email'
+import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword'
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 
 
 const App = () => {
+
+
   return (
-    <div>
+    <section className="App">
       <Nav />
       <Switch>
         <Route exact path='/' component={LoginPage} />
         <Route exact path='/user/profile' component={Profile} />
+        <Route exact path='/' render={(routerProps) => {
+          console.log(routerProps)
+          return (
+            <LoginPage location={routerProps} />
+          )
+        }} />
         <Route exact path='/user/registration' component={RegistrationPage} />
+        <Route exact path='/user/email-reset-password' component={Email} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
+        <Route component={NotFoundPage} />
       </Switch>
-    </div>
+    </section>
   )
-
 }
 
 export default App;

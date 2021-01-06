@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Navbar from './Navbar'
+import ProfilePic from './ProfilePic'
 
-it('Navbar renders successfully', () => {
+it('ProfilePic renders successfully', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <Router>
-            <Navbar />
+            <ProfilePic />
         </Router>, div)
     ReactDOM.unmountComponentAtNode(div)
 })
