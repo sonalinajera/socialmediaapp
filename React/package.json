@@ -17,7 +17,6 @@
     "mdbreact": "^5.0.1",
     "react": "^17.0.1",
     "react-autocomplete": "^1.8.1",
-    "react-autosuggest": "^10.0.4",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-materialize": "^3.9.5",
