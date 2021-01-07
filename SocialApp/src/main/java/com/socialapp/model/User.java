@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,43 +15,42 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="User")
+@Table(name = "users")
 public class User implements Serializable {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO )
-	@Column(name="user_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
 	private int userId;
-	
-	@Column(name="username", length=50, nullable=false, unique=true)
+
+	@Column(name = "username", length = 50, nullable = false, unique = true)
 	private String username;
-	
-	@Column(name="password", length=50, nullable=false)
+
+	@Column(name = "password", length = 50, nullable = false)
 	private String password;
-	
-	@Column(name="firstName", length=30, nullable=false)
+
+	@Column(name = "firstName", length = 30, nullable = false)
 	private String firstName;
-	
-	@Column(name="lastName", length=30, nullable=false)
+
+	@Column(name = "lastName", length = 30, nullable = false)
 	private String lastName;
-	
-	@Column(name="email", length=30, unique=true )
+
+	@Column(name = "email", length = 30, nullable = false, unique = true)
 	private String email;
-	
-	@Column(name="picture", nullable=true)
+
+	@Column(name = "picture", nullable = true)
 	private byte[] picture;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	@OrderBy("post_date ASC")
 	private List<Post> posts;
-	
+
 	public User() {
 	}
 
-	public User(String username, String password, String firstName, String lastName, String email,
-			byte[] picture, List<Post> posts) {
+	public User(String username, String password, String firstName, String lastName, String email, byte[] picture,
+			List<Post> posts) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -59,7 +60,7 @@ public class User implements Serializable {
 		this.picture = picture;
 		this.posts = posts;
 	}
-	
+
 	public User(int userId, String username, String password, String firstName, String lastName, String email,
 			byte[] picture, List<Post> posts) {
 		super();
@@ -141,11 +142,21 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
-				+ ", posts=" + posts + "]";
+				+ ", posts=" + displayPosts(posts) + "]";
 	}
 
-	
-	
-	
-	
+	public String toStringPosts() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
+				+ "]";
+	}
+
+	public String displayPosts(List<Post> posts) {
+		StringBuilder out = new StringBuilder("");
+		for (Post p : posts) {
+			out.append(p.toStringUser());
+		}
+		return new String(out);
+	}
+
 }

@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Arrays;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +18,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "Post")
+@Table(name = "posts")
 public class Post implements Serializable {
 
 	@Id
@@ -37,14 +39,14 @@ public class Post implements Serializable {
 	@ColumnDefault("0")
 	private int likes;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_User_Id")
 	private User user;
 
 	public Post() {
 
 	}
-
+	
 	public Post(Timestamp postDate, String message, byte[] picture, int likes, User user) {
 		super();
 		this.postDate = postDate;
@@ -115,7 +117,12 @@ public class Post implements Serializable {
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user + "]";
+				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user.toStringPosts() + "]";
+	}
+	
+	public String toStringUser() {
+		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
+				+ Arrays.toString(picture) + ", likes=" + likes + "]";
 	}
 
 }
