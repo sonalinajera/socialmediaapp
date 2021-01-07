@@ -8,15 +8,16 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
-	<servlet>
-		<display-name>MasterServlet</display-name>
-		<servlet-name>MasterServlet</servlet-name>
-		<servlet-class>com.socialapp.servlet.MasterServlet</servlet-class>
-	</servlet>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
-		<servlet-name>MasterServlet</servlet-name>
-		<url-pattern>/forwarding/*</url-pattern>
-		<url-pattern>/api/*</url-pattern>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>
