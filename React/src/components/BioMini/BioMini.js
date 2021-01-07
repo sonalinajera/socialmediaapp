@@ -10,7 +10,7 @@ const BioMini = () => {
         <Col xs={3} md={2}>
           <Image src={Avatar} rounded className="bioMiniThumbnail"/>
         </Col>
-        <Col xs={10} md={6} className="miniBioDetails">
+        <Col xs={6} md={6} className="miniBioDetails">
           <p>@username</p>
           <p> <span style={{ color: "red" }}>345</span> connections</p>
         </Col>

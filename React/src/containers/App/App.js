@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import Nav from '../../components/Navbar/Navbar'
-import Profile from '../../routes/Profile/Profile'
+import HomePage from '../../routes/HomePage/HomePage'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import Email from '../../components/ResetPassword/Email/Email'
@@ -18,7 +18,7 @@ const App = () => {
       <Nav />
       <Switch>
         <Route exact path='/' component={LoginPage} />
-        <Route exact path='/user/profile' component={Profile} />
+        <Route exact path='/user/home' component={HomePage} />
         <Route exact path='/' render={(routerProps) => {
           console.log(routerProps)
           return (
