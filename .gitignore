@@ -45,6 +45,7 @@ nbdist/
 # dependencies
 /node_modules
 node_modules/
+.eslintcache
 
 # IDEs and editors
 /.idea
@@ -80,3 +81,4 @@ testem.log
 Thumbs.db
 
 /Angular/Angular-Spring-Heroes/node_modules
+

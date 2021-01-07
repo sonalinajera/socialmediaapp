@@ -1,34 +1,36 @@
-import React from 'react'
+//This is the api service file for handling users' posts (functions, not storage)
+//Storage is going to be handled by REDUX
+//Below is dummy data for user accounts.
 
 const myDummyData = [
-    {
-        id: 1,
-        name: 'Orkun',
-        hairColor: 'brown'
-    },
 
     {
         id: 2,
-        name: 'Corbin',
-        hairColor: 'Brown'
+        firstName: 'Corbin',
+        lastName: 'Creedon'
+    },
+    {
+        id: 1,
+        firstName: 'Orkun',
+        lastName: 'Ozekin'
     },
 
     {
         id: 3,
-        name: 'Sonali',
-        hairColor: 'Brown'
+        firstName: 'Sonali',
+        lastName: 'Najera'
     },
 
     {
         id: 4,
-        name: 'Cody',
-        hairColor: 'Brown'
+        firstName: 'Cody',
+        lastName: 'Moody'
     },
 
     {
         id: 5,
-        name: 'Tim',
-        hairColor: 'Gold'
+        firstName: 'Tim',
+        lastName: 'Hammes'
     }
 ]
 

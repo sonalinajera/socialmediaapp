@@ -2,10 +2,16 @@ import React from 'react'
 import './LoginForm.css'
 import { Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+
+    let history = useHistory();
+    console.log(history)
+
     return (
-        <div className="login-form-wrapper">
+
+        <section className="login-form-wrapper">
             <Form className="login-form" method="post" action="http://localhost:8080/SocialApp/forwarding/login">
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -17,11 +23,12 @@ const LoginForm = () => {
                     <Form.Control type="password" name="password" placeholder="Password" />
                 </Form.Group>
                 <Link to="/user/registration">Don't have an account?</Link><br /> <br />
+                <Link to="/user/email-reset-password">Reset password</Link><br /> <br />
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
-        </div>
+        </section>
     )
 }
 

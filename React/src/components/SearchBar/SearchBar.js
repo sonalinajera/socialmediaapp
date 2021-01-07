@@ -1,126 +1,85 @@
 import React, { useContext, useState, useEffect } from 'react'
-//The component that should display the results. (Currently not being used 1/1/2021 1:26 pm CT)
 import SearchResults from '../../routes/SearchResults/SearchResults'
-
-/*The Sevice file from which the "users" JSON which carries the names to 
+/*The Sevice file from which the "users" JSON which carries the firstNames to 
 display as search results and allow the user to click to go to the selected user's profile. 
 */
 import PostsApiService from '../../services/PostsApiService'
 import './SearchBar.css'
-//This is the third party library component that handles the search functionality and displays the results. 
-import { useCombobox } from 'downshift'
-//MDBCol is the searchbar wrapper. It is styled in the css file.
-import { MDBCol } from "mdbreact";
-
+//Do NOT delete the next line. "M" is necessary for using materialize css.
+import M from "materialize-css"
+import "materialize-css/dist/js/materialize.min.js";
+import "materialize-css/dist/css/materialize.min.css";
+import Autocomplete from 'react-autocomplete'
 
 const SearchBar = (props) => {
-
-    const [search, setSearch] = useState('')
-    const [inputItems, setInputItems] = useState([])
+    //friends is an array of user objects that the current user needs to search for their friends.
     const [friends, setFriends] = useState([])
+    const [search, setSearch] = useState('')
 
+    //populate the friends in the state as soon as the component renders.
     useEffect(() => {
         const dummyData = PostsApiService.getDummyData()
-        console.log(dummyData)
         setFriends(dummyData)
     }, [])
 
-
-    const {
-        isOpen,
-        getToggleButtonProps,
-        getLabelProps,
-        getMenuProps,
-        getInputProps,
-        getComboboxProps,
-        highlightedIndex,
-        getItemProps,
-    } = useCombobox({
-        items: inputItems,
-        onInputValueChange: ({ inputValue }) => {
-            setInputItems(
-                friends.filter(friend =>
-                    friend.name.toLowerCase().startsWith(inputValue.toLowerCase()),
-                ),
-            )
-        },
-    })
-
-
-
+    //Autocomplete is a component from a 3rd party library called 'react-autocomplete'.
     return (
-        <div className="search-bar-and-results">
-            <MDBCol md="6">
-                <div className="active-pink-3 active-pink-4 mb-4" {...getComboboxProps()}>
-                    <input className="form-control" type="text" placeholder="Search" {...getInputProps()} />
-                </div>
-            </MDBCol>
+        <section className="search-bar-and-results">
+            <Autocomplete
+                getItemValue={(item) => item.firstName + ' ' + item.lastName}
+                items={friends}
+                shouldItemRender={(item, search) => item.firstName.toLowerCase().indexOf(search.toLowerCase()) !== -1
+                    || item.lastName.toLowerCase().indexOf(search.toLowerCase()) !== -1}
 
-            {/*This is the results (Unless SearchResults component can be integrated in"*/}
-            <ul {...getMenuProps()}>
-                {isOpen &&
-                    inputItems.map((item, index) => (
-                        <li className="search-result-item"
-                            style={
-                                highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}
-                            }
-                            key={`${item}${index}`}
-                            {...getItemProps({ item, index })}
-                        >
-                            {item.name}
-                        </li>
-
-                    ))}
-            </ul>
-        </div>
+                renderItem={(item, isHighlighted) =>
+                    <div key={item.id} style={{ background: isHighlighted ? 'lightgray' : 'orange' }}>
+                        {/*This is where we grab the item's(friend's) id to redirect to that friend's page*/}
+                        <span onClick={() => console.log("Function to redirect to that friend/ or in the onSelect attribute")}>{item.firstName} {item.lastName}</span>
+                    </div>
+                }
+                inputProps={{ placeholder: "Find your friends" }}
+                value={search}
+                onChange={(e) => setSearch(e.target.value.substr(0, 20).toLowerCase())}
+                onSelect={(value) => {
+                    setSearch(value)
+                    console.log(value)
+                }}
+            />
+        </section>
     )
-
-
-
-    //Button for the code above
-    {/* <button
-                        type="button"
-                        {...getToggleButtonProps()}
-                        aria-label={'toggle menu'}
-                    >
-                        &#8595;
-                     </button> */}
-
-    // const updateSearch = (event) => {
-    //     setSearch(event.target.value.substr(0, 20).toLowerCase())
-    // }
-
-
-    // console.log(friends)
-
-    // Filter through the friends list to find the name that includes letter that the user starts typing
-    // let filteredFriends = friends.filter(
-    //     (friend) => {
-    //         return friend.name.toLowerCase().indexOf(search) !== -1;
-    //     }
-    // )
-
-
-    // return (
-    //     <div className="search-bar-and-results">
-    //         <form className="form-inline my-2 my-lg-0">
-    //             <input value={search} onChange={ev => updateSearch(ev)} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-    //             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    //         </form>
-    //         <ul {...getMenuProps()}>
-    //             {
-    //                 isOpen && inputItems.map((item, index) => {
-    //                     <span key={item.id} {...getItemProps({ item, index })} onClick={() => setSearch(item.name)}>
-    //                         <li style={highlightedIndex === index ? { background: "#ede" } : {}}>
-    //                             <h4>{item.name}</h4>
-    //                         </li>
-    //                     </span>
-    //                 })
-    //             }
-    //         </ul>
-    //         <SearchResults filteredFriends={filteredFriends} />
-    //     </div>
-    // )
 }
-
 export default SearchBar
+
+
+/////////KEEP THIS HERE IN CASE WE WANNA SWITCH BACK TO Vanilla
+// const [searching, setSearching] = useState(false)
+
+{/* <input value={search} className="form-control" type="text" placeholder="Search" onChange={(ev) => {
+                updateSearch(ev)
+                toggleSearching(ev)
+            }} />
+            {!searching ? '' : <SearchResults filteredFriends={filteredFriends} />} */}
+
+
+  // //Get user's input and store that in the "search" property in the state
+// const updateSearch = (event) => {
+//     setSearch(event.target.value.substr(0, 20).toLowerCase())
+// }
+
+
+// //display the results when searching, hide them afterwards.
+// const toggleSearching = (ev) => {
+//     if (ev.target.value.length) {
+//         setSearching(true)
+//     }
+//     else {
+//         setSearching(false)
+//     }
+// }
+
+// // //Display only the results whose letters are included within the searched word(user's input)
+// let filteredFriends = friends.filter(
+//     (friend) => {
+//         return friend.firstName.toLowerCase().indexOf(search) !== -1;
+//     }
+// )
