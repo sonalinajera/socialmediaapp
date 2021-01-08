@@ -4,7 +4,7 @@ target/
 RemoveSystemsTempFiles/
 .settings
 /Servers/
-
+applicationContext.xml
 
 /.recommenders/
 
