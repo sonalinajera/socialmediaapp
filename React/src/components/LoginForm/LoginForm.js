@@ -12,7 +12,8 @@ const LoginForm = (props) => {
     return (
 
         <section className="login-form-wrapper">
-            <Form className="login-form" method="post" action="http://localhost:8080/SocialApp/forwarding/login">
+            {/* <Form className="login-form" method="post" action="http://localhost:8080/SocialApp/resources/index.html">*/}
+            <Form className="login-form" method="get" action="http://localhost:9001/SocialApp/api/getAllUsers">
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" placeholder="Enter email" />
