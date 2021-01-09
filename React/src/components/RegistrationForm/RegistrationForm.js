@@ -50,12 +50,27 @@ const RegistrationForm = () => {
             password: password.value
         }
 
+        fetch('http://localhost:9001/SocialApp/api/createUser',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+
+                },
+                body: JSON.stringify(registrationJSON)
+            }
+        ).then(response => response.text()
+
+        ).then(data => {
+            console.log(data)
+        });
+
         //in the POST request's body, send the JSON.stringify(registrationJSON)
     }
 
 
     //Basic form validations
-    
+
     const validateEmail = () => {
         //Check the emails in the DB to ensure emails' uniqueness. 
     }

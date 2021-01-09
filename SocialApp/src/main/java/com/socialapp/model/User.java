@@ -24,8 +24,10 @@ public class User implements Serializable {
 	@Column(name = "user_id")
 	private int userId;
 
-	@Column(name = "username", length = 50, nullable = false, unique = true)
-	private String username;
+	/*
+	 * @Column(name = "username", length = 50, nullable = false, unique = true)
+	 * private String username;
+	 */
 
 	@Column(name = "password", length = 50, nullable = false)
 	private String password;
@@ -48,24 +50,12 @@ public class User implements Serializable {
 
 	public User() {
 	}
-
-	public User(String username, String password, String firstName, String lastName, String email, byte[] picture,
-			List<Post> posts) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.picture = picture;
-		this.posts = posts;
-	}
-
-	public User(int userId, String username, String password, String firstName, String lastName, String email,
+	
+	public User(int userId,String password, String firstName, String lastName, String email,
 			byte[] picture, List<Post> posts) {
 		super();
 		this.userId = userId;
-		this.username = username;
+		/* this.username = username; */
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -73,6 +63,19 @@ public class User implements Serializable {
 		this.picture = picture;
 		this.posts = posts;
 	}
+
+	public User(String password, String firstName, String lastName, String email, byte[] picture) {
+		super();
+		/* this.username = username; */
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.picture = picture;
+		this.posts = posts;
+	}
+
+	
 
 	public int getUserId() {
 		return userId;
@@ -82,13 +85,11 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	/*
+	 * public String getUsername() { return username; }
+	 * 
+	 * public void setUsername(String username) { this.username = username; }
+	 */
 
 	public String getPassword() {
 		return password;
@@ -140,13 +141,13 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
+		return "User [userId=" + userId + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
 				+ ", posts=" + displayPosts(posts) + "]";
 	}
 
 	public String toStringPosts() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
+		return "User [userId=" + userId + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
 				+ "]";
 	}
