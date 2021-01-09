@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
-import Nav from '../../components/Navbar/Navbar'
+import NavigationBar from '../../components/Navbar/Navbar'
 import HomePage from '../../routes/HomePage/HomePage'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <section className="App">
-      <Nav />
+      <NavigationBar />
       <Switch>
         <Route exact path='/' component={LoginPage} />
         <Route exact path='/user/home' component={HomePage} />
