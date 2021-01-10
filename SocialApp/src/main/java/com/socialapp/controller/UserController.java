@@ -31,7 +31,8 @@ public class UserController {
 
 	@PostMapping(value = "/createUser")
 	public String createNewUser(@RequestBody User incomingUser) {
-		userRepo.insertUser(incomingUser);
+		User newUser = new User(incomingUser.getPassword(),incomingUser.getFirstName(),incomingUser.getLastName(),incomingUser.getEmail(),incomingUser.getPicture());
+		userRepo.insertUser(newUser);
 		return "Success!";
 	}
 	

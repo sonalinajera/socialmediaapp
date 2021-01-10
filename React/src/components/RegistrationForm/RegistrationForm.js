@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, Col, Button } from 'react-bootstrap'
 import './RegistrationForm.css'
 import ValidationError from './ValidationError/ValidationError'
+import bcrypt from 'bcryptjs'
 
 
 const RegistrationForm = () => {
@@ -36,26 +37,45 @@ const RegistrationForm = () => {
         setRepeatPassword({ value: repeatPassword, touched: true })
     }
 
-
+    
 
     //this is the api call function
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(email.value, firstName.value, lastName.value, password.value)
+        
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(password.value, salt);
+
+        console.log(email.value, firstName.value, lastName.value, hash)
 
         const registrationJSON = {
             email: email.value,
             firstName: firstName.value,
             lastName: lastName.value,
-            password: password.value
+            password: hash
         }
+
+        fetch('http://localhost:9001/SocialApp/api/createUser',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+
+                },
+                body: JSON.stringify(registrationJSON)
+            }
+        ).then(response => response.text()
+
+        ).then(data => {
+            console.log(data)
+        });
 
         //in the POST request's body, send the JSON.stringify(registrationJSON)
     }
 
 
     //Basic form validations
-    
+
     const validateEmail = () => {
         //Check the emails in the DB to ensure emails' uniqueness. 
     }
