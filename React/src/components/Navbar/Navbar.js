@@ -1,8 +1,9 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import { Navbar } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
+import { Search } from '@material-ui/icons'
 
-const Nav = () => {
+const NavigationBar = () => {
 
   return (
     <div>
@@ -21,4 +22,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default NavigationBar
