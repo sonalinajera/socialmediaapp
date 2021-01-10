@@ -44,4 +44,6 @@ public class UserController {
 	public User getUserById(@PathVariable("id") int id) {
 		return userRepo.selectUserById(id);
 	}
+	
+//	@GetMapping(value = "/getUserByEmailAndPassword")
 }
