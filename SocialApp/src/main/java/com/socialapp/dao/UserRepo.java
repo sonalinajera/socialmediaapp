@@ -2,6 +2,10 @@ package com.socialapp.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +17,7 @@ import com.socialapp.model.User;
 @Transactional
 public class UserRepo {
 	private SessionFactory sesFact;
+	private EntityManager em;
 	
 	public UserRepo() {
 	}
@@ -35,7 +40,19 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
-//	public String selectUserByEmailAndPassword() {
-//		
-//	}
+	
+	//This is the method Cody can decide whether to keep or delete.
+	public User selectUserByEmailAndPassword(String email, String password) {
+		String hql = "FROM USERS U WHERE email = :email, password = :password";
+		
+		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("password", password).setParameter("email", email).getSingleResult();
+			
+	}
+	
+	
+	
+	
+	
+	
+	
 }
