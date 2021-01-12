@@ -15,7 +15,7 @@
 	<context:component-scan base-package="com"/>
 	<tx:annotation-driven/>
 	<mvc:annotation-driven/>
-
+	<!-- Corbin's AWS DATABASE -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		
