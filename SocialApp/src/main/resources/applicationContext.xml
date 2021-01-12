@@ -20,10 +20,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		
 		<property name="driverClassName" value="org.postgresql.Driver"/>
-		<property name="url" value=
-			"#{'jdbc:postgresql://'+systemEnvironment['DB_URL']+'/SocialMediaRecords'}"/>
-		<property name="username" value="ccreedon"/>
-		<property name="password" value="#{systemEnvironment['DB_PASSWORD']}"/>
+		<property name="url" value="#{'jdbc:postgresql://'+systemEnvironment['REVATURE_DB_URL']+'/SocialMediaApp'}"/>
+		<property name="username" value="#{systemEnvironment['REVATURE_DB_USERNAME']}"/>
+		<property name="password" value="#{systemEnvironment['REVATURE_DB_PASSWORD']}"/>
 	</bean>
 	
 	<bean id="sessionFactory"

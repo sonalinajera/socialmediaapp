@@ -34,4 +34,8 @@ public class UserRepo {
 	public List<User> selectAllUsers() {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
+	
+//	public String selectUserByEmailAndPassword() {
+//		
+//	}
 }
