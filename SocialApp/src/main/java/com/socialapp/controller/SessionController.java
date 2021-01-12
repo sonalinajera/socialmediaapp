@@ -22,9 +22,15 @@ public class SessionController {
 
 	@PostMapping(value = "/login")
 	public String login(HttpSession session, @RequestBody User currentUser) {
-		System.out.println("User: " + currentUser);
+
 		session.setAttribute("loggedInUser", currentUser);
-		return "Login successful.";
+		System.out.println("User: " + currentUser);
+		if(currentUser != null) {
+			return "Login successful.";
+		} else {
+			return "null";
+		}
+		
 	}
 
 	@GetMapping(value = "/logout")
