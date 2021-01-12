@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginForm.css';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import config from '../../config';
-import axios from 'axios';
+import AuthApiService from '../../services/auth-api-service';
+
 
 
 const LoginForm = (props) => {
@@ -15,28 +15,22 @@ const LoginForm = (props) => {
     const [email, setEmail] = useState({ value: '', touched: false })
     const [password, setPassword] = useState({ value: '', touched: false })
 
-    const checkLogin = (userEmail, userPassword) => {
-        axios.post('/login', {
-            email: userEmail,
-            password: userPassword
-        })
 
-        //Update the values of the state properties to trigger at the "onChange" attributes of the inputs.
-        const updateEmail = (email) => {
-            setEmail({ value: email, touched: true })
-        }
 
-        const updatePassword = (password) => {
-            setPassword({ value: password, touched: true })
-        }
-
+    //Update the values of the state properties to trigger at the "onChange" attributes of the inputs.
+    const updateEmail = (email) => {
+        setEmail({ value: email, touched: true })
     }
+
+    const updatePassword = (password) => {
+        setPassword({ value: password, touched: true })
+    }
+
 
     return (
 
         <section className="login-form-wrapper">
-            {/* <Form className="login-form" method="post" action="http://localhost:8080/SocialApp/resources/index.html">*/}
-            <Form className="login-form" method="get" action="http://localhost:9001/SocialApp/api/getAllUsers">
+            <Form className="login-form" method="get" onSubmit={() => AuthApiService.checkLogin(email, password)}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email"
