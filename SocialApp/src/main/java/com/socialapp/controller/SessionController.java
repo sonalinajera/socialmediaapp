@@ -2,6 +2,7 @@ package com.socialapp.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.socialapp.model.User;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class SessionController {
 	
 	@GetMapping(value = "/getUser")
@@ -20,6 +22,7 @@ public class SessionController {
 
 	@PostMapping(value = "/login")
 	public String login(HttpSession session, @RequestBody User currentUser) {
+		System.out.println("User: " + currentUser);
 		session.setAttribute("loggedInUser", currentUser);
 		return "Login successful.";
 	}
