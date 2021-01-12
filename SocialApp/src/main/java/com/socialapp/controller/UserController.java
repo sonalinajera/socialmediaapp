@@ -46,5 +46,5 @@ public class UserController {
 		return userRepo.selectUserById(id);
 	}
 	
-//	@GetMapping(value = "/getUserByEmailAndPassword")
+
 }

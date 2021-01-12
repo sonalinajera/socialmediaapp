@@ -28,7 +28,9 @@ public class SessionController {
 	public User login(HttpSession session, @RequestBody User currentUser) {
 		User loggedUser = null;
 		//we need a getUserByEmailAndPassword method to call here
-		UserRepo userRepo = new UserRepo();
+		UserRepo userRepo = new UserRepo(); //should construct this with the sessionFactory argument. 
+		
+		
 		loggedUser = userRepo.selectUserByEmailAndPassword(currentUser.getEmail(), currentUser.getPassword());
 		
 		if(loggedUser != null) {

@@ -40,6 +40,8 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
+	
+	//This is the method Cody can decide whether to keep or delete.
 	public User selectUserByEmailAndPassword(String email, String password) {
 		String hql = "FROM USERS U WHERE email = :email, password = :password";
 		
