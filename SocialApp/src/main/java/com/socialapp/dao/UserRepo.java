@@ -43,7 +43,7 @@ public class UserRepo {
 	public User selectUserByEmailAndPassword(String email, String password) {
 		String hql = "FROM USERS U WHERE email = :email, password = :password";
 		
-		return  (User) sesFact.getCurrentSession().createQuery(hql).setParameter("password", password).setParameter("email", email).getSingleResult();
+		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("password", password).setParameter("email", email).getSingleResult();
 			
 	}
 	

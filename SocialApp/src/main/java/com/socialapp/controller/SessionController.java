@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.socialapp.dao.UserRepo;
 import com.socialapp.model.User;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class SessionController {
+	
+	
+	
 	
 	@GetMapping(value = "/getUser")
 	public User getLoggedInUser(HttpSession session) {
@@ -21,16 +25,20 @@ public class SessionController {
 	}
 
 	@PostMapping(value = "/login")
-	public String login(HttpSession session, @RequestBody User currentUser) {
-
-		session.setAttribute("loggedInUser", currentUser);
-		System.out.println("User: " + currentUser);
-		if(currentUser != null) {
-			return "Login successful.";
-		} else {
-			return "null";
+	public User login(HttpSession session, @RequestBody User currentUser) {
+		User loggedUser = null;
+		//we need a getUserByEmailAndPassword method to call here
+		UserRepo userRepo = new UserRepo();
+		loggedUser = userRepo.selectUserByEmailAndPassword(currentUser.getEmail(), currentUser.getPassword());
+		
+		if(loggedUser != null) {
+			session.setAttribute("loggedInUser", loggedUser);
 		}
 		
+
+		System.out.println("User: " + currentUser);
+		return loggedUser;
+	
 	}
 
 	@GetMapping(value = "/logout")
