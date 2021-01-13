@@ -41,17 +41,28 @@ public class UserRepo {
 	}
 	
 	
-	//This is the method Cody can decide whether to keep or delete.
-	public User selectUserByEmailAndPassword(String email, String password) {
-		String hql = "FROM USERS U WHERE email = :email, password = :password";
+//	This is the method Cody can decide whether to keep or delete.
+//	public User selectUserByEmailAndPassword(String email, String password) {
+//		String hql = "FROM USERS U WHERE U.email = :email, U.password = :password;";
+//		
+//		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("password", password).setParameter("email", email).getSingleResult();
+//			
+//	}
+	
+//	"FROM User U WHERE U.email = :email_field WHERE U.password = :password_field";
+
+	
+	
+	public User selectUserByEmail(String email) {
+		System.out.println(sesFact);
+		List<Object[]> rows = sesFact.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (email = " + email + ");").list();
+		for(Object[] row : rows){
+		    System.out.println(row[0].toString());
+		}
 		
-		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("password", password).setParameter("email", email).getSingleResult();
-			
+		return null;
+	
 	}
-	
-	
-	
-	
 	
 	
 	
