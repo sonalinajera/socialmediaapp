@@ -6,20 +6,6 @@ import axios from 'axios';
 const AuthApiService = {
 
 
-    //This function is for logging in a user by their credentials.
-    checkLogin(userEmail, userPassword) {
-        axios.post(`${config.API_ENDPOINT}/login`, {
-            email: userEmail,
-            password: userPassword
-        })
-            .then((response) => {
-                console.log(response);
-            }, (error) => {
-                console.log(error);
-            });
-    },
-
-
     //This function is for creating a new user.(Registration)
     postUser(userInfo) {
         return fetch(`${config.API_ENDPOINT}/users`, {

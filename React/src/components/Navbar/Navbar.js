@@ -5,7 +5,7 @@ import { Search } from '@material-ui/icons'
 
 const NavigationBar = () => {
 
-  
+  //use localstorage to check if the user is logged in. then conditionally render.
 
   return (
     <div>
