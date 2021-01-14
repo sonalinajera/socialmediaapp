@@ -1,5 +1,8 @@
 package com.socialapp.controller;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +33,14 @@ public class PostController {
 
 	@PostMapping(value = "/createPost")
 	public String createNewPost(@RequestBody Post incomingPost) {
-		postRepo.insertPost(incomingPost);
+		Post newPost = new Post(incomingPost.getPostId(),Timestamp.valueOf(LocalDateTime.now()),incomingPost.getMessage(),null,0,null);
+		postRepo.insertPost(newPost);
 		return "Success!";
 	}
 
 	@GetMapping(value = "/getAllPosts")
 	public List<Post> getAllPosts() {
+		System.out.println("in get all posts");
 		return postRepo.selectAllPosts();
 	}
 
