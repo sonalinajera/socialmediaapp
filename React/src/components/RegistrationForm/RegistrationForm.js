@@ -3,6 +3,7 @@ import { Form, Col, Button } from 'react-bootstrap'
 import './RegistrationForm.css'
 import ValidationError from './ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
+import axios from 'axios'
 
 
 const RegistrationForm = () => {
@@ -12,6 +13,7 @@ const RegistrationForm = () => {
     const [firstName, setFirstName] = useState({ value: '', touched: false })
     const [lastName, setLastName] = useState({ value: '', touched: false })
     const [password, setPassword] = useState({ value: '', touched: false })
+    const [file, setFile] = useState({value: null, touched: false  })
     const [repeatPassword, setRepeatPassword] = useState({ value: '', touched: false })
 
 
@@ -37,6 +39,10 @@ const RegistrationForm = () => {
         setRepeatPassword({ value: repeatPassword, touched: true })
     }
 
+    const updateFile = (file) => {
+        setFile({ value: file, touched: true })
+    }
+
     
 
     //this is the api call function
@@ -48,12 +54,24 @@ const RegistrationForm = () => {
 
         console.log(email.value, firstName.value, lastName.value, hash)
 
+        console.log(file)
+
         const registrationJSON = {
             email: email.value,
             firstName: firstName.value,
             lastName: lastName.value,
             password: hash
         }
+        
+
+        // Request made to the backend api 
+        // Send formData object 
+        axios.post("http://localhost:9001/SocialApp/api/uploadFile", {file: file,email:email.value})
+        .then(function (response) {
+          console.log(response);
+        });
+
+
 
         fetch('http://localhost:9001/SocialApp/api/createUser',
             {
@@ -169,7 +187,7 @@ const RegistrationForm = () => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="Upload a profile picture" />
+                    <Form.File id="formProfilePicFile" label="Upload a profile picture" onChange={e => updateFile(e.target.files[0])}/>
                 </Form.Group>
 
 
