@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import AuthApiService from '../../services/auth-api-service';
 import axios from 'axios';
 import config from '../../config';
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
+import TokenService from '../../services/token-service';
 
 const LoginForm = (props) => {
 
@@ -18,20 +19,44 @@ const LoginForm = (props) => {
     const [password, setPassword] = useState({ value: '', touched: false })
 
 
+    //post request for logging in. 
     const checkLogin = (ev) => {
-        let salt = bcrypt.genSaltSync(10);
-        let hash = bcrypt.hashSync(password.value, salt);
+        // let salt = bcrypt.genSaltSync(10);
+        // let hash = bcrypt.hashSync(password.value, salt);
+
 
 
         ev.preventDefault();
         console.log(email.value);
-        console.log(hash);
-        axios.post(`${config.API_ENDPOINT}/login`, {
+        console.log(password.value);
+        axios.post(`${config.O_API}/login`, {
             email: email.value,
-            password: hash
+            password: password.value
         })
             .then((response) => {
-                console.log(response);
+                if (response) {
+                    console.log(response.data);
+
+                    /*check user's password input against the password that comes from the server
+                    if they are the same, then   TokenService.saveUser(response.data), if wrong, display an error message  */
+                    /* in the home page and navbar, call TokenService.hasAuthToken to make sure user had authorization. */
+
+                    if (bcrypt.compareSync(password.value, response.data.password) === true) {
+                        //set the user object to the localStorage for persistence as "user".
+                        TokenService.saveUser(response.data);
+                        //route to the user home if credentials are correct
+                        history.push('/user/home');
+                    } else {
+                        console.log("password is wrong");
+                    }
+
+                } else {
+                    console.log("no response");
+                }
+
+
+
+
             }, (error) => {
                 console.log(error);
             })
