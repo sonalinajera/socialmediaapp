@@ -43,14 +43,15 @@ public class SessionController {
 
 		// we need a getUserByEmailAndPassword method to call here
 		System.out.println(user.getEmail());
-//		System.out.println(userRepo.selectUserByEmail(user.getEmail()));
 		System.out.println(user);
+		System.out.println("logged in user: " + userRepo.selectUserByEmail(user.getEmail()));
+		User loggedinUser = userRepo.selectUserByEmail(user.getEmail());
 		// set the user to the session.
-//		if (listOfLoggedUser != null) {
-//			session.setAttribute("loggedInUser", listOfLoggedUser);
-//		}
+		if (loggedinUser != null) {
+			session.setAttribute("loggedInUser", loggedinUser);
+		}
 
-	return null;
+	return loggedinUser;
 
 	}
 
