@@ -143,7 +143,7 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
-				+ ", posts=" + displayPosts(posts) + "]";
+				+ ", posts=" + /* displayPosts(posts) + */ "]";
 	}
 
 	public String toStringPosts() {
