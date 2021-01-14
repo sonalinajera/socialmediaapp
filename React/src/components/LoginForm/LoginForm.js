@@ -6,21 +6,29 @@ import { useHistory } from "react-router-dom";
 import AuthApiService from '../../services/auth-api-service';
 import axios from 'axios';
 import config from '../../config';
+import bcrypt from 'bcryptjs'
 
 const LoginForm = (props) => {
 
     let history = useHistory();
     // console.log(history);
 
+    //state
     const [email, setEmail] = useState({ value: '', touched: false })
     const [password, setPassword] = useState({ value: '', touched: false })
 
 
     const checkLogin = (ev) => {
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(password.value, salt);
+
+
         ev.preventDefault();
+        console.log(email.value);
+        console.log(hash);
         axios.post(`${config.API_ENDPOINT}/login`, {
             email: email.value,
-            password: password.value
+            password: hash
         })
             .then((response) => {
                 console.log(response);
@@ -58,7 +66,7 @@ const LoginForm = (props) => {
                 <Link to="/user/email-reset-password">Reset password</Link><br /> <br />
                 <Button variant="primary" type="submit">
                     Submit
-            </Button>
+                </Button>
             </Form>
         </section>
     )
