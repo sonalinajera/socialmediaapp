@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,29 +44,28 @@ public class UserRepo {
 	}
 	
 	
-//	This is the method Cody can decide whether to keep or delete.
-//	public User selectUserByEmailAndPassword(String email, String password) {
-//		String hql = "FROM USERS U WHERE U.email = :email, U.password = :password;";
-//		
-//		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("password", password).setParameter("email", email).getSingleResult();
-//			
-//	}
-	
-//	"FROM User U WHERE U.email = :email_field WHERE U.password = :password_field";
 
-	
-	
+
+	//to use for login
 	public User selectUserByEmail(String email) {
-		System.out.println(sesFact);
-		List<Object[]> rows = sesFact.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (email = " + email + ");").list();
-		for(Object[] row : rows){
-		    System.out.println(row[0].toString());
-		}
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		System.out.println(builder);
+		CriteriaQuery<User> criteria = builder.createQuery(User.class);
 		
-		return null;
-	
+		Metamodel m = em.getMetamodel();
+		EntityType<User> User_ = m.entity(User.class);
+		
+		Root<User> userRoot = criteria.from(User.class);
+		criteria.select( userRoot );
+		System.out.println(User_);
+		System.out.println(userRoot);
+		
+		
+		criteria.where(builder.equal(userRoot.get("email"), email));
+		
+		//the resultset
+		List<User> result = em.createQuery( criteria ).getResultList();
+		return result.get(0);
 	}
-	
-	
 	
 }
