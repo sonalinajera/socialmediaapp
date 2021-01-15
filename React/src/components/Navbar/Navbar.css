@@ -1,0 +1,8 @@
+.navbar {
+    position: fixed;
+    background: linear-gradient(176deg, #E65100 0%, #F57C00 90%);
+}
+
+#basic-navbar-nav {
+    background: linear-gradient(176deg, #FFA726 0%, #E65100 90%);
+}

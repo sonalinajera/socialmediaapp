@@ -16,7 +16,7 @@ import com.socialapp.model.User;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 	
 	private UserRepo userRepo;
@@ -31,6 +31,7 @@ public class UserController {
 
 	@PostMapping(value = "/createUser")
 	public String createNewUser(@RequestBody User incomingUser) {
+		System.out.println(incomingUser);
 		User newUser = new User(incomingUser.getPassword(),incomingUser.getFirstName(),incomingUser.getLastName(),incomingUser.getEmail(),incomingUser.getPicture());
 		userRepo.insertUser(newUser);
 		return "Success!";

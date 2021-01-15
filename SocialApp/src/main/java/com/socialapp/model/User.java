@@ -1,5 +1,6 @@
 package com.socialapp.model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,7 @@ public class User implements Serializable {
 	private String email;
 
 	@Column(name = "picture", nullable = true)
-	private byte[] picture;
+	private File picture;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	@OrderBy("post_date ASC")
@@ -48,7 +49,7 @@ public class User implements Serializable {
 	}
 	
 	public User(int userId,String password, String firstName, String lastName, String email,
-			byte[] picture, List<Post> posts) {
+			File picture, List<Post> posts) {
 		super();
 		this.userId = userId;
 		this.password = password;
@@ -61,7 +62,7 @@ public class User implements Serializable {
 	
 	
 
-	public User(String password, String firstName, String lastName, String email, byte[] picture, List<Post> posts) {
+	public User(String password, String firstName, String lastName, String email, File picture, List<Post> posts) {
 		super();
 		this.password = password;
 		this.firstName = firstName;
@@ -71,7 +72,7 @@ public class User implements Serializable {
 		this.posts = posts;
 	}
 
-	public User(String password, String firstName, String lastName, String email, byte[] picture) {
+	public User(String password, String firstName, String lastName, String email, File picture) {
 		super();
 		this.password = password;
 		this.firstName = firstName;
@@ -123,11 +124,11 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public byte[] getPicture() {
+	public File getPicture() {
 		return picture;
 	}
 
-	public void setPicture(byte[] picture) {
+	public void setPicture(File picture) {
 		this.picture = picture;
 	}
 
@@ -142,14 +143,14 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
+//				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
 				+ ", posts=" + /* displayPosts(posts) + */ "]";
+
 	}
 
 	public String toStringPosts() {
 		return "User [userId=" + userId + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
-				+ "]";
+				+ firstName + ", lastName=" + lastName + ", email=" + email;
 	}
 
 	public String displayPosts(List<Post> posts) {

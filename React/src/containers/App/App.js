@@ -8,6 +8,7 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import Email from '../../components/ResetPassword/Email/Email'
 import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
+import Navbar1 from '../../components/Navbar/Navbar1'
 
 
 const App = () => {
@@ -15,9 +16,8 @@ const App = () => {
 
   return (
     <section className="App">
-      <NavigationBar />
+      <Navbar1 />
       <Switch>
-        <Route exact path='/' component={LoginPage} />
         <Route exact path='/user/home' component={HomePage} />
         <Route exact path='/' render={(routerProps) => {
           console.log(routerProps)
