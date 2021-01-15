@@ -40,8 +40,10 @@ public class S3Repo {
 		}
 	}
 
-	public void createFolder(String bucketName, String folderName, AmazonS3 client, String SUFFIX) {
+	public void createFolder(String folderName, AmazonS3 client) {
 		// create meta-data for your folder and set content-length to 0
+		String SUFFIX = CommonS3Constants.SUFFIX;
+		String bucketName = CommonS3Constants.BUCKET_NAME;
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentLength(0);
 
@@ -61,7 +63,8 @@ public class S3Repo {
 	 * itself
 	 */
 
-	public void deleteFolder(String bucketName, String folderName, AmazonS3 client) {
+	public void deleteFolder(String folderName, AmazonS3 client) {
+		String bucketName = CommonS3Constants.BUCKET_NAME;
 		List fileList = client.listObjects(bucketName, folderName).getObjectSummaries();
 		for (Object object : fileList) {
 			S3ObjectSummary file = (S3ObjectSummary) object;
@@ -82,7 +85,8 @@ public class S3Repo {
 		s3client.createBucket(bucketName);
 	}
 	
-	public void uploadImage(String bucketName, String folderName, String fileName, AmazonS3 client, File image) {
+	public void uploadImage(String folderName, String fileName, AmazonS3 client, File image) {
+		String bucketName = CommonS3Constants.BUCKET_NAME;
 		String filePathName = folderName + CommonS3Constants.SUFFIX + fileName;
 		client.putObject(
 				new PutObjectRequest(bucketName, filePathName,image)
@@ -90,7 +94,8 @@ public class S3Repo {
 
 	}
 	
-	public void deleteImage(String bucketName, String folderName, String fileName, AmazonS3 client) {
+	public void deleteImage(String folderName, String fileName, AmazonS3 client) {
+		String bucketName = CommonS3Constants.BUCKET_NAME;
 		String filePathName = folderName + CommonS3Constants.SUFFIX + fileName;
 		client.deleteObject(bucketName, filePathName);
 	}
