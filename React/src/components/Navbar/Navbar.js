@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import './Navbar.css'
 import SearchBar from '../SearchBar/SearchBar'
@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 const NavigationBar = () => {
 
-
+    const [loggedIn, setLoggedIn] = useState(false);
 
     let history = useHistory();
 
@@ -16,11 +16,18 @@ const NavigationBar = () => {
     const logout = () => {
         TokenService.clearAuthToken();
         history.push('/');
+        setLoggedIn(false);
     }
 
+    useEffect(() => {
+        //if user is logged in
+        if (TokenService.hasAuthToken()) {
+            setLoggedIn(true);
+        }
+    })
 
-    //if user is logged in
-    if (TokenService.hasAuthToken()) {
+
+    if (loggedIn) {
         return (
             <section className="navbar=wrapper">
                 <Navbar fixed="top" expand="lg" className="navbar">
