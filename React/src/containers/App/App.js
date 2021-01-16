@@ -10,28 +10,28 @@ import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPas
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 
 
+
 const App = () => {
 
 
-    return (
-        <section className="App">
-            <NavigationBar />
-            <Switch>
-                <Route exact path='/' component={LoginPage} />
-                <Route exact path='/user/home' component={HomePageContainer} />
-                <Route exact path='/' render={(routerProps) => {
-                    console.log(routerProps)
-                    return (
-                        <LoginPage location={routerProps} />
-                    )
-                }} />
-                <Route exact path='/user/registration' component={RegistrationPage} />
-                <Route exact path='/user/email-reset-password' component={Email} />
-                <Route exact path='/user/reset-password' component={ResetPassword} />
-                <Route component={NotFoundPage} />
-            </Switch>
-        </section>
-    )
+  return (
+    <section className="App">
+      <NavigationBar />
+      <Switch>
+        <Route exact path='/user/home' component={HomePageContainer} />
+        <Route exact path='/' render={(routerProps) => {
+          console.log(routerProps)
+          return (
+            <LoginPage location={routerProps} />
+          )
+        }} />
+        <Route exact path='/user/registration' component={RegistrationPage} />
+        <Route exact path='/user/email-reset-password' component={Email} />
+        <Route exact path='/user/reset-password' component={ResetPassword} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </section>
+  )
 }
 
 export default App;

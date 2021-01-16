@@ -12,7 +12,7 @@ const TokenService = {
         return window.localStorage.getItem('user')
     },
     clearAuthToken() {
-        window.localStorage.removeItem()
+        window.localStorage.removeItem('user')
     },
 
     //this is for checking to see if user has authorization for being logged in. 
