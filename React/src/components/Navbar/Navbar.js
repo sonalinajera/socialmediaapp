@@ -1,38 +1,63 @@
 import React from 'react'
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
+import './Navbar.css'
 import SearchBar from '../SearchBar/SearchBar'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
-import { Search } from '@material-ui/icons'
-import styled from 'styled-components';
-import Burger from './Burger';
+import TokenService from '../../services/token-service'
+import { useHistory } from "react-router-dom";
 
 const NavigationBar = () => {
 
-  //use localstorage to check if the user is logged in. then conditionally render.
 
 
-  const Nav = styled.nav`
-width: 100%;
-height: 55px;
-border-bottom: 2px solid #f1f1f1;
-padding: 0 20px;
-display: flex;
-justify-content: space-between;
+    let history = useHistory();
 
-.logo {
-    padding: 15px 0;
+
+    //logout
+    const logout = () => {
+        TokenService.clearAuthToken();
+        history.push('/');
+    }
+
+
+    //if user is logged in
+    if (TokenService.hasAuthToken()) {
+        return (
+            <section className="navbar=wrapper">
+                <Navbar fixed="top" expand="lg" className="navbar">
+                    <Navbar.Brand href="/user/home">Embers</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="/user/home">Home</Nav.Link>
+                            <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+                        </Nav>
+                        <SearchBar />
+                    </Navbar.Collapse>
+                </Navbar>
+            </section>
+        )
+    }
+
+    //if user isn't logged in
+    else {
+        return (
+            <section className="navbar=wrapper">
+                <Navbar expand="lg" className="navbar">
+                    <Navbar.Brand href="#home">Embers</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#link">Link</Nav.Link>
+                        </Nav>
+                        <SearchBar />
+                    </Navbar.Collapse>
+                </Navbar>
+            </section>
+        )
+    }
+
 }
 
-`
 
-  return (
-    <Nav>
-      <div className="logo">
-        Tara O Photos
-        </div>
-      <Burger />
-    </Nav>
-  )
-}
-
-
-export default NavigationBar
+export default NavigationBar;
