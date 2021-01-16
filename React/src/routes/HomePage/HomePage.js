@@ -4,29 +4,19 @@ import Post from '../../components/Post/Post'
 import PostContents from '../../components/PostContents/PostContents'
 import TokenService from '../../services/token-service'
 
-const HomePage = () => {
+
+const HomePage = (props) => {
+  return (
+    <div>
+      <BioCard userData={props.userData} />
+      <Post />
+      {props.postData.map((post, index) => {
+        return (<PostContents key={index} pData={post} uData={props.userData} />)
+      })}
 
 
-  //if user is logged in
-  if (TokenService.hasAuthToken()) {
-    return (
-      <div>
-        <BioCard />
-        <Post />
-        <PostContents />
-        <PostContents />
-
-      </div>
-    )
-  }
-
-  //if user isn't logged in, return nothing for now
-  else {
-    return (
-      ''
-    )
-  }
-
+    </div>
+  )
 }
 
 export default HomePage

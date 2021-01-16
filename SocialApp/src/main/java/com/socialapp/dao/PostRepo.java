@@ -32,6 +32,7 @@ public class PostRepo {
 	}
 	
 	public List<Post> selectAllPosts() {
+		System.out.println("in select all posts");
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list();
 	}
 }

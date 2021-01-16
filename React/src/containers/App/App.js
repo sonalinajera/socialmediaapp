@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import NavigationBar from '../../components/Navbar/Navbar'
-import HomePage from '../../routes/HomePage/HomePage'
+import HomePageContainer from '../../routes/HomePage/HomePageContainer'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import Email from '../../components/ResetPassword/Email/Email'
@@ -18,7 +18,7 @@ const App = () => {
     <section className="App">
       <NavigationBar />
       <Switch>
-        <Route exact path='/user/home' component={HomePage} />
+        <Route exact path='/user/home' component={HomePageContainer} />
         <Route exact path='/' render={(routerProps) => {
           console.log(routerProps)
           return (
