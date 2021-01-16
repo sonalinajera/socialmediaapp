@@ -32,7 +32,7 @@ public class UserController {
 	@PostMapping(value = "/createUser")
 	public String createNewUser(@RequestBody User incomingUser) {
 		System.out.println(incomingUser);
-		User newUser = new User(incomingUser.getPassword(),incomingUser.getFirstName(),incomingUser.getLastName(),incomingUser.getEmail(),incomingUser.getPicture());
+		User newUser = new User(incomingUser.getPassword(),incomingUser.getFirstName(),incomingUser.getLastName(),incomingUser.getEmail(),incomingUser.getProfilePicURL());
 		userRepo.insertUser(newUser);
 		return "Success!";
 	}
