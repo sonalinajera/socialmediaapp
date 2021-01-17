@@ -37,7 +37,7 @@ const NavigationBar = (props) => {
 
     if (props.loggedIn && user) {
         return (
-            <section className="navbar=wrapper">
+            <section className="navbar-wrapper">
                 <Navbar fixed="top" expand="lg" className="navbar">
                     <Navbar.Brand href="/user/home">Embers</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -45,9 +45,10 @@ const NavigationBar = (props) => {
                         <Nav className="mr-auto">
                             {console.log(user)}
                             <Nav.Link href="/user/home">Home</Nav.Link>
+                            <Nav.Link href="/user/home">{user.firstName}</Nav.Link>
+                            <Nav.Link href="/user/settings">Edit Profile</Nav.Link>
                             <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
 
-                            <Nav.Link to="/user/home">{user.firstName}</Nav.Link>
                         </Nav>
                         <SearchBar />
                     </Navbar.Collapse>
@@ -65,8 +66,7 @@ const NavigationBar = (props) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
+                            <Nav.Link href="/">Login</Nav.Link>
                         </Nav>
                         <SearchBar />
                     </Navbar.Collapse>
