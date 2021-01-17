@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './UserSettings.css';
 import TokenService from '../../services/token-service';
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button, Label } from 'react-bootstrap';
+import ProfilePic from '../../components/ProfilePic/ProfilePic';
 
 const UserSettings = () => {
 
@@ -20,9 +21,10 @@ const UserSettings = () => {
                 <h2>Edit Profile</h2>
                 <div className="profile-picture-wrapper">
                     <Form className="profle-picture-form">
-                        <img src={user.profilePicURL} alt="profile picture" />
+                        <h4>Profile Picture</h4>
+                        <ProfilePic profilePic={user.profilePicURL} />
                         <Form.Group>
-                            <Form.File id="exampleFormControlFile1" label="Example file input" />
+                            <Form.File id="exampleFormControlFile1" label="Change your profile picture" />
                         </Form.Group>
                     </Form>
                 </div>

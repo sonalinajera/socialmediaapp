@@ -1,23 +1,18 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import './ProfilePic.css'
 
-const ProfilePic = () => {
+const ProfilePic = ({ profilePic }) => {
     return (
-        <div>
+        <section className="profile-pic-wrapper">
             <Container>
                 <Row>
                     <Col xs={6} md={4}>
-                        <Image src="holder.js/171x180" rounded />
-                    </Col>
-                    <Col xs={6} md={4}>
-                        <Image src="holder.js/171x180" roundedCircle />
-                    </Col>
-                    <Col xs={6} md={4}>
-                        <Image src="holder.js/171x180" thumbnail />
+                        <Image className="profile-pic-img" src={profilePic} roundedCircle />
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </section>
     )
 }
 

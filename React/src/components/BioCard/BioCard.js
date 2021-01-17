@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Image, Col, } from 'react-bootstrap';
-import Avatar from '../..//images/avatar.png';
 import './BioCard.css';
 import TokenService from '../../services/token-service';
+import ProfilePic from '../ProfilePic/ProfilePic';
 
 const BioCard = (props) => {
 
@@ -20,7 +20,7 @@ const BioCard = (props) => {
             <Container className="bioCard">
                 <Row>
                     <Col xs={3} md={4}>
-                        <Image src={Avatar} thumbnail />
+                        <ProfilePic profilePic={user.profilePicURL} />
                     </Col>
                     <Col xs={10} md={6} className="bioDetails">
                         <h1>{user.firstName} {user.lastName}</h1>
