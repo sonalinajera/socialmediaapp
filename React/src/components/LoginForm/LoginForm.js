@@ -49,9 +49,6 @@ const LoginForm = (props) => {
                     console.log("no response");
                 }
 
-
-
-
             }, (error) => {
                 console.log(error);
             })

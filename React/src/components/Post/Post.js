@@ -4,6 +4,8 @@ import './Post.css'
 import WritePost from '../../images/icons/writePost.png'
 import axios from 'axios';
 import TokenService from '../../services/token-service';
+import config from '../../config';
+import S3 from 'react-aws-s3'
 
 const Post = () => {
     const [shouldDisplayPostForm, displayPostForm] = useState(false);
@@ -12,7 +14,7 @@ const Post = () => {
 
     let postImage = document.getElementById("file1");
     const postBod = document.getElementById("post-body");
-
+    let file = null;
     useEffect(() => {
         setUser(TokenService.getUser());
     }, [])
@@ -25,7 +27,7 @@ const Post = () => {
 
 
             postImage.onchange = () => {
-                const file = postImage.files[0];
+                file = postImage.files[0];
                 console.log(file.name);
 
 
@@ -36,8 +38,6 @@ const Post = () => {
                     pic.className = 'img-thumbnail';
                     pic.width = '300'
 
-
-
                     postBod.appendChild(pic);
                 }
 
@@ -47,25 +47,94 @@ const Post = () => {
     }
 
 
+
+
     //all we need is the url to the image and the message body sent together at once in this function
     const postHandler = () => {
-        const jsonToSend = {
-            
+
+        console.log(file)
+
+        const config = {
+            bucketName: 'socialmediasite',
+            dirName: `${user.email}/posts`, /* optional */
+            region: 'us-east-2',
+            accessKeyId: 'AKIA2OUFO3GG2HD3J75T',
+            secretAccessKey: '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',
         }
 
+
+
+        const ReactS3Client = new S3(config);
         const message = postBod.innerText;
 
-        axios.post('http://localhost:9001/SocialApp/api/createPost', {
-            message: message
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        if (!file) {
+            console.log(config.API_ENDPOINT)
+            fetch('http://localhost:9001/SocialApp/api/createPost',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
 
-        postBod.innerHTML = "";
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        postPicURL: null,
+                        user: user
+                    })
+                }
+            ).then(response => response.text()
+
+            ).then(data => {
+                console.log(data)
+                postBod.innerHTML = "";
+            });
+        }
+
+
+        else {
+            ReactS3Client
+                .uploadFile(file)
+                .then(data =>
+                    fetch('http://localhost:9001/SocialApp/api/createPost',
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Access-Control-Allow-Origin': '*'
+
+                            },
+                            body: JSON.stringify({
+                                message: message,
+                                postPicURL: data.location,
+                                user: user
+                            })
+                        }
+                    ).then(response => response.text()
+
+                    ).then(data => {
+                        console.log(data)
+                        postBod.innerHTML = "";
+                    }
+                    )
+                        .catch(err => console.error(err))
+                );
+
+        }
+
+
+        // const message = postBod.innerText;
+        // axios.post('http://localhost:9001/SocialApp/api/createPost', {
+        //     message: message
+        // })
+        //     .then(function (response) {
+        //         console.log(response);
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+
+        // postBod.innerHTML = "";
     }
 
     return (

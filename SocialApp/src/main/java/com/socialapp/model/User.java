@@ -1,11 +1,8 @@
 package com.socialapp.model;
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "users")
@@ -42,6 +41,7 @@ public class User implements Serializable {
 	private String profilePicURL;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//	@JsonManagedReference
 	@OrderBy("post_date ASC")
 	private List<Post> posts;
 
@@ -175,22 +175,21 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", firstName="
-//				+ firstName + ", lastName=" + lastName + ", email=" + email + ", picture=" + Arrays.toString(picture)
-				+ ", posts=" + /* displayPosts(posts) + */ "]";
-
+				+ firstName + ", lastName=" + lastName + ", email=" + email 
+				+ ", posts=" + "]";
 	}
 
-	public String toStringPosts() {
-		return "User [userId=" + userId + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email;
-	}
+//	public String toStringPosts() {
+//		return "User [userId=" + userId + ", password=" + password + ", firstName="
+//				+ firstName + ", lastName=" + lastName + ", email=" + email;
+//	}
 
-	public String displayPosts(List<Post> posts) {
-		StringBuilder out = new StringBuilder("");
-		for (Post p : posts) {
-			out.append(p.toStringUser());
-		}
-		return new String(out);
-	}
+//	public String displayPosts(List<Post> posts) {
+//		StringBuilder out = new StringBuilder("");
+//		for (Post p : posts) {
+//			out.append(p.toStringUser());
+//		}
+//		return new String(out);
+//	}
 
 }

@@ -2,7 +2,6 @@ package com.socialapp.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Arrays;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "posts")
@@ -40,6 +41,7 @@ public class Post implements Serializable {
 	private int likes;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonBackReference
 	@JoinColumn(name = "FK_User_Id")
 	private User user;
 
@@ -117,12 +119,10 @@ public class Post implements Serializable {
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", postPicURL="
-				+ postPicURL + ", likes=" + likes + ", user=" + user + "]";
+				+ postPicURL + ", likes=" + likes + "]";
 	}
 	
 	
-	
-
 	
 //	@Override
 //	public String toString() {
@@ -130,9 +130,9 @@ public class Post implements Serializable {
 //				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user.toStringPosts() + "]";
 //	}
 //	
-	public String toStringUser() {
-		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-				+ postPicURL + ", likes=" + likes + "]";
-	}
+//	public String toStringUser() {
+//		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
+//				+ postPicURL + ", likes=" + likes + "]";
+//	}
 
 }
