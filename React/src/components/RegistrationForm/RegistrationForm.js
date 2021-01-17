@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Col, Button } from 'react-bootstrap'
 import './RegistrationForm.css'
 import ValidationError from './ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
 import S3 from 'react-aws-s3'
-
+import axios from 'axios'
+import config from '../../config'
 
 
 
@@ -15,12 +16,32 @@ const RegistrationForm = () => {
     const [firstName, setFirstName] = useState({ value: '', touched: false })
     const [lastName, setLastName] = useState({ value: '', touched: false })
     const [password, setPassword] = useState({ value: '', touched: false })
-    const [file, setFile] = useState({value: null, touched: false  })
+    const [file, setFile] = useState({ value: null, touched: false })
     const [repeatPassword, setRepeatPassword] = useState({ value: '', touched: false })
+
+    //emails to check against user's email at registration
+    const [emails, setEmails] = useState([])
+
+
+    //populate the emails at component mounting 
+    useEffect(() => {
+        getAllEmails();
+    }, [])
+
+    const getAllEmails = () => {
+        axios.get(`${config.API_ENDPOINT}/api/getAllEmails`)
+            .then((response) => {
+                console.log(response.data);
+                setEmails(response.data)
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
 
     //Update the values of the state properties to trigger at the "onChange" attributes of the inputs.
-
     const updateEmail = (email) => {
         setEmail({ value: email, touched: true })
     }
@@ -45,12 +66,14 @@ const RegistrationForm = () => {
         setFile({ value: file, touched: true })
     }
 
-    
+
 
     //this is the api call function
     const handleSubmit = (event) => {
+        console.log(emails)
+        console.log(email)
         event.preventDefault()
-        
+
         let salt = bcrypt.genSaltSync(10);
         let hash = bcrypt.hashSync(password.value, salt);
 
@@ -66,11 +89,11 @@ const RegistrationForm = () => {
             secretAccessKey: 'euJ72CP8wSJ9RPyrH+NPjx3OfmEDEKs8tIbq6laX',
         }
 
-    
+
 
         const ReactS3Client = new S3(config);
 
-        
+
 
         ReactS3Client
             .uploadFile(file.value)
@@ -88,7 +111,7 @@ const RegistrationForm = () => {
                             firstName: firstName.value,
                             lastName: lastName.value,
                             password: hash,
-                            profilePicURL: data.location 
+                            profilePicURL: data.location
                         })
                     }
                 ).then(response => response.text()
@@ -96,8 +119,8 @@ const RegistrationForm = () => {
                 ).then(data => {
                     console.log(data)
                 }
-            )
-            .catch (err => console.error(err))
+                )
+                    .catch(err => console.error(err))
             );
 
 
@@ -127,6 +150,9 @@ const RegistrationForm = () => {
 
     const validateEmail = () => {
         //Check the emails in the DB to ensure emails' uniqueness. 
+        if (emails.includes(email.value.trim())) {
+            return "Another account is already registered with this email"
+        }
     }
 
     const validateFirstName = () => {
@@ -218,8 +244,8 @@ const RegistrationForm = () => {
                 </Form.Group>
 
                 <Form.Group>
-               
-                    <Form.File id="formProfilePicFile" label="Upload a profile picture" onChange={e => updateFile(e.target.files[0])}/>
+
+                    <Form.File id="formProfilePicFile" label="Upload a profile picture" onChange={e => updateFile(e.target.files[0])} />
                 </Form.Group>
 
 
@@ -229,7 +255,7 @@ const RegistrationForm = () => {
                 <Button className="registration-btn"
                     variant="primary" type="submit"
                     disabled={
-                    /* validateEmail() || */ validateFirstName() || validateLastName() || validatePassword() || validateRepeatPassword()
+                        validateEmail() || validateFirstName() || validateLastName() || validatePassword() || validateRepeatPassword()
                     }
                 >
                     Save
