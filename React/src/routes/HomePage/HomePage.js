@@ -8,7 +8,7 @@ import './HomePage.css'
 const HomePage = (props) => {
   return (
     <div className="homepage">
-      <BioCard userData={props.userData} />
+      <BioCard />
       <Post />
       {props.postData.map((post, index) => {
         return (<PostContents key={index} pData={post} uData={props.userData} />)
