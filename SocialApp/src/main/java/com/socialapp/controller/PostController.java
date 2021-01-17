@@ -33,7 +33,7 @@ public class PostController {
 
 	@PostMapping(value = "/createPost")
 	public String createNewPost(@RequestBody Post incomingPost) {
-		Post newPost = new Post(incomingPost.getPostId(),Timestamp.valueOf(LocalDateTime.now()),incomingPost.getMessage(),null,0,null);
+		Post newPost = new Post(incomingPost.getPostId(),Timestamp.valueOf(LocalDateTime.now()),incomingPost.getMessage(),null,0,incomingPost.getUser());
 		postRepo.insertPost(newPost);
 		return "Success!";
 	}
