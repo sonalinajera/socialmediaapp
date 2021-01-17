@@ -6,6 +6,7 @@ import TokenService from '../../services/token-service'
 import './HomePage.css'
 
 const HomePage = (props) => {
+  console.log("in home page");
   return (
     <div className="homepage">
       <BioCard />
@@ -13,10 +14,8 @@ const HomePage = (props) => {
       {props.postData.map((post, index) => {
         return (<PostContents key={index} pData={post} uData={props.userData} />)
       })}
-
-
     </div>
   )
 }
 
-export default HomePage
+export default HomePage;

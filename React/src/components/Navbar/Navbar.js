@@ -45,7 +45,7 @@ const NavigationBar = (props) => {
                         <Nav className="mr-auto">
                             {console.log(user)}
                             <Nav.Link href="/user/home">Home</Nav.Link>
-                            <Nav.Link href="/user/home">{user.firstName}</Nav.Link>
+                            <Nav.Link href="/user/profile">{user.firstName}</Nav.Link>
                             <Nav.Link href="/user/settings">Edit Profile</Nav.Link>
                             <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
 
