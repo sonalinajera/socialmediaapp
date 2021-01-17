@@ -32,8 +32,8 @@ public class Post implements Serializable {
 	@Column(name = "message", nullable = false)
 	private String message;
 
-	@Column(name = "picture", nullable = true)
-	private byte[] picture;
+	@Column(name = "postPicURL", nullable = true)
+	private String postPicURL;
 
 	@Column(name = "likes")
 	@ColumnDefault("0")
@@ -47,21 +47,21 @@ public class Post implements Serializable {
 
 	}
 	
-	public Post(Timestamp postDate, String message, byte[] picture, int likes, User user) {
+	public Post(Timestamp postDate, String message, String postPicURL, int likes, User user) {
 		super();
 		this.postDate = postDate;
 		this.message = message;
-		this.picture = picture;
+		this.postPicURL = postPicURL;
 		this.likes = likes;
 		this.user = user;
 	}
 
-	public Post(int postId, Timestamp postDate, String message, byte[] picture, int likes, User user) {
+	public Post(int postId, Timestamp postDate, String message, String postPicURL, int likes, User user) {
 		super();
 		this.postId = postId;
 		this.postDate = postDate;
 		this.message = message;
-		this.picture = picture;
+		this.postPicURL = postPicURL;
 		this.likes = likes;
 		this.user = user;
 	}
@@ -90,12 +90,12 @@ public class Post implements Serializable {
 		this.message = message;
 	}
 
-	public byte[] getPicture() {
-		return picture;
+	public String getPostPicURL() {
+		return postPicURL;
 	}
 
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
+	public void setPostPicURL(String postPicURL) {
+		this.postPicURL = postPicURL;
 	}
 
 	public int getLikes() {
@@ -116,13 +116,23 @@ public class Post implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user.toStringPosts() + "]";
+		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", postPicURL="
+				+ postPicURL + ", likes=" + likes + ", user=" + user + "]";
 	}
 	
+	
+	
+
+	
+//	@Override
+//	public String toString() {
+//		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
+//				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user.toStringPosts() + "]";
+//	}
+//	
 	public String toStringUser() {
 		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-				+ Arrays.toString(picture) + ", likes=" + likes + "]";
+				+ postPicURL + ", likes=" + likes + "]";
 	}
 
 }
