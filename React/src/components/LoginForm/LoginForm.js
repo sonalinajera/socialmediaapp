@@ -11,8 +11,9 @@ import TokenService from '../../services/token-service';
 
 const LoginForm = (props) => {
 
+    //router props history to change the URI.
     let history = useHistory();
-    // console.log(history);
+
 
     //state
     const [email, setEmail] = useState({ value: '', touched: false })
@@ -21,29 +22,24 @@ const LoginForm = (props) => {
 
     //post request for logging in. 
     const checkLogin = (ev) => {
-        // let salt = bcrypt.genSaltSync(10);
-        // let hash = bcrypt.hashSync(password.value, salt);
-
-
 
         ev.preventDefault();
-        console.log(email.value);
-        console.log(password.value);
         axios.post(`${config.O_API}/login`, {
             email: email.value,
             password: password.value
         })
             .then((response) => {
                 if (response) {
-                    console.log(response.data);
 
                     /*check user's password input against the password that comes from the server
                     if they are the same, then   TokenService.saveUser(response.data), if wrong, display an error message  */
                     /* in the home page and navbar, call TokenService.hasAuthToken to make sure user had authorization. */
 
                     if (bcrypt.compareSync(password.value, response.data.password) === true) {
+                        console.log(response.data)
                         //set the user object to the localStorage for persistence as "user".
                         TokenService.saveUser(response.data);
+                        props.setLoggedIn(true);
                         //route to the user home if credentials are correct
                         history.push('/user/home');
                     } else {

@@ -9,7 +9,8 @@ const TokenService = {
 
     //This is to get the user from the localStorage
     getUser() {
-        return window.localStorage.getItem('user')
+        let user = window.localStorage.getItem('user')
+        return JSON.parse(user);
     },
     clearAuthToken() {
         window.localStorage.removeItem('user')
