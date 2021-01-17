@@ -7,6 +7,7 @@ const BioMini = (props) => {
 
     if (props.userData && props.userData.length) {
         const { firstName, lastName } = props.userData[0];
+
         return (
             <Container>
                 <Row className="miniBio-container">

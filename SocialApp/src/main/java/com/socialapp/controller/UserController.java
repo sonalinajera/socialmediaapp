@@ -50,6 +50,7 @@ public class UserController {
 	
 	@GetMapping(value = "/getAllEmails")
 	public List<String> getAllEmails() {
+		System.out.println("test");
 		System.out.println(userRepo.selectAllEmails());
 		return userRepo.selectAllEmails();
 	}
