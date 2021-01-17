@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Col, Button } from 'react-bootstrap'
 import './RegistrationForm.css'
+import { useHistory } from "react-router-dom";
 import ValidationError from './ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
 import S3 from 'react-aws-s3'
@@ -21,6 +22,8 @@ const RegistrationForm = () => {
 
     //emails to check against user's email at registration
     const [emails, setEmails] = useState([])
+
+    let history = useHistory();
 
 
     //populate the emails at component mounting 
@@ -93,9 +96,31 @@ const RegistrationForm = () => {
 
         const ReactS3Client = new S3(config);
 
+        if (!file.value){
+            fetch('http://localhost:9001/SocialApp/api/createUser',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
 
+                },
+                body: JSON.stringify({
+                     email: email.value,
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    password: hash,
+                    profilePicURL: null})
+            }
+        ).then(response => response.text()
 
-        ReactS3Client
+        ).then(data => {
+            console.log(data)
+            history.push('/');
+        });
+        }
+        else {
+            ReactS3Client
             .uploadFile(file.value)
             .then(data =>
                 fetch('http://localhost:9001/SocialApp/api/createUser',
@@ -118,11 +143,16 @@ const RegistrationForm = () => {
 
                 ).then(data => {
                     console.log(data)
+                    history.push('/');
                 }
                 )
                     .catch(err => console.error(err))
             );
 
+        }
+
+
+        
 
 
 
