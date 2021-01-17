@@ -7,9 +7,28 @@ import './ProfilePage.css';
 
 const ProfilePage = (props) => {
 
+  function checkPost(post) {
+    console.log("Checking post:", post);
+    if (!post.user) {
+      console.log("post has no user...");
+      return true;
+    }
+    else {
+      return post.userId === user.userId;
+    }
+  }
   const user = TokenService.getUser();
-  console.log(props.postData);
-  // const user_posts = props.postData.filter(city => city.population > 3000000);
+  const user_posts = props.postData.filter(checkPost);
+  console.log("user:", user);
+  console.log("user_posts:", user_posts);
+
+  // const user = TokenService.getUser()
+  //   .then((user_response) => {
+  //     const user_posts = props.postData.filter(checkPost);
+  //     console.log("user_posts:", user_posts);
+  //   });
+
+  // console.log("props.postData:", props.postData);
 
   return (
     <div className="profilepage">
