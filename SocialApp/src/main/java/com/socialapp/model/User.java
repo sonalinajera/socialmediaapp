@@ -38,8 +38,8 @@ public class User implements Serializable {
 	@Column(name = "email", length = 30, nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "picture", nullable = true)
-	private File picture;
+	@Column(name = "profilePicURL", nullable = true)
+	private String profilePicURL;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	@OrderBy("post_date ASC")
@@ -48,37 +48,42 @@ public class User implements Serializable {
 	public User() {
 	}
 	
-	public User(int userId,String password, String firstName, String lastName, String email,
-			File picture, List<Post> posts) {
+	
+
+	public User(int userId, String password, String firstName, String lastName, String email, String profilePicURL,
+			List<Post> posts) {
 		super();
 		this.userId = userId;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.picture = picture;
+		this.profilePicURL = profilePicURL;
 		this.posts = posts;
 	}
-	
+
 	
 
-	public User(String password, String firstName, String lastName, String email, File picture, List<Post> posts) {
+	public User(String password, String firstName, String lastName, String email, String profilePicURL,
+			List<Post> posts) {
 		super();
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.picture = picture;
+		this.profilePicURL = profilePicURL;
 		this.posts = posts;
 	}
 
-	public User(String password, String firstName, String lastName, String email, File picture) {
+	
+
+	public User(String password, String firstName, String lastName, String email, String profilePicURL) {
 		super();
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.picture = picture;
+		this.profilePicURL = profilePicURL;
 	}
 
 	
@@ -87,58 +92,85 @@ public class User implements Serializable {
 		return userId;
 	}
 
+
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
 
 
 	public String getPassword() {
 		return password;
 	}
 
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
 
 	public String getFirstName() {
 		return firstName;
 	}
 
+
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+
 
 	public String getLastName() {
 		return lastName;
 	}
 
+
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public File getPicture() {
-		return picture;
+
+
+	public String getProfilePicURL() {
+		return profilePicURL;
 	}
 
-	public void setPicture(File picture) {
-		this.picture = picture;
+
+
+	public void setProfilePicURL(String profilePicURL) {
+		this.profilePicURL = profilePicURL;
 	}
+
+
 
 	public List<Post> getPosts() {
 		return posts;
 	}
 
+
+
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+
+
 
 	@Override
 	public String toString() {

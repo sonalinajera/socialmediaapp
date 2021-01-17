@@ -3,8 +3,9 @@ import { Form, Col, Button } from 'react-bootstrap'
 import './RegistrationForm.css'
 import ValidationError from './ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
-import  FileService  from '../../services/file-service'
-import {FileUploader}  from '../Images/FileUploader';
+import S3 from 'react-aws-s3'
+
+
 
 
 const RegistrationForm = () => {
@@ -57,38 +58,48 @@ const RegistrationForm = () => {
 
         console.log(file.value)
 
-        
-
-        const registrationJSON = {
-            email: email.value,
-            firstName: firstName.value,
-            lastName: lastName.value,
-            password: hash
+        const config = {
+            bucketName: 'socialmediasite',
+            dirName: `${email.value}/profilepic`, /* optional */
+            region: 'us-east-2',
+            accessKeyId: 'AKIA2OUFO3GG2HD3J75T',
+            secretAccessKey: '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',
         }
+
+    
+
+        const ReactS3Client = new S3(config);
+
         
 
-        // Request made to the backend api 
-        // Send formData object 
-        const data = new FormData();
-        
-        console.log("Uploading file", file.value);
-        data.append('file',file.value);
-        data.append('name', 'my_file');
-        data.append('description', 'this file is uploaded by young padawan');
-        let self = this;
-        //calling async Promise and handling response or error situation
-        FileService.uploadFileToServer(data).then((response) => {
-            console.log("File " + file.name + " is uploaded");
-        }).catch(function (error) {
-            console.log(error);
-            if (error.response) {
-                //HTTP error happened
-                console.log("Upload error. HTTP error/status code=",error.response.status);
-            } else {
-                //some other error happened
-               console.log("Upload error. HTTP error/status code=",error.message);
-            }
-        });
+        ReactS3Client
+            .uploadFile(file.value)
+            .then(data =>
+                fetch('http://localhost:9001/SocialApp/api/createUser',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*'
+
+                        },
+                        body: JSON.stringify({
+                            email: email.value,
+                            firstName: firstName.value,
+                            lastName: lastName.value,
+                            password: hash,
+                            profilePicURL: data.location 
+                        })
+                    }
+                ).then(response => response.text()
+
+                ).then(data => {
+                    console.log(data)
+                }
+            )
+            .catch (err => console.error(err))
+            );
+
 
 
 
@@ -208,7 +219,7 @@ const RegistrationForm = () => {
 
                 <Form.Group>
                
-                    <FileUploader id="formProfilePicFile" label="Upload a profile picture" onChange={e => updateFile(e.target.files[0])}/>
+                    <Form.File id="formProfilePicFile" label="Upload a profile picture" onChange={e => updateFile(e.target.files[0])}/>
                 </Form.Group>
 
 
