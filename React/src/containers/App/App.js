@@ -8,7 +8,7 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import Email from '../../components/ResetPassword/Email/Email'
 import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
-
+import UserSettings from '../../routes/UserSettings/UserSettings'
 
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
         <Route exact path='/user/registration' component={RegistrationPage} />
         <Route exact path='/user/email-reset-password' component={Email} />
         <Route exact path='/user/reset-password' component={ResetPassword} />
+        <Route exact path='/user/settings' component={UserSettings} />
         <Route component={NotFoundPage} />
       </Switch>
     </section>
