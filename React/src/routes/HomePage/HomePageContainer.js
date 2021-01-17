@@ -1,7 +1,10 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import HomePage from '../../routes/HomePage/HomePage'
+import HomePage from '../../routes/HomePage/HomePage';
+import TokenService from '../../services/token-service';
+import { Link } from 'react-router-dom';
+import config from '../../config';
 
 
 
@@ -13,32 +16,34 @@ const HomePageContainer = () => {
     /* Retrieving post data */
     useEffect(() => {
         axios
-            .get('http://localhost:9001/SocialApp/api/getAllPosts')
+            .get(`${config.API_ENDPOINT}/api/getAllPosts`)
             .then((response) => {
                 setPosts(response.data);
             })
             .catch((err) => {
-
+                console.log(err);
             })
     }, []);
 
     /* Retrieving user data */
     useEffect(() => {
         axios
-            .get('http://localhost:9001/SocialApp/api/getAllUsers')
+            .get(`${config.API_ENDPOINT}/api/getAllUsers`)
             .then((response) => {
                 setUsers(response.data);
             })
             .catch((err) => {
-
+                console.log(err);
             })
     }, []);
 
 
-
-    return <HomePage postData={posts} userData={users}></HomePage>
-
-
+    //Dont display the home page if the user is not logged in.
+    if (TokenService.hasAuthToken()) {
+        return <HomePage postData={posts} userData={users}></HomePage>
+    } else {
+        <Link to='/'>Login Page</Link>
+    }
 
 }
 

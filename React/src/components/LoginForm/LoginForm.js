@@ -3,7 +3,6 @@ import './LoginForm.css';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import AuthApiService from '../../services/auth-api-service';
 import axios from 'axios';
 import config from '../../config';
 import bcrypt from 'bcryptjs';
@@ -24,7 +23,7 @@ const LoginForm = (props) => {
     const checkLogin = (ev) => {
 
         ev.preventDefault();
-        axios.post(`${config.O_API}/login`, {
+        axios.post(`${config.API_ENDPOINT}/login`, {
             email: email.value,
             password: password.value
         })

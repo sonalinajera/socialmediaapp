@@ -35,8 +35,6 @@ const Post = () => {
                 }
 
                 reader.readAsDataURL(file);
-
-
             }
         }
     }
