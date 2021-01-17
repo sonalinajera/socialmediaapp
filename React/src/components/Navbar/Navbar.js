@@ -37,7 +37,7 @@ const NavigationBar = (props) => {
 
     if (props.loggedIn && user) {
         return (
-            <section className="navbar=wrapper">
+            <section className="navbar-wrapper">
                 <Navbar fixed="top" expand="lg" className="navbar">
                     <Navbar.Brand href="/user/home">Embers</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
