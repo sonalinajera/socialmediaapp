@@ -5,9 +5,10 @@ import SearchBar from '../SearchBar/SearchBar'
 import TokenService from '../../services/token-service'
 import { useHistory } from "react-router-dom";
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
 
-    const [loggedIn, setLoggedIn] = useState(false);
+
+    const [user, setUser] = useState([])
 
     let history = useHistory();
 
@@ -16,18 +17,25 @@ const NavigationBar = () => {
     const logout = () => {
         TokenService.clearAuthToken();
         history.push('/');
-        setLoggedIn(false);
+
+        props.setLoggedIn(false);
+
     }
 
     useEffect(() => {
         //if user is logged in
+
         if (TokenService.hasAuthToken()) {
-            setLoggedIn(true);
+            setUser(TokenService.getUser())
+            props.setLoggedIn(true);
+            console.log(user)
+        } else {
+            props.setLoggedIn(false)
         }
-    })
+    }, [])
 
 
-    if (loggedIn) {
+    if (props.loggedIn && user) {
         return (
             <section className="navbar=wrapper">
                 <Navbar fixed="top" expand="lg" className="navbar">
@@ -35,8 +43,11 @@ const NavigationBar = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
+                            {console.log(user)}
                             <Nav.Link href="/user/home">Home</Nav.Link>
                             <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+
+                            <Nav.Link to="/user/home">{user.firstName}</Nav.Link>
                         </Nav>
                         <SearchBar />
                     </Navbar.Collapse>

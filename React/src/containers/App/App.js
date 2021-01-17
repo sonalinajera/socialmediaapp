@@ -14,15 +14,19 @@ import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 const App = () => {
 
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
+
+
   return (
     <section className="App">
-      <NavigationBar />
+      <NavigationBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
       <Switch>
         <Route exact path='/user/home' component={HomePageContainer} />
         <Route exact path='/' render={(routerProps) => {
           console.log(routerProps)
           return (
-            <LoginPage location={routerProps} />
+            <LoginPage location={routerProps} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
           )
         }} />
         <Route exact path='/user/registration' component={RegistrationPage} />
