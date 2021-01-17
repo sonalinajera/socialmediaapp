@@ -47,5 +47,12 @@ public class UserController {
 		return userRepo.selectUserById(id);
 	}
 	
+	
+	@GetMapping(value = "/getAllEmails")
+	public List<String> getAllEmails() {
+		System.out.println(userRepo.selectAllEmails());
+		return userRepo.selectAllEmails();
+	}
+	
 
 }

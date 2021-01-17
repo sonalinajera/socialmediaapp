@@ -45,32 +45,22 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 
-	// to use for login
-//	public User selectUserByEmail(String email) {
-//		CriteriaBuilder builder = sesFact.getCurrentSession().getCriteriaBuilder();
-//		System.out.println(builder);
-//		CriteriaQuery<User> criteria = builder.createQuery(User.class);
-//		
-//		Metamodel m = em.getMetamodel();
-//		EntityType<User> User_ = m.entity(User.class);
-//		
-//		Root<User> userRoot = criteria.from(User.class);
-//		criteria.select( userRoot );
-//		System.out.println(User_);
-//		System.out.println(userRoot);
-//		
-//		
-//		criteria.where(builder.equal(userRoot.get("email"), email));
-//		
-//		//the resultset
-//		List<User> result = em.createQuery( criteria ).getResultList();
-//		return result.get(0);
-//	}
+
 
 	public User selectUserByEmail(String email) {
 		List<User> userList = sesFact.getCurrentSession().createCriteria(User.class).add(Restrictions.ilike("email", email))
 				.list();
 		return userList.get(0);
 	}
-
+	
+	public List<String> selectAllEmails() {
+		
+		return sesFact.getCurrentSession().createQuery("select email from User").list();
+		
+	}
 }
+
+
+
+
+
