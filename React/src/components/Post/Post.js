@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Button, Form } from 'react-bootstrap';
 import './Post.css'
 import WritePost from '../../images/icons/writePost.png'
 import axios from 'axios';
+import TokenService from '../../services/token-service';
 
 const Post = () => {
     const [shouldDisplayPostForm, displayPostForm] = useState(false);
     const [shouldDisplayPostButton, displayPostButton] = useState(true);
+    const [user, setUser] = useState({});
 
     let postImage = document.getElementById("file1");
     const postBod = document.getElementById("post-body");
+
+    useEffect(() => {
+        setUser(TokenService.getUser());
+    }, [])
+
 
     const imageHandler = () => {
         console.log(postImage)
@@ -42,6 +49,9 @@ const Post = () => {
 
     //all we need is the url to the image and the message body sent together at once in this function
     const postHandler = () => {
+        const jsonToSend = {
+            
+        }
 
         const message = postBod.innerText;
 
@@ -66,7 +76,7 @@ const Post = () => {
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Tell us about it Janet!</Form.Label>
                     <Form.Group  >
-                        <div contentEditable="true" id="post-body"  ></div>
+                        <div contentEditable="true" id="post-body"></div>
                     </Form.Group>
                     {/* <Form.Control as="textarea" rows={3} /> */}
                 </Form.Group>
