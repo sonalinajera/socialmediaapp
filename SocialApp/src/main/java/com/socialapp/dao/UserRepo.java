@@ -62,6 +62,12 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("select email from User").list();
 		
 	}
+	
+	public void updateUserPassword(String userEmail,String hashedPassword) {
+		User user = selectUserByEmail(userEmail);
+		user.setPassword(hashedPassword);
+		sesFact.getCurrentSession().save(user);
+	}
 }
 
 

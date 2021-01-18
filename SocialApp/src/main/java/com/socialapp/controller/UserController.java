@@ -38,6 +38,16 @@ public class UserController {
 		return "Success!";
 	}
 	
+	@PostMapping(value="/updateUser")
+	public String updateUser(@RequestBody User incomingUser) {
+		System.out.println(incomingUser);
+		String userEmail = incomingUser.getEmail();
+		String hashedPassword = incomingUser.getPassword();
+		userRepo.updateUserPassword(userEmail, hashedPassword);
+		return "Success!";
+	}
+	
+	
 	@GetMapping(value = "/getAllUsers")
 	public List<User> getAllUsers() {
 		return userRepo.selectAllUsers();

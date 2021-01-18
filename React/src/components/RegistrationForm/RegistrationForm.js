@@ -95,7 +95,7 @@ const RegistrationForm = () => {
 
 
         const ReactS3Client = new S3(config);
-
+        ///check for profile image
         if (!file.value){
             fetch('http://localhost:9001/SocialApp/api/createUser',
             {

@@ -9,20 +9,18 @@ import Email from '../../components/ResetPassword/Email/Email'
 import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import UserSettings from '../../routes/UserSettings/UserSettings'
-
+import ProfilePageContainer from '../../routes/ProfilePage/ProfilePageContainer'
 
 const App = () => {
 
-
   const [loggedIn, setLoggedIn] = useState(false);
-
-
 
   return (
     <section className="App">
       <NavigationBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
       <Switch>
         <Route exact path='/user/home' component={HomePageContainer} />
+        <Route exact path='/user/profile' component={ProfilePageContainer} />
         <Route exact path='/' render={(routerProps) => {
           console.log(routerProps)
           return (
@@ -40,5 +38,3 @@ const App = () => {
 }
 
 export default App;
-
-
