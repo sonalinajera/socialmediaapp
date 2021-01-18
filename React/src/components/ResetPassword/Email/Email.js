@@ -9,7 +9,7 @@ import { DesktopWindowsTwoTone } from '@material-ui/icons';
 
 function ResetPassword(props) {
 
-    
+
     const sendMail = (ev) => {
         //keep the page from reloading after submission
         ev.preventDefault()
@@ -31,8 +31,8 @@ function ResetPassword(props) {
     }
     return (
         <div className="reset-form-wrapper">
-            <h3 className="reset-form-h3">Please enter your email address you use to login</h3>
             <Form onSubmit={(ev) => sendMail(ev)} className="reset-form">
+                <h3 className="reset-form-h3">Enter your email address</h3>
                 <Form.Control name="userEmail" type="email" id="to-email" placeholder="Enter email" required />
                 <br></br>
                 <Button variant="primary" type="submit">Send</Button>
