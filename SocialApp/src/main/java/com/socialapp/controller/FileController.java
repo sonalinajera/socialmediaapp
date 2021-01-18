@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-
+////THIS IS CURRENTLY NOT IN USE AS IT IS FOR TRANSFERING FILES TO THE BACKEND
 @Controller
 @RequestMapping(path = "api/upload")
 @CrossOrigin(origins = "*")

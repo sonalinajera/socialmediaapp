@@ -72,7 +72,7 @@ public class UserController {
 		userRepo.updateUserEmail(user.getUserId(), user.getEmail());
 	}
 	
-	@PutMapping(value = "/updatePic")
+	@PostMapping(value = "/updatePic")
 	public void updateUserProfilePic(@RequestBody User user) {
 		System.out.println(user.getUserId() + " " + user.getEmail());
 		userRepo.updateUserProfilePicURL(user.getEmail(), user.getProfilePicURL());
