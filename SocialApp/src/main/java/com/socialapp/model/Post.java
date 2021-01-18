@@ -44,7 +44,10 @@ public class Post implements Serializable {
 	@JsonBackReference
 	@JoinColumn(name = "FK_User_Id")
 	private User user;
+	
 
+	
+	
 	public Post() {
 
 	}
@@ -56,6 +59,7 @@ public class Post implements Serializable {
 		this.postPicURL = postPicURL;
 		this.likes = likes;
 		this.user = user;
+		
 	}
 
 	public Post(int postId, Timestamp postDate, String message, String postPicURL, int likes, User user) {
@@ -66,8 +70,11 @@ public class Post implements Serializable {
 		this.postPicURL = postPicURL;
 		this.likes = likes;
 		this.user = user;
+		
 	}
 
+	
+	
 	public int getPostId() {
 		return postId;
 	}
@@ -116,6 +123,7 @@ public class Post implements Serializable {
 		this.user = user;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", postPicURL="
@@ -123,16 +131,5 @@ public class Post implements Serializable {
 	}
 	
 	
-	
-//	@Override
-//	public String toString() {
-//		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-//				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user.toStringPosts() + "]";
-//	}
-//	
-//	public String toStringUser() {
-//		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-//				+ postPicURL + ", likes=" + likes + "]";
-//	}
 
 }

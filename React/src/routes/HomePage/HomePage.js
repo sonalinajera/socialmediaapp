@@ -20,9 +20,8 @@ const HomePage = (props) => {
         <Post />
         {props.userData.map((user, index) => {
           return user.posts.map((post, key) => {
-            return (<PostContents key={index} pData={post} uData={user} />)
+            return (<PostContents key={index} pData={post} uData={user} numOfUsers={props.userData.length} />)
           })
-
         })}
       </div>
     )

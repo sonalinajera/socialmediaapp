@@ -4,8 +4,9 @@ import Avatar from '../../images/katara.jpeg';
 import './BioMini.css'
 
 const BioMini = (props) => {
+    console.log(props.userData);
 
-    if (props.userData && props.userData.length) {
+    if (props.userData) {
         const { firstName, lastName } = props.userData;
 
         let user = props.userData;
@@ -22,7 +23,7 @@ const BioMini = (props) => {
                     </Col>
                     <Col xs={6} md={6} className="miniBioDetails">
                         <p>@{firstName.toLowerCase()}{lastName.toLowerCase()}</p>
-                        <p> <span style={{ color: "red" }}></span>{props.userData.length - 1} connections</p>
+                        <p> <span style={{ color: "red" }}></span>{props.numOfUsers - 1} connections</p>
                     </Col>
                 </Row>
             </Container>
