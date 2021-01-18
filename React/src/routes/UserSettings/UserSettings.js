@@ -64,6 +64,7 @@ const UserSettings = () => {
             ).then(response => response.text()
 
             ).then(data => {
+                window.localStorage.setItem('email', data);
                 console.log(data)
             });
         }
@@ -109,7 +110,7 @@ const UserSettings = () => {
                         },
                         body: JSON.stringify({
                             userId: user.userId,
-                            email: email.value,
+                            email: user.email,
                             profilePicURL: data.location
                         })
                     }

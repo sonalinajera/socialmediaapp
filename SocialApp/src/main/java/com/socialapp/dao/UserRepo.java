@@ -52,8 +52,10 @@ public class UserRepo {
 
 
 	public User selectUserByEmail(String email) {
+		System.out.println("Email: " + email);
 		List<User> userList = sesFact.getCurrentSession().createCriteria(User.class).add(Restrictions.ilike("email", email))
 				.list();
+		System.out.println("User List Size: " + userList.size());
 		return userList.get(0);
 	}
 	
