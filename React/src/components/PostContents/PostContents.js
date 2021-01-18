@@ -4,19 +4,21 @@ import { Container, Button, Image, Col, } from 'react-bootstrap';
 import ShowMoreText from 'react-show-more-text';
 import BioMini from '../BioMini/BioMini';
 import "./PostContents.css";
-import PostImage from '../../images/ember.jpg'
-
-const PostContents = () => {
-
-  const executeOnClick= (isExpanded)=> {
-    console.log(isExpanded);
-}
 
 
-  return (
-    <div className="postContent-container">
-      <BioMini/>
-      <ShowMoreText
+const PostContents = (props) => {
+
+    const executeOnClick = (isExpanded) => {
+        console.log(isExpanded);
+    }
+
+
+    const { user, message, picture, likes } = props.pData;
+
+    return (
+        <div className="postContent-container">
+            <BioMini postData={props.pData} userData={props.uData} numOfUsers={props.numOfUsers} />
+            <ShowMoreText
                 /* Default options */
                 lines={3}
                 more='Show more'
@@ -25,30 +27,20 @@ const PostContents = () => {
                 anchorClass='my-anchor-css-class'
                 onClick={executeOnClick}
                 expanded={false}
-  
             >
-                Lorem ipsum dolor sit amet, consectetuut labore et dolore magna amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut aliquip ex Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore
- 
-                et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                {message}
             </ShowMoreText>
-      <Container>
-        <div>
-        <Image src={PostImage} rounded />
+            <Container>
+                <div>
+                    <Image className="post-image" src={props.pData.postPicURL} rounded />
+                </div>
+                <div className="likesDisplay">{likes}</div>
+                <Button id="likeBtn" variant="light">like</Button>
+                <Button id="commentBtn" variant="light">comment</Button>
+            </Container>
+
         </div>
-      <Button variant="light">like</Button>
-      <Button variant="light">comment</Button>
-      </Container>
-     
-    </div>
-  )
+    )
 }
 
 export default PostContents

@@ -2,10 +2,11 @@ package com.socialapp.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Arrays;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,8 +16,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name = "Post")
+@Table(name = "posts")
 public class Post implements Serializable {
 
 	@Id
@@ -30,40 +33,48 @@ public class Post implements Serializable {
 	@Column(name = "message", nullable = false)
 	private String message;
 
-	@Column(name = "picture", nullable = true)
-	private byte[] picture;
+	@Column(name = "postPicURL", nullable = true)
+	private String postPicURL;
 
 	@Column(name = "likes")
 	@ColumnDefault("0")
 	private int likes;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonBackReference
 	@JoinColumn(name = "FK_User_Id")
 	private User user;
+	
 
+	
+	
 	public Post() {
 
 	}
-
-	public Post(Timestamp postDate, String message, byte[] picture, int likes, User user) {
+	
+	public Post(Timestamp postDate, String message, String postPicURL, int likes, User user) {
 		super();
 		this.postDate = postDate;
 		this.message = message;
-		this.picture = picture;
+		this.postPicURL = postPicURL;
 		this.likes = likes;
 		this.user = user;
+		
 	}
 
-	public Post(int postId, Timestamp postDate, String message, byte[] picture, int likes, User user) {
+	public Post(int postId, Timestamp postDate, String message, String postPicURL, int likes, User user) {
 		super();
 		this.postId = postId;
 		this.postDate = postDate;
 		this.message = message;
-		this.picture = picture;
+		this.postPicURL = postPicURL;
 		this.likes = likes;
 		this.user = user;
+		
 	}
 
+	
+	
 	public int getPostId() {
 		return postId;
 	}
@@ -88,12 +99,12 @@ public class Post implements Serializable {
 		this.message = message;
 	}
 
-	public byte[] getPicture() {
-		return picture;
+	public String getPostPicURL() {
+		return postPicURL;
 	}
 
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
+	public void setPostPicURL(String postPicURL) {
+		this.postPicURL = postPicURL;
 	}
 
 	public int getLikes() {
@@ -112,10 +123,13 @@ public class Post implements Serializable {
 		this.user = user;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", picture="
-				+ Arrays.toString(picture) + ", likes=" + likes + ", user=" + user + "]";
+		return "Post [postId=" + postId + ", postDate=" + postDate + ", message=" + message + ", postPicURL="
+				+ postPicURL + ", likes=" + likes + "]";
 	}
+	
+	
 
 }

@@ -1,23 +1,34 @@
 import React from 'react';
 import { Container, Row, Image, Col, } from 'react-bootstrap';
-import Avatar from '../../images/katara.jpeg';
 import './BioMini.css'
 
-const BioMini = () => {
-  return (
-    <Container>
-      <Row className="miniBio-container">
-        <Col xs={3} md={2}>
-          <Image src={Avatar} rounded className="bioMiniThumbnail"/>
-        </Col>
-        <Col xs={10} md={6} className="miniBioDetails">
-          <p>@username</p>
-          <p> <span style={{ color: "red" }}>345</span> connections</p>
-        </Col>
-      </Row>
-    </Container>
+const BioMini = (props) => {
 
-  )
+    //If user exists
+    if (props.userData.length !== 0) {
+        const { firstName, lastName, profilePicURL } = props.userData;
+
+        let user = props.userData;
+        let post = props.postData;
+
+        return (
+            <Container key={props.key} className="miniBio">
+                <Row className="miniBio-container">
+                    <Col xs={3} md={2}>
+                        <Image src={profilePicURL} rounded className="bioMiniThumbnail" alt="user-profile-pic" />
+                    </Col>
+                    <Col xs={6} md={6} className="miniBioDetails">
+                        <p>@{firstName.toLowerCase()}{lastName.toLowerCase()}</p>
+                        <p> <span style={{ color: "red" }}></span>{props.numOfUsers - 1} connections</p>
+                    </Col>
+                </Row>
+            </Container>
+
+        )
+    } else {
+        return <span>No Data</span>
+    }
+
 }
 
 export default BioMini

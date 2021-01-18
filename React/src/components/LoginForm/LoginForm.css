@@ -1,28 +1,29 @@
-.login-form-wrapper {
-    margin: 20vh auto;
-}
 
-.login-form {
-    margin: 0 10px;
-}
 
-.login-form input {
-    width: 80vw;
+.login-page-h2 {
+    margin-bottom: 7vh;
 }
 
 
 
 @media screen and (min-width:500px) {
     .login-form input {
-        width: 40vw;
+        /* width: 40vw; */
     }
     .login-form {
-        margin: 0 30vw;
+        border-radius: 5px;
+        background-color: #f8f8ff;
+        padding: 40px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+        0 2px 2px rgba(0,0,0,0.12), 
+        0 4px 4px rgba(0,0,0,0.12), 
+        0 8px 8px rgba(0,0,0,0.12),
+        0 16px 16px rgba(0,0,0,0.12);
     }
 }
 
 @media screen and (min-width:1024px) {
     .login-form input {
-        width: 25vw;
+        /* width: 25vw; */
     }
 }
