@@ -2,6 +2,9 @@ package com.socialapp.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +16,10 @@ import com.socialapp.model.Post;
 @Transactional
 public class PostRepo {
 	private SessionFactory sesFact;
-
+	
+	@PersistenceContext
+	private EntityManager em;
+	
 	public PostRepo() {
 	}
 
@@ -34,5 +40,11 @@ public class PostRepo {
 	public List<Post> selectAllPosts() {
 		System.out.println("in select all posts");
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list();
+	}
+	
+	public void updatePost(int postId, int likes) {
+		Post post = em.find(Post.class, postId);
+		post.setLikes(likes);
+		em.merge(post);
 	}
 }
