@@ -41,7 +41,7 @@ public class User implements Serializable {
 	private String profilePicURL;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-//	@JsonManagedReference
+	@JsonManagedReference
 	@OrderBy("post_date ASC")
 	private List<Post> posts;
 

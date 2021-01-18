@@ -96,63 +96,64 @@ const RegistrationForm = () => {
 
         const ReactS3Client = new S3(config);
         ///check for profile image
-        if (!file.value){
+        if (!file.value) {
             fetch('http://localhost:9001/SocialApp/api/createUser',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
 
-                },
-                body: JSON.stringify({
-                     email: email.value,
-                    firstName: firstName.value,
-                    lastName: lastName.value,
-                    password: hash,
-                    profilePicURL: null})
-            }
-        ).then(response => response.text()
+                    },
+                    body: JSON.stringify({
+                        email: email.value,
+                        firstName: firstName.value,
+                        lastName: lastName.value,
+                        password: hash,
+                        profilePicURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnu4jSmQHSQWboiDTJQbDcWaFMy8O5JqfdPQ&usqp=CAU'
+                    })
+                }
+            ).then(response => response.text()
 
-        ).then(data => {
-            console.log(data)
-            history.push('/');
-        });
+            ).then(data => {
+                console.log(data)
+                history.push('/');
+            });
         }
         else {
             ReactS3Client
-            .uploadFile(file.value)
-            .then(data =>
-                fetch('http://localhost:9001/SocialApp/api/createUser',
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': '*'
+                .uploadFile(file.value)
+                .then(data =>
+                    fetch('http://localhost:9001/SocialApp/api/createUser',
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Access-Control-Allow-Origin': '*'
 
-                        },
-                        body: JSON.stringify({
-                            email: email.value,
-                            firstName: firstName.value,
-                            lastName: lastName.value,
-                            password: hash,
-                            profilePicURL: data.location
-                        })
+                            },
+                            body: JSON.stringify({
+                                email: email.value,
+                                firstName: firstName.value,
+                                lastName: lastName.value,
+                                password: hash,
+                                profilePicURL: data.location
+                            })
+                        }
+                    ).then(response => response.text()
+
+                    ).then(data => {
+                        console.log(data)
+                        history.push('/');
                     }
-                ).then(response => response.text()
-
-                ).then(data => {
-                    console.log(data)
-                    history.push('/');
-                }
-                )
-                    .catch(err => console.error(err))
-            );
+                    )
+                        .catch(err => console.error(err))
+                );
 
         }
 
 
-        
+
 
 
 

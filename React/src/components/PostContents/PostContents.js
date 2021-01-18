@@ -6,17 +6,20 @@ import BioMini from '../BioMini/BioMini';
 import "./PostContents.css";
 import PostImage from '../../images/ember.jpg'
 
+
 const PostContents = (props) => {
 
     const executeOnClick = (isExpanded) => {
         console.log(isExpanded);
     }
 
+    console.log(props.uData)
+
     const { user, message, picture, likes } = props.pData;
     console.log(message);
     return (
         <div className="postContent-container">
-            <BioMini userData={props.uData} />
+            <BioMini postData={props.pData} userData={props.uData} numOfUsers={props.numOfUsers} />
             <ShowMoreText
                 /* Default options */
                 lines={3}
@@ -26,14 +29,14 @@ const PostContents = (props) => {
                 anchorClass='my-anchor-css-class'
                 onClick={executeOnClick}
                 expanded={false}
-
             >
                 {message}
             </ShowMoreText>
             <Container>
                 <div>
-                    <Image src={PostImage} rounded />
+                    <Image className="post-image" src={props.pData.postPicURL} rounded />
                 </div>
+                <div>{likes}</div>
                 <Button variant="light">like</Button>
                 <Button variant="light">comment</Button>
             </Container>

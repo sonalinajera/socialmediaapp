@@ -68,7 +68,6 @@ const Post = () => {
         const message = postBod.innerText;
 
         if (!file) {
-            console.log(config.API_ENDPOINT)
             fetch('http://localhost:9001/SocialApp/api/createPost',
                 {
                     method: 'POST',
@@ -87,7 +86,9 @@ const Post = () => {
 
             ).then(data => {
                 console.log(data)
+                alert('Post has been created');
                 postBod.innerHTML = "";
+
             });
         }
 
@@ -114,28 +115,13 @@ const Post = () => {
 
                     ).then(data => {
                         console.log(data)
+                        alert('Post has been created');
                         postBod.innerHTML = "";
                     }
                     )
                         .catch(err => console.error(err))
                 );
-
         }
-
-        
-
-        // const message = postBod.innerText;
-        // axios.post('http://localhost:9001/SocialApp/api/createPost', {
-        //     message: message
-        // })
-        //     .then(function (response) {
-        //         console.log(response);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-
-        // postBod.innerHTML = "";
     }
 
     return (
