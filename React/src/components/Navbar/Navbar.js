@@ -28,7 +28,6 @@ const NavigationBar = (props) => {
         if (TokenService.hasAuthToken()) {
             setUser(TokenService.getUser())
             props.setLoggedIn(true);
-            console.log(user)
         } else {
             props.setLoggedIn(false)
         }

@@ -10,8 +10,6 @@ const HomePage = (props) => {
 
   //router props history to change the URI.
   let history = useHistory();
-  console.log(props.userData)
-  console.log(props.postData)
 
   if (TokenService.hasAuthToken()) {
     return (
@@ -20,7 +18,7 @@ const HomePage = (props) => {
         <Post />
         {props.userData.map((user, index) => {
           return user.posts.map((post, key) => {
-            return (<PostContents key={index} pData={post} uData={user} numOfUsers={props.userData.length} />)
+            return (<PostContents key={key} pData={post} uData={user} numOfUsers={props.userData.length} />)
           })
         })}
       </div>

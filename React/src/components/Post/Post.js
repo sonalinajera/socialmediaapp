@@ -15,6 +15,8 @@ const Post = () => {
     let postImage = document.getElementById("file1");
     const postBod = document.getElementById("post-body");
     let file = null;
+
+    //get the user when this component mounts
     useEffect(() => {
         setUser(TokenService.getUser());
     }, [])
@@ -50,8 +52,8 @@ const Post = () => {
 
 
     //all we need is the url to the image and the message body sent together at once in this function
-    const postHandler = () => {
-
+    const postHandler = (ev) => {
+        ev.preventDefault()
         console.log(file)
 
         const config = {
@@ -86,9 +88,6 @@ const Post = () => {
 
             ).then(data => {
                 console.log(data)
-                alert('Post has been created');
-                postBod.innerHTML = "";
-
             });
         }
 
@@ -115,19 +114,21 @@ const Post = () => {
 
                     ).then(data => {
                         console.log(data)
-                        alert('Post has been created');
-                        postBod.innerHTML = "";
+
                     }
                     )
                         .catch(err => console.error(err))
                 );
         }
+        alert('Post has been created');
+        postBod.innerHTML = "";
+        window.location.reload();
     }
 
     return (
         <Container className="newPostContainer">
             <Button variant="light" onClick={() => { displayPostForm(!shouldDisplayPostForm) }} className={shouldDisplayPostButton ? "hidden" : ""}><img src={WritePost} /> create a new post!</Button>
-            <Form className={shouldDisplayPostForm ? "" : "hidden"} method="POST">
+            <Form onSubmit={(ev) => postHandler(ev)} className={shouldDisplayPostForm ? "" : "hidden"} >
                 <h2>Create new Post <Button variant="light">X</Button></h2>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Tell us about it Janet!</Form.Label>
@@ -139,7 +140,7 @@ const Post = () => {
                 <Button id="image-btn" variant="light" onClick={imageHandler}>
                     Add Image
                 </Button>
-                <Button variant="light" onClick={postHandler}>Post!</Button>
+                <Button variant="light" type="submit">Post!</Button>
                 <input type="file" id="file1" style={{ display: "none" }} />
             </Form>
         </Container>

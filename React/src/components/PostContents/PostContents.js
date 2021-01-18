@@ -13,10 +13,9 @@ const PostContents = (props) => {
         console.log(isExpanded);
     }
 
-    console.log(props.uData)
 
     const { user, message, picture, likes } = props.pData;
-    console.log(message);
+
     return (
         <div className="postContent-container">
             <BioMini postData={props.pData} userData={props.uData} numOfUsers={props.numOfUsers} />
