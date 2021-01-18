@@ -1,26 +1,39 @@
-import React, { useContext, useState, useEffect } from 'react'
-import SearchResults from '../../routes/SearchResults/SearchResults'
+import React, { useContext, useState, useEffect } from 'react';
+import SearchResults from '../../routes/SearchResults/SearchResults';
 /*The Sevice file from which the "users" JSON which carries the firstNames to 
 display as search results and allow the user to click to go to the selected user's profile. 
 */
-import PostsApiService from '../../services/PostsApiService'
-import './SearchBar.css'
+import PostsApiService from '../../services/PostsApiService';
+import './SearchBar.css';
 //Do NOT delete the next line. "M" is necessary for using materialize css.
-import M from "materialize-css"
+import M from "materialize-css";
 import "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
-import Autocomplete from 'react-autocomplete'
+import Autocomplete from 'react-autocomplete';
+import axios from 'axios';
+import config from '../../config';
 
 const SearchBar = (props) => {
     //friends is an array of user objects that the current user needs to search for their friends.
-    const [friends, setFriends] = useState([])
-    const [search, setSearch] = useState('')
+    const [friends, setFriends] = useState([]);
+    const [search, setSearch] = useState('');
+
 
     //populate the friends in the state as soon as the component renders.
     useEffect(() => {
-        const dummyData = PostsApiService.getDummyData()
-        setFriends(dummyData)
+        getAllUser();
     }, [])
+
+
+    //getAllUsers
+    const getAllUser = () => {
+        axios.get(`${config.API_ENDPOINT}/api/getAllUsers`)
+            .then((res) => {
+                if (res) {
+                    setFriends(res.data);
+                }
+            })
+    }
 
     //Autocomplete is a component from a 3rd party library called 'react-autocomplete'.
     return (
@@ -42,6 +55,7 @@ const SearchBar = (props) => {
                 onChange={(e) => setSearch(e.target.value.substr(0, 20).toLowerCase())}
                 onSelect={(value) => {
                     setSearch(value)
+                    
                     console.log(value)
                 }}
             />
