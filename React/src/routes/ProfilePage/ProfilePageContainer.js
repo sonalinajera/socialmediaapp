@@ -20,7 +20,7 @@ const ProfilePageContainer = (props) => {
             .catch((err) => {
                 console.log(err);
             })
-    }, []);
+    }, [posts]);
 
     /* Retrieving user data */
     useEffect(() => {

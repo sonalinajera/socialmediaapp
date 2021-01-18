@@ -24,7 +24,7 @@
 		<property name="username" value="ccreedon"/>
 		<property name="password" value="#{systemEnvironment['DB_PASSWORD']}"/>
 	</bean>
-	
+
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
