@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,5 +48,15 @@ public class PostController {
 	@GetMapping(value = "/getPostById/{id}")
 	public Post getPostById(@PathVariable("id") int id) {
 		return postRepo.selectPostById(id);
+	}
+	
+	@PutMapping(value = "/updatePost")
+	public String updatePost(@RequestBody Post incomingPost) {
+		System.out.println("hellooooo");
+		int postId = incomingPost.getPostId();
+		int likes = incomingPost.getLikes();
+		System.out.println(postId + likes);
+		postRepo.updatePost(postId, likes);
+		return "Success!";
 	}
 }
