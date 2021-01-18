@@ -1,14 +1,18 @@
-.newPostContainer{
+.newPostContainer {
   max-width: 500px;
   margin: 30px auto;
 }
 
 #post-body {
-    margin: auto;
-    position: relative;
-    padding: 5px;
-    width: 30em;
-    background-color: white;
-    max-height: auto;
-    word-wrap: break-word;
-  }
+  margin: auto;
+  position: relative;
+  padding: 5px;
+  width: 30em;
+  background-color: white;
+  max-height: auto;
+  word-wrap: break-word;
+}
+
+#post-body {
+  width: 15vw;
+}

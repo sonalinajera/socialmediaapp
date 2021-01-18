@@ -40,10 +40,7 @@ const SearchBar = (props) => {
     }
 
 
-    //get friend's profile page
-    const getFriendsProfile = (id) => {
 
-    }
 
     //Autocomplete is a component from a 3rd party library called 'react-autocomplete'.
     return (
@@ -59,6 +56,7 @@ const SearchBar = (props) => {
                         {/*This is where we grab the item's(friend's) id to redirect to that friend's page*/}
                         <span onClick={() => {
                             console.log(item)
+                            //set the url to route to the selected user's profile.
                             history.push(`/user/profile/${item.userId}`)
                         }}>{item.firstName} {item.lastName}</span>
                     </div>
@@ -77,36 +75,3 @@ const SearchBar = (props) => {
 }
 export default SearchBar
 
-
-/////////KEEP THIS HERE IN CASE WE WANNA SWITCH BACK TO Vanilla
-// const [searching, setSearching] = useState(false)
-
-{/* <input value={search} className="form-control" type="text" placeholder="Search" onChange={(ev) => {
-                updateSearch(ev)
-                toggleSearching(ev)
-            }} />
-            {!searching ? '' : <SearchResults filteredFriends={filteredFriends} />} */}
-
-
-  // //Get user's input and store that in the "search" property in the state
-// const updateSearch = (event) => {
-//     setSearch(event.target.value.substr(0, 20).toLowerCase())
-// }
-
-
-// //display the results when searching, hide them afterwards.
-// const toggleSearching = (ev) => {
-//     if (ev.target.value.length) {
-//         setSearching(true)
-//     }
-//     else {
-//         setSearching(false)
-//     }
-// }
-
-// // //Display only the results whose letters are included within the searched word(user's input)
-// let filteredFriends = friends.filter(
-//     (friend) => {
-//         return friend.firstName.toLowerCase().indexOf(search) !== -1;
-//     }
-// )
