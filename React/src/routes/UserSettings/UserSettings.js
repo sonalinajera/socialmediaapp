@@ -6,6 +6,7 @@ import ProfilePic from '../../components/ProfilePic/ProfilePic';
 import ValidationError from '../../components/RegistrationForm/ValidationError/ValidationError'
 import axios from 'axios'
 import config from '../../config'
+import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword';
 
 
 const UserSettings = () => {
@@ -17,6 +18,9 @@ const UserSettings = () => {
     useEffect(() => {
         setUser(TokenService.getUser());
     }, [])
+
+    window.localStorage.setItem('email', user.email);
+
 
     //populate the emails at component mounting 
     useEffect(() => {
@@ -106,13 +110,18 @@ const UserSettings = () => {
                         <Button>update</Button>
                     </Form.Group>
                 </div>
-                <div className="edit-bio-wrapper">
+                <div>
+                    <h4>Update Password</h4>
+                    <ResetPassword />
+                </div>
+                {/* <div className="edit-bio-wrapper">
                     <Form.Group>
                         <h4>Edit tagline</h4>
                         <Form.Control type="text" />
                         <Button>update</Button>
                     </Form.Group>
-                </div>
+                </div> */}
+
             </section>
         )
     } else {
