@@ -7,18 +7,18 @@ import './ProfilePage.css';
 
 const ProfilePage = (props) => {
 
-  function checkPost(post) {
-    console.log("Checking post:", post);
-    if (!post.user) {
-      console.log("post has no user...");
-      return true;
-    }
-    else {
-      return post.userId === user.userId;
-    }
-  }
-  const user = TokenService.getUser();
-  const user_posts = props.postData.filter(checkPost);
+  // function checkPost(post) {
+  //   console.log("Checking post:", post);
+  //   if (!post.user) {
+  //     console.log("post has no user...");
+  //     return true;
+  //   }
+  //   else {
+  //     return post.userId === user.userId;
+  //   }
+  // }
+  // const user = TokenService.getUser();
+  // const user_posts = props.postData.filter(checkPost);
   // console.log("user:", user);
   // console.log("before user_posts:", props.postData);
   // console.log("user_posts:", user_posts);
@@ -35,9 +35,11 @@ const ProfilePage = (props) => {
     <div className="profilepage">
       <BioCard userId={props.userId} userData={props.userData}/>
       <Post />
-      {user_posts.map((post, index) => {
-        return (<PostContents key={index} pData={post} uData={props.userData} />)
-      })}
+      {props.userData.map((user, index) => {
+          return user.posts.map((post, key) => {
+            return (<PostContents key={key} pData={post} uData={user} numOfUsers={props.userData.length} />)
+          })
+        })}
     </div>
   )
 }

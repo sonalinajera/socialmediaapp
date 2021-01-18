@@ -5,7 +5,7 @@ import './BioMini.css'
 const BioMini = (props) => {
 
     //If user exists
-    if (props.userData) {
+    if (props.userData.length !== 0) {
         const { firstName, lastName, profilePicURL } = props.userData;
 
         let user = props.userData;
