@@ -4,11 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.EntityType;
-import javax.persistence.metamodel.Metamodel;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -22,6 +17,8 @@ import com.socialapp.model.User;
 @Transactional
 public class UserRepo {
 	private SessionFactory sesFact;
+	
+	@PersistenceContext
 	private EntityManager em;
 
 	public UserRepo() {
@@ -31,6 +28,7 @@ public class UserRepo {
 	public UserRepo(SessionFactory sesFact) {
 		super();
 		this.sesFact = sesFact;
+		
 	}
 
 	public void insertUser(User user) {
@@ -44,7 +42,13 @@ public class UserRepo {
 	public List<User> selectAllUsers() {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
-
+	
+	public void updateUserEmail(int id, String email) {
+		User user = em.find(User.class, id);
+		user.setEmail(email);
+		em.merge(user);
+		
+	}
 
 
 	public User selectUserByEmail(String email) {
