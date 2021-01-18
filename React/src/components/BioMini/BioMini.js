@@ -1,22 +1,18 @@
 import React from 'react';
 import { Container, Row, Image, Col, } from 'react-bootstrap';
-import Avatar from '../../images/katara.jpeg';
 import './BioMini.css'
 
 const BioMini = (props) => {
-    console.log(props.userData);
 
+    //If user exists
     if (props.userData) {
         const { firstName, lastName, profilePicURL } = props.userData;
 
         let user = props.userData;
         let post = props.postData;
-        console.log('user from biomini: ', user);
-        console.log('post from biomini: ', post);
 
-        
         return (
-            <Container>
+            <Container key={props.key}>
                 <Row className="miniBio-container">
                     <Col xs={3} md={2}>
                         <Image src={profilePicURL} rounded className="bioMiniThumbnail" alt="user-profile-pic" />
