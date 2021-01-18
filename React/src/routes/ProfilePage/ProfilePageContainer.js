@@ -5,7 +5,7 @@ import TokenService from '../../services/token-service';
 import { Link } from 'react-router-dom';
 import config from '../../config';
 
-const ProfilePageContainer = () => {
+const ProfilePageContainer = (props) => {
 
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);

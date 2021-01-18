@@ -20,6 +20,7 @@ const ProfilePage = (props) => {
   const user = TokenService.getUser();
   const user_posts = props.postData.filter(checkPost);
   console.log("user:", user);
+  console.log("before user_posts:", props.postData);
   console.log("user_posts:", user_posts);
 
   // const user = TokenService.getUser()

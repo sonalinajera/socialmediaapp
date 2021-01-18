@@ -122,6 +122,7 @@ const Post = () => {
 
         }
 
+        
 
         // const message = postBod.innerText;
         // axios.post('http://localhost:9001/SocialApp/api/createPost', {
