@@ -35,9 +35,9 @@ const PostContents = (props) => {
                 <div>
                     <Image className="post-image" src={props.pData.postPicURL} rounded />
                 </div>
-                <div>{likes}</div>
-                <Button variant="light">like</Button>
-                <Button variant="light">comment</Button>
+                <div className="likesDisplay">{likes}</div>
+                <Button id="likeBtn" variant="light">like</Button>
+                <Button id="commentBtn" variant="light">comment</Button>
             </Container>
 
         </div>

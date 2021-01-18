@@ -12,7 +12,7 @@ const BioMini = (props) => {
         let post = props.postData;
 
         return (
-            <Container key={props.key}>
+            <Container key={props.key} className="miniBio">
                 <Row className="miniBio-container">
                     <Col xs={3} md={2}>
                         <Image src={profilePicURL} rounded className="bioMiniThumbnail" alt="user-profile-pic" />
