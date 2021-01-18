@@ -67,9 +67,10 @@ public class UserController {
 	}
 	
 	@PutMapping(value = "/updateEmail")
-	public void updateUserEmail(@RequestBody User user) {
+	public String updateUserEmail(@RequestBody User user) {
 		System.out.println(user.getUserId() + " " + user.getEmail());
 		userRepo.updateUserEmail(user.getUserId(), user.getEmail());
+		return user.getEmail();
 	}
 	
 	@PostMapping(value = "/updatePic")
