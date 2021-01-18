@@ -20,12 +20,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		
 		<property name="driverClassName" value="org.postgresql.Driver"/>
-		<!-- property name="url" value="#{'jdbc:postgresql://'+systemEnvironment['DB_URL']+'/SocialMediaRecords'}"/> -->
-		<!-- <property name="username" value="ccreedon"/> -->
-		<!-- <property name="password" value="#{systemEnvironment['DB_PASSWORD']}"/> -->
-		<property name="url" value="jdbc:postgresql://datacity.cwnabjftf0ms.us-east-2.rds.amazonaws.com/p2-testing"/>
-		<property name="username" value="datacity"/>
-		<property name="password" value=""/>
+		<property name="url" value="#{'jdbc:postgresql://'+systemEnvironment['DB_URL']+'/SocialMediaRecords'}"/>
+		<property name="username" value="ccreedon"/>
+		<property name="password" value="#{systemEnvironment['DB_PASSWORD']}"/>
 	</bean>
 	
 	<bean id="sessionFactory"
