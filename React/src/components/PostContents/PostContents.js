@@ -15,7 +15,7 @@ const PostContents = (props) => {
 
 
     const { user, message, picture, likes } = props.pData;
-   
+
     return (
         <div className="postContent-container">
             <BioMini postData={props.pData} userData={props.uData} numOfUsers={props.numOfUsers} />

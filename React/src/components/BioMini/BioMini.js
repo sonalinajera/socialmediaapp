@@ -10,12 +10,9 @@ const BioMini = (props) => {
 
         let user = props.userData;
         let post = props.postData;
-        console.log('user from biomini: ', user);
-        console.log('post from biomini: ', post);
-
 
         return (
-            <Container>
+            <Container key={props.key}>
                 <Row className="miniBio-container">
                     <Col xs={3} md={2}>
                         <Image src={profilePicURL} rounded className="bioMiniThumbnail" alt="user-profile-pic" />
