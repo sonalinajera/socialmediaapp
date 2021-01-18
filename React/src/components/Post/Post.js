@@ -60,8 +60,8 @@ const Post = () => {
             bucketName: 'socialmediasite',
             dirName: `${user.email}/posts`, /* optional */
             region: 'us-east-2',
-            accessKeyId: 'AKIA2OUFO3GG2HD3J75T',
-            secretAccessKey: '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',
+            accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+            secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
         }
 
 
