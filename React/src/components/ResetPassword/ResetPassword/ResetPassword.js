@@ -3,8 +3,7 @@ import { Form, Col, Button } from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import ValidationError from '../../RegistrationForm/ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
-import S3 from 'react-aws-s3'
-import axios from 'axios'
+
 
 
 
