@@ -149,13 +149,13 @@ const UserSettings = () => {
                     </Form>
 
                 </div>
-                <div className="edit-bio-wrapper">
+                {/* <div className="edit-bio-wrapper">
                     <Form.Group>
                         <h4>Edit First and Last Name</h4>
                         <Form.Control type="text" placeholder="Normal text" />
                         <Button>update</Button>
                     </Form.Group>
-                </div>
+                </div> */}
                 <div>
                     <h4>Update Password</h4>
                     <ResetPassword />

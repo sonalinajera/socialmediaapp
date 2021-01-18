@@ -1,0 +1,8 @@
+export const Types = {
+  // DD_USER: 'ADD_USER',
+  // FETCH_USERS: 'FETCH_USERS',
+  // ADD_POST: 'ADD_POST',
+  // FETCH_POST: 'FETCH_POST',
+  // FETCH_EMAILS: "FETCH_EMAILS",
+  LOGIN: "LOGIN",
+}

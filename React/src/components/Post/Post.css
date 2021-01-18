@@ -1,6 +1,21 @@
 .newPostContainer {
   max-width: 500px;
   margin: 30px auto;
+  text-align: center;
+}
+
+#newPostForm {
+  background-color: #f8f8ff;
+  max-width: 450px;
+  margin: 15px auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+  0 2px 2px rgba(0,0,0,0.12), 
+  0 4px 4px rgba(0,0,0,0.12), 
+  0 8px 8px rgba(0,0,0,0.12),
+  0 16px 16px rgba(0,0,0,0.12);
 }
 
 #post-body {
@@ -14,5 +29,13 @@
 }
 
 #post-body {
-  width: 15vw;
+  width: 50vw;
+}
+
+#createPostHeader{
+  margin-top: 30px;
+}
+
+.hidden{
+  display: none;
 }
