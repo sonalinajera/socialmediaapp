@@ -10,10 +10,16 @@ import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPas
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import UserSettings from '../../routes/UserSettings/UserSettings'
 import ProfilePageContainer from '../../routes/ProfilePage/ProfilePageContainer'
+import {useParams} from 'react-router'
 
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
+
+  function GetProfilePage() {
+    let {userId} = useParams();
+    return <ProfilePageContainer userId={userId}/>
+  }
 
   return (
     <section className="App">
@@ -21,8 +27,8 @@ const App = () => {
       <Switch>
         <Route exact path='/user/home' component={HomePageContainer} />
         <Route exact path='/user/profile' component={ProfilePageContainer} />
+        <Route path='/user/profile/:userId' children={<GetProfilePage/>}/>
         <Route exact path='/' render={(routerProps) => {
-          console.log(routerProps)
           return (
             <LoginPage location={routerProps} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
           )

@@ -20,7 +20,7 @@ const ProfilePageContainer = (props) => {
             .catch((err) => {
                 console.log(err);
             })
-    }, [posts]);
+    }, []);
 
     /* Retrieving user data */
     useEffect(() => {
@@ -36,7 +36,7 @@ const ProfilePageContainer = (props) => {
 
     //Dont display the home page if the user is not logged in.
     if (TokenService.hasAuthToken()) {
-        return <ProfilePage postData={posts} userData={users} />
+        return <ProfilePage postData={posts} userData={users} userId={props.userId} />
     } else {
         <Link to='/'>Login Page</Link>
     }

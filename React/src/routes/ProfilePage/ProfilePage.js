@@ -33,7 +33,7 @@ const ProfilePage = (props) => {
 
   return (
     <div className="profilepage">
-      <BioCard />
+      <BioCard userId={props.userId} userData={props.userData}/>
       <Post />
       {user_posts.map((post, index) => {
         return (<PostContents key={index} pData={post} uData={props.userData} />)

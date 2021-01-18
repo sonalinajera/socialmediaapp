@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 const NavigationBar = (props) => {
 
+    
 
     const [user, setUser] = useState([])
 
@@ -28,6 +29,7 @@ const NavigationBar = (props) => {
         if (TokenService.hasAuthToken()) {
             setUser(TokenService.getUser())
             props.setLoggedIn(true);
+
         } else {
             props.setLoggedIn(false)
         }
@@ -44,7 +46,7 @@ const NavigationBar = (props) => {
                         <Nav className="mr-auto">
                             {console.log(user)}
                             <Nav.Link href="/user/home">Home</Nav.Link>
-                            <Nav.Link href="/user/profile">{user.firstName}</Nav.Link>
+                            <Nav.Link href={"/user/profile/" + user.userId}>{user.firstName}</Nav.Link>
                             <Nav.Link href="/user/settings">Edit Profile</Nav.Link>
                             <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
 
@@ -73,8 +75,6 @@ const NavigationBar = (props) => {
             </section>
         )
     }
-
 }
-
 
 export default NavigationBar;
