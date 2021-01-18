@@ -68,6 +68,12 @@ public class UserRepo {
 		user.setPassword(hashedPassword);
 		sesFact.getCurrentSession().save(user);
 	}
+	
+	public void updateUserProfilePicURL(String userEmail,String profilePicURL) {
+		User user = selectUserByEmail(userEmail);
+		user.setProfilePicURL(profilePicURL);
+		sesFact.getCurrentSession().save(user);
+	}
 }
 
 
