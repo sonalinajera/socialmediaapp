@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 const NavigationBar = (props) => {
 
-    
+
 
     const [user, setUser] = useState([])
 
@@ -69,7 +69,6 @@ const NavigationBar = (props) => {
                         <Nav className="mr-auto">
                             <Nav.Link href="/">Login</Nav.Link>
                         </Nav>
-                        <SearchBar />
                     </Navbar.Collapse>
                 </Navbar>
             </section>
