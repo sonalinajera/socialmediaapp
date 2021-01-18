@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import './Navbar.css'
 import SearchBar from '../SearchBar/SearchBar'
 import TokenService from '../../services/token-service'
 import { useHistory } from "react-router-dom";
-
+import './Navbar.css'
 const NavigationBar = (props) => {
 
 

@@ -4,7 +4,6 @@ import { Container, Button, Image, Col, } from 'react-bootstrap';
 import ShowMoreText from 'react-show-more-text';
 import BioMini from '../BioMini/BioMini';
 import "./PostContents.css";
-import PostImage from '../../images/ember.jpg'
 
 
 const PostContents = (props) => {

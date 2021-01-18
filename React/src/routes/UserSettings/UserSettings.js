@@ -128,7 +128,7 @@ const UserSettings = () => {
                 <h2>Edit Profile</h2>
                 <br></br>
                 <div className="edit-bio-wrapper">
-                    <Form onSubmit={e => patchImage(e)}>
+                    <Form id="profilePic-form" onSubmit={e => patchImage(e)}>
                         <h4>Profile Picture</h4>
                         <ProfilePic profilePic={user.profilePicURL} />
                         <Form.Group>
@@ -138,7 +138,7 @@ const UserSettings = () => {
                     </Form>
                 </div>
                 <div className="edit-bio-wrapper">
-                    <Form onSubmit={e => patchEmail(e)}>
+                    <Form id="email-form" onSubmit={e => patchEmail(e)}>
                         <h4>Edit email</h4>
 
                         <Form.Group>
@@ -157,7 +157,6 @@ const UserSettings = () => {
                     </Form.Group>
                 </div> */}
                 <div>
-                    <h4>Update Password</h4>
                     <ResetPassword />
                 </div>
                 {/* <div className="edit-bio-wrapper">

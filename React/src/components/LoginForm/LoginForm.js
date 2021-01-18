@@ -67,7 +67,9 @@ const LoginForm = (props) => {
     return (
 
         <section className="login-form-wrapper">
+
             <Form className="login-form" method="get" onSubmit={(ev) => checkLogin(ev)}>
+            <h2 className="login-page-h2">Welcome! Please Login</h2>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email"
@@ -81,7 +83,7 @@ const LoginForm = (props) => {
                 </Form.Group>
                 <Link to="/user/registration">Don't have an account?</Link><br /> <br />
                 <Link to="/user/email-reset-password">Reset password</Link><br /> <br />
-                <Button variant="primary" type="submit">
+                <Button variant="warning" type="submit">
                     Submit
                 </Button>
             </Form>

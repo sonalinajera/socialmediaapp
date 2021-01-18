@@ -3,7 +3,7 @@ import { Form, Col, Button } from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import ValidationError from '../../RegistrationForm/ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
-
+import './ResetPassword.css'
 
 
 
@@ -80,6 +80,7 @@ const ResetPassword = (props) => {
     return (
         <section className="reset-password-wrapper">
             <Form onSubmit={e => handleSubmit(e)} className="reset-password-form">
+            <h4 className="resetPass-header">Reset Password</h4>
             <Form.Group controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
