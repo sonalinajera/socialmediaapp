@@ -1,5 +1,6 @@
 .reset-form-wrapper {
-    margin: 40vh auto;
+    margin: 20vh auto;
+    max-width: 400px;
 }
 
 .reset-form {
@@ -7,26 +8,32 @@
 }
 
 .reset-form input {
-    width: 80vw;
+    /* width: 80vw; */
 }
 
 .reset-form-h3 {
-    margin-bottom: 10vh;
+    /* margin-bottom: 10vh; */
 }
 
 #send-email {}
 
 @media screen and (min-width:500px) {
     .reset-form input {
-        width: 40vw;
+        /* width: 40vw; */
     }
     .reset-form {
-        margin: 0 30vw;
-    }
+        background-color: #f8f8ff;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+        0 2px 2px rgba(0,0,0,0.12), 
+        0 4px 4px rgba(0,0,0,0.12), 
+        0 8px 8px rgba(0,0,0,0.12),
+        0 16px 16px rgba(0,0,0,0.12);    }
 }
 
 @media screen and (min-width:1024px) {
     .reset-form input {
-        width: 25vw;
+        /* width: 25vw; */
     }
 }
