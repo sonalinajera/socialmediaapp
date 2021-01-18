@@ -127,13 +127,13 @@ const Post = () => {
 
     return (
         <Container className="newPostContainer">
-            <Button variant="light" onClick={() => { displayPostForm(!shouldDisplayPostForm) }} className={shouldDisplayPostButton ? "hidden" : ""}><img src={WritePost} /> create a new post!</Button>
-            <Form onSubmit={(ev) => postHandler(ev)} className={shouldDisplayPostForm ? "" : "hidden"} >
-                <h2>Create new Post <Button variant="light">X</Button></h2>
+            <Button  variant="light" onClick={() => { displayPostForm(!shouldDisplayPostForm); displayPostButton(!shouldDisplayPostButton) }} className={shouldDisplayPostButton ? "" : "hidden"}><img src={WritePost} /> create a new post!</Button>
+            <Form id="newPostForm" onSubmit={(ev) => postHandler(ev)} className={shouldDisplayPostForm ? "" : "hidden"} >
+                <h2 id="createPostHeader">Create new Post</h2>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Tell us about it Janet!</Form.Label>
                     <Form.Group  >
-                        <div contentEditable="true" id="post-body"></div>
+                        <input contentEditable="true" id="post-body"></input>
                     </Form.Group>
                     {/* <Form.Control as="textarea" rows={3} /> */}
                 </Form.Group>

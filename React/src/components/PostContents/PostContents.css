@@ -3,6 +3,7 @@
 }
 
 .postContent-container {
+  background-color: #f8f8ff;
   max-width: 450px;
   margin: 30px auto;
   padding: 10px;
@@ -12,8 +13,16 @@
 .content-css {
   margin-left: 10px;
   margin-bottom: 15px;
+  padding: 10px;
 }
 
 .post-image {
   width: 100px;
+  padding: 10px;
+}
+.likesDisplay{
+  padding: 2px;
+}
+#likeBtn{
+  margin-right: 5px;
 }
