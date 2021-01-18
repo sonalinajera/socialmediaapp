@@ -30,7 +30,7 @@ const ProfilePage = (props) => {
   //   });
 
   // console.log("props.postData:", props.postData);
-  console.log(user_posts)
+  // console.log(user_posts)
   return (
     <div className="profilepage">
       <BioCard userId={props.userId} userData={props.userData}/>
