@@ -6,7 +6,13 @@ import './BioMini.css'
 const BioMini = (props) => {
 
     if (props.userData && props.userData.length) {
-        const { firstName, lastName } = props.userData[0];
+        const { firstName, lastName } = props.userData;
+
+        let user = props.userData;
+        let post = props.postData;
+        console.log('user from biomini: ', user);
+        console.log('post from biomini: ', post);
+
 
         return (
             <Container>

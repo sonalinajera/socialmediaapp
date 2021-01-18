@@ -16,7 +16,7 @@ const PostContents = (props) => {
     console.log(message);
     return (
         <div className="postContent-container">
-            <BioMini userData={props.uData} />
+            <BioMini postData={props.pData} userData={props.uData} />
             <ShowMoreText
                 /* Default options */
                 lines={3}
@@ -26,7 +26,6 @@ const PostContents = (props) => {
                 anchorClass='my-anchor-css-class'
                 onClick={executeOnClick}
                 expanded={false}
-
             >
                 {message}
             </ShowMoreText>
@@ -34,6 +33,7 @@ const PostContents = (props) => {
                 <div>
                     <Image src={PostImage} rounded />
                 </div>
+                <div>{likes}</div>
                 <Button variant="light">like</Button>
                 <Button variant="light">comment</Button>
             </Container>
