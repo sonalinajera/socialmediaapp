@@ -101,7 +101,7 @@ const UserSettings = () => {
                 .then( data => {console.log(data);
                     fetch('http://localhost:9001/SocialApp/api/updatePic',
                     {
-                        method: 'PUT',
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin': '*'
