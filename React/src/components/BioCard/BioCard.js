@@ -34,6 +34,8 @@ const BioCard = (props) => {
                         </Col>
                         <Col xs={10} md={6} className="bioDetails">
                             <h1>{user_to_view.firstName} {user_to_view.lastName}</h1>
+                            {/* <h1>{user.firstName} {user.lastName}</h1> */}
+
                             {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                             <p>some cheesy Tagline</p>
     
