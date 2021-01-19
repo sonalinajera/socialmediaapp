@@ -33,10 +33,12 @@ const BioCard = (props) => {
                         </Col>
                         <Col xs={10} md={6} className="bioDetails">
                             <h1>{user_to_view.firstName} {user_to_view.lastName}</h1>
+                            {/* <h1>{user.firstName} {user.lastName}</h1> */}
+
                             {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                             <p>some cheesy Tagline</p>
 
-                            <p>from Fire Island <span style={{ color: "red" }}>{props.userData.length - 1} </span> connections</p>
+                            <p>from Fire Island <span style={{ color: "red" }}>{31 - 1} </span> connections</p>
                         </Col>
                     </Row>
                 </Container>
@@ -54,7 +56,7 @@ const BioCard = (props) => {
                         {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                         <p>some cheesy Tagline</p>
 
-                        <p>from Fire Island <span style={{ color: "red" }}>{props.userData.length - 1}</span> connections</p>
+                        <p>from Fire Island <span style={{ color: "red" }}>{31 - 1}</span> connections</p>
                     </Col>
                 </Row>
             </Container>
