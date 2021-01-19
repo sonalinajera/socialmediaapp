@@ -4,44 +4,65 @@ import TokenService from '../../services/token-service';
 import { Form, Col, Button, InputGroup, FormControl, Label } from 'react-bootstrap';
 import ProfilePic from '../../components/ProfilePic/ProfilePic';
 import ValidationError from '../../components/RegistrationForm/ValidationError/ValidationError'
-import axios from 'axios'
-import config from '../../config'
+import axios from 'axios';
 import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword';
 import S3 from 'react-aws-s3';
+import { useHistory } from "react-router-dom";
 
 
 
 const UserSettings = () => {
+    let history = useHistory();
 
     const [user, setUser] = useState({});
     const [email, setEmail] = useState({ value: '', touched: false })
     //emails to check against user's email at registration
     const [emails, setEmails] = useState([])
     const [file, setFile] = useState({ value: null, touched: false })
+    const [updatedUser, setUpdatedUser] = useState({});
     useEffect(() => {
         setUser(TokenService.getUser());
+        getAllEmails();
+        
+        
     }, [])
 
     window.localStorage.setItem('email', user.email);
 
+    const getUpdatedUser = () => {
+        //console.log(user)
+        axios.post('http://localhost:9001/SocialApp/getUser',{
+            user: user
+        })
+            .then((response) => {
+                //console.log(response)
+                 //TokenService.clearAuthToken();
+                 //console.log(TokenService.getUser())
+                 setUpdatedUser(response.data)
+                 //TokenService.saveUser(response);
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
-    //populate the emails at component mounting 
-    useEffect(() => {
-        getAllEmails();
-    }, [])
+    }
 
     const getAllEmails = () => {
-        axios.get(`${config.API_ENDPOINT}/api/getAllEmails`)
+        axios.get('http://localhost:9001/SocialApp/api/getAllEmails')
             .then((response) => {
-                console.log(response.data)
+                //console.log(response.data)
                 setEmails(response.data)
+                
+
             })
             .catch((error) => {
                 console.log(error);
             });
     }
 
-    console.log(user);
+    ///console.log(user);
+    ///console.log(updatedUser);
 
     const patchEmail = (e) => {
         e.preventDefault();
@@ -66,6 +87,7 @@ const UserSettings = () => {
             ).then(data => {
                 window.localStorage.setItem('email', data);
                 console.log(data)
+                history.push('/user/home');
             });
         }
     }
@@ -75,6 +97,7 @@ const UserSettings = () => {
 
     const updateFile = (file) => {
         setFile({ value: file, touched: true })
+        
     }
 
     const validateEmail = () => {
@@ -86,9 +109,10 @@ const UserSettings = () => {
 
     const patchImage = (e) => {
         e.preventDefault();
-        console.log('update image being clicked');
-        console.log(user.userId)
-        console.log(file.value);
+        
+        ///console.log('update image being clicked');
+        ///console.log(user.userId)
+        ///console.log(file.value);
         const config = {
             bucketName: 'socialmediasite',
             dirName: `${email.value}/profilepic`, /* optional */
@@ -99,7 +123,8 @@ const UserSettings = () => {
         const ReactS3Client = new S3(config);
         ReactS3Client
                 .uploadFile(file.value)
-                .then( data => {console.log(data);
+                .then( data => {///console.log(data);
+                    
                     fetch('http://localhost:9001/SocialApp/api/updatePic',
                     {
                         method: 'POST',
@@ -114,10 +139,13 @@ const UserSettings = () => {
                             profilePicURL: data.location
                         })
                     }
-                ).then(response => response.text()
-    
+                ).then((response) => {response.text();
+                
+                }
                 ).then(data => {
-                    console.log(data)
+                    ///console.log(data)
+                    getUpdatedUser();
+                    history.push('/user/home');
                 });
                 })
     }
