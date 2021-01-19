@@ -6,39 +6,20 @@ import PostContents from '../../components/PostContents/PostContents';
 import './ProfilePage.css';
 
 const ProfilePage = (props) => {
+  function userCheck(user) {
+    return user.userId.toString() === props.userId;
+  }
 
-  // function checkPost(post) {
-  //   console.log("Checking post:", post);
-  //   if (!post.user) {
-  //     console.log("post has no user...");
-  //     return true;
-  //   }
-  //   else {
-  //     return post.userId === user.userId;
-  //   }
-  // }
-  // const user = TokenService.getUser();
-  // const user_posts = props.postData.filter(checkPost);
-  // console.log("user:", user);
-  // console.log("before user_posts:", props.postData);
-  // console.log("user_posts:", user_posts);
-
-  // const user = TokenService.getUser()
-  //   .then((user_response) => {
-  //     const user_posts = props.postData.filter(checkPost);
-  //     console.log("user_posts:", user_posts);
-  //   });
-
-  // console.log("props.postData:", props.postData);
-  // console.log(user_posts)
-
-  console.log(props.userData);
+  function dateCheck(date1, date2) {
+    return date1 - date2;
+  }
+  
   return (
     <div className="profilepage">
       <BioCard userId={props.userId} userData={props.userData}/>
       <Post />
-      {props.userData.map((user, index) => {
-          return user.posts.map((post, key) => {
+      {props.userData.filter(userCheck).map((user, index) => {
+          return user.posts.sort(dateCheck).map((post, key) => {
             return (<PostContents key={key} pData={post} uData={user} numOfUsers={props.userData.length} />)
           })
         })}

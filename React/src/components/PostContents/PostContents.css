@@ -26,3 +26,7 @@
 #likeBtn{
   margin-right: 5px;
 }
+
+#date {
+  float: right;
+}
