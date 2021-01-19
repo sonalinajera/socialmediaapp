@@ -31,3 +31,6 @@ INFO    2021-01-19 08:49:34,460 [http-nio-9001-exec-6] com.socialapp.controller.
 INFO    2021-01-19 08:49:35,035 [http-nio-9001-exec-8] com.socialapp.controller.PostController  - User requesting all posts! Ooo lah lah
 INFO    2021-01-19 08:49:39,467 [http-nio-9001-exec-4] com.socialapp.controller.PostController  - User requesting all posts! Ooo lah lah
 INFO    2021-01-19 08:50:17,462 [http-nio-9001-exec-6] com.socialapp.controller.PostController  - User requesting all posts! Ooo lah lah
+INFO    2021-01-19 09:53:35,774 [http-nio-9001-exec-2] com.socialapp.controller.SessionController  - User logged out
+INFO    2021-01-19 09:54:22,512 [http-nio-9001-exec-6] com.socialapp.controller.PostController  - User requesting all posts! Ooo lah lah
+INFO    2021-01-19 09:54:23,466 [http-nio-9001-exec-8] com.socialapp.controller.SessionController  - User logged out
