@@ -75,6 +75,7 @@ public class UserController {
 	
 	@PostMapping(value = "/updatePic")
 	public void updateUserProfilePic(@RequestBody User user) {
+		System.out.println("updatePic method");
 		System.out.println(user.getUserId() + " " + user.getEmail());
 		userRepo.updateUserProfilePicURL(user.getEmail(), user.getProfilePicURL());
 	}

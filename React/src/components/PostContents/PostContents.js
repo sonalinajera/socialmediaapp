@@ -9,7 +9,7 @@ import "./PostContents.css";
 const PostContents = (props) => {
 
     const executeOnClick = (isExpanded) => {
-        console.log(isExpanded);
+        ///console.log(isExpanded);
     }
 
     const [liked, setLiked] = useState(false);
@@ -36,16 +36,13 @@ const PostContents = (props) => {
     }
 
     useEffect(() => {
-        //console.log("like is:" + like)
-
         if (active) {
             updatePost();
         }
-
     })
 
+
     const updatePost = () => {
-        console.log("like is:" + like);
 
         fetch('http://localhost:9001/SocialApp/api/updatePost',
             {
@@ -63,14 +60,20 @@ const PostContents = (props) => {
         ).then(response => response.text()
 
         ).then(data => {
-            console.log(data)
-            alert('Post has been updated');
 
         }).catch((err) => {
             console.log(err);
         });
     }
 
+    function getDate() {
+        let date = new Date(parseInt(props.pData.postDate));
+        let ds = date.toString().split(" ");
+        let dsJoined = ds.slice(0, 4).join(" ");
+        return dsJoined;
+    }
+
+    const displayableDate = getDate();
 
     return (
         <div className="postContent-container">
@@ -92,7 +95,8 @@ const PostContents = (props) => {
                     <Image className="post-image" src={props.pData.postPicURL} rounded />
                 </div>
                 <Button variant="light" onClick={toggleLike}>likes {like}</Button>
-                <Button variant="light">comment</Button>
+                <span id="date">{displayableDate}</span>
+                {/* <Button variant="light">comment</Button> */}
             </Container>
 
         </div>

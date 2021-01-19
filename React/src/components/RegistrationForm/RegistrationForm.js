@@ -34,7 +34,6 @@ const RegistrationForm = () => {
     const getAllEmails = () => {
         axios.get(`${config.API_ENDPOINT}/api/getAllEmails`)
             .then((response) => {
-                console.log(response.data);
                 setEmails(response.data)
 
             })
@@ -73,16 +72,10 @@ const RegistrationForm = () => {
 
     //this is the api call function
     const handleSubmit = (event) => {
-        console.log(emails)
-        console.log(email)
         event.preventDefault()
 
         let salt = bcrypt.genSaltSync(10);
         let hash = bcrypt.hashSync(password.value, salt);
-
-        console.log(email.value, firstName.value, lastName.value, hash)
-
-        console.log(file.value)
 
         const config = {
             bucketName: 'socialmediasite',
@@ -116,7 +109,6 @@ const RegistrationForm = () => {
             ).then(response => response.text()
 
             ).then(data => {
-                console.log(data)
                 history.push('/');
             });
         }
@@ -143,37 +135,12 @@ const RegistrationForm = () => {
                     ).then(response => response.text()
 
                     ).then(data => {
-                        console.log(data)
                         history.push('/');
                     }
                     )
                         .catch(err => console.error(err))
                 );
-
         }
-
-
-
-
-
-
-        // fetch('http://localhost:9001/SocialApp/api/createUser',
-        //     {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Access-Control-Allow-Origin': '*'
-
-        //         },
-        //         body: JSON.stringify(registrationJSON)
-        //     }
-        // ).then(response => response.text()
-
-        // ).then(data => {
-        //     console.log(data)
-        // });
-
-        //in the POST request's body, send the JSON.stringify(registrationJSON)
     }
 
 
