@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Image, Col, } from 'react-bootstrap';
+import { Container, Row, Col, } from 'react-bootstrap';
 import './BioCard.css';
 import TokenService from '../../services/token-service';
 import ProfilePic from '../ProfilePic/ProfilePic';

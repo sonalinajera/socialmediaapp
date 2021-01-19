@@ -1,7 +1,6 @@
 import React from 'react';
 import BioCard from '../../components/BioCard/BioCard';
 import Post from '../../components/Post/Post';
-import TokenService from '../../services/token-service';
 import PostContents from '../../components/PostContents/PostContents';
 import './ProfilePage.css';
 

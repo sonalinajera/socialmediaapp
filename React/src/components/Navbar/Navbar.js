@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import SearchBar from '../SearchBar/SearchBar'
 import TokenService from '../../services/token-service'
 import { useHistory } from "react-router-dom";
@@ -10,7 +10,7 @@ const NavigationBar = (props) => {
 
 
     const [user, setUser] = useState({})
-    const [loaded, setLoaded] = useState(false);
+
 
     let history = useHistory();
 
@@ -20,7 +20,6 @@ const NavigationBar = (props) => {
         TokenService.clearAuthToken();
         setUser({});
         props.setLoggedIn(false);
-        setLoaded(false);
         axios.get('http://localhost:9001/SocialApp/logout').then((response) => {
             if (response) {
 
@@ -41,7 +40,6 @@ const NavigationBar = (props) => {
     useEffect(() => {
         //if user is logged in
         populateUser();
-        setLoaded(true);
     }, [])
 
 

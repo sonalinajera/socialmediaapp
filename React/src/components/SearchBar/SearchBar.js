@@ -1,9 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
-import SearchResults from '../../routes/SearchResults/SearchResults';
+import React, { useState, useEffect } from 'react';
 /*The Sevice file from which the "users" JSON which carries the firstNames to 
 display as search results and allow the user to click to go to the selected user's profile. 
 */
-import PostsApiService from '../../services/PostsApiService';
 import './SearchBar.css';
 //Do NOT delete the next line. "M" is necessary for using materialize css.
 import M from "materialize-css";

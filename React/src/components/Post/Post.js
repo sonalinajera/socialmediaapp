@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Button, Form } from 'react-bootstrap';
 import './Post.css'
 import WritePost from '../../images/icons/writePost.png'
-import axios from 'axios';
 import TokenService from '../../services/token-service';
-import config from '../../config';
 import S3 from 'react-aws-s3'
 
 const Post = () => {
@@ -53,7 +51,7 @@ const Post = () => {
     //all we need is the url to the image and the message body sent together at once in this function
     const postHandler = (ev) => {
         ev.preventDefault()
-        
+
 
         const config = {
             bucketName: 'socialmediasite',
@@ -110,7 +108,7 @@ const Post = () => {
                         }
                     ).then(response => response.text()
 
-                    ).then(data => {}
+                    ).then(data => { }
                     )
                         .catch(err => console.error(err))
                 );

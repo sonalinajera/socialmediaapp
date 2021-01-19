@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import NavigationBar from '../../components/Navbar/Navbar'
@@ -12,7 +12,7 @@ import UserSettings from '../../routes/UserSettings/UserSettings'
 import ProfilePageContainer from '../../routes/ProfilePage/ProfilePageContainer'
 import { useParams } from 'react-router'
 import axios from 'axios';
-import TokenService from '../../services/token-service';
+
 
 const App = () => {
 
