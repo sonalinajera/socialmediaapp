@@ -49,10 +49,6 @@ const LoginForm = (props) => {
                         alert("Incorrect email")
                     }
 
-
-
-                   
-
                 } else {
                     console.log("no response");
                 }

@@ -14,7 +14,7 @@ const HomePage = (props) => {
   if (TokenService.hasAuthToken()) {
     return (
       <div className="homepage">
-        <BioCard />
+        <BioCard userData={props.userData} />
         <Post />
         {props.userData.map((user, index) => {
           return user.posts.map((post, key) => {

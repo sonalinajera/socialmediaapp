@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-const UserSettings = () => {
+const UserSettings = (props) => {
     let history = useHistory();
 
     const [user, setUser] = useState({});
@@ -19,42 +19,25 @@ const UserSettings = () => {
     //emails to check against user's email at registration
     const [emails, setEmails] = useState([])
     const [file, setFile] = useState({ value: null, touched: false })
-    const [updatedUser, setUpdatedUser] = useState({});
+
+
     useEffect(() => {
+
         setUser(TokenService.getUser());
         getAllEmails();
-        
-        
+
     }, [])
+
+
 
     window.localStorage.setItem('email', user.email);
 
-    const getUpdatedUser = () => {
-        //console.log(user)
-        axios.post('http://localhost:9001/SocialApp/getUser',{
-            user: user
-        })
-            .then((response) => {
-                //console.log(response)
-                 //TokenService.clearAuthToken();
-                 //console.log(TokenService.getUser())
-                 setUpdatedUser(response.data)
-                 //TokenService.saveUser(response);
-                console.log(response.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-    }
 
     const getAllEmails = () => {
         axios.get('http://localhost:9001/SocialApp/api/getAllEmails')
             .then((response) => {
                 //console.log(response.data)
                 setEmails(response.data)
-                
-
             })
             .catch((error) => {
                 console.log(error);
@@ -97,7 +80,7 @@ const UserSettings = () => {
 
     const updateFile = (file) => {
         setFile({ value: file, touched: true })
-        
+
     }
 
     const validateEmail = () => {
@@ -109,7 +92,7 @@ const UserSettings = () => {
 
     const patchImage = (e) => {
         e.preventDefault();
-        
+        console.log(user)
         ///console.log('update image being clicked');
         ///console.log(user.userId)
         ///console.log(file.value);
@@ -122,16 +105,16 @@ const UserSettings = () => {
         }
         const ReactS3Client = new S3(config);
         ReactS3Client
-                .uploadFile(file.value)
-                .then( data => {///console.log(data);
-                    
-                    fetch('http://localhost:9001/SocialApp/api/updatePic',
+            .uploadFile(file.value)
+            .then(data => {///console.log(data);
+
+                fetch('http://localhost:9001/SocialApp/api/updatePic',
                     {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin': '*'
-    
+
                         },
                         body: JSON.stringify({
                             userId: user.userId,
@@ -139,18 +122,20 @@ const UserSettings = () => {
                             profilePicURL: data.location
                         })
                     }
-                ).then((response) => {response.text();
-                
+                ).then((response) => {
+                    response.text();
+                    console.log(response)
+                    props.getUpdatedUser(user);
                 }
                 ).then(data => {
-                    ///console.log(data)
-                    getUpdatedUser();
-                    history.push('/user/home');
+                    console.log(user)
+                    // window.location.reload()
+                    // history.push(`/user/profile/${user.userId}`);
                 });
-                })
+            })
     }
 
-    if (user) {
+    if (props.updatedUser.profilePicURL) {
         return (
             <section className="user-settings">
                 <h2>Edit Profile</h2>
@@ -158,9 +143,9 @@ const UserSettings = () => {
                 <div className="edit-bio-wrapper">
                     <Form id="profilePic-form" onSubmit={e => patchImage(e)}>
                         <h4>Profile Picture</h4>
-                        <ProfilePic profilePic={user.profilePicURL} />
+                        <ProfilePic profilePic={props.updatedUser.profilePicURL} />
                         <Form.Group>
-                        <Form.File id="formProfilePicFile" label="Change your profile picture" onChange={e => updateFile(e.target.files[0])} />
+                            <Form.File id="formProfilePicFile" label="Change your profile picture" onChange={e => updateFile(e.target.files[0])} />
                         </Form.Group>
                         <Button type="submit">update</Button>
                     </Form>
@@ -197,9 +182,60 @@ const UserSettings = () => {
 
             </section>
         )
-    } else {
-        return ''
     }
+    else {
+        console.log(user)
+        console.log(props.updatedUser)
+        return (
+            <section className="user-settings">
+                <h2>Edit Profile</h2>
+                <br></br>
+                <div className="edit-bio-wrapper">
+                    <Form id="profilePic-form" onSubmit={e => patchImage(e)}>
+                        <h4>Profile Picture</h4>
+                        <ProfilePic profilePic={window.localStorage.getItem('updatedProfilePic') || user.profilePicURL} />
+                        <Form.Group>
+                            <Form.File id="formProfilePicFile" label="Change your profile picture" onChange={e => updateFile(e.target.files[0])} />
+                        </Form.Group>
+                        <Button type="submit">update</Button>
+                    </Form>
+                </div>
+                <div className="edit-bio-wrapper">
+                    <Form id="email-form" onSubmit={e => patchEmail(e)}>
+                        <h4>Edit email</h4>
+
+                        <Form.Group>
+                            <Form.Control type="text" defaultValue={user.email} onChange={e => updateEmail(e.target.value)} />
+                            {email.touched && <ValidationError message={validateEmail()} />}
+                            <Button type="submit">update</Button>
+                        </Form.Group>
+                    </Form>
+
+                </div>
+                {/* <div className="edit-bio-wrapper">
+                    <Form.Group>
+                        <h4>Edit First and Last Name</h4>
+                        <Form.Control type="text" placeholder="Normal text" />
+                        <Button>update</Button>
+                    </Form.Group>
+                </div> */}
+                <div>
+                    <ResetPassword />
+                </div>
+                {/* <div className="edit-bio-wrapper">
+                    <Form.Group>
+                        <h4>Edit tagline</h4>
+                        <Form.Control type="text" />
+                        <Button>update</Button>
+                    </Form.Group>
+                </div> */}
+
+            </section>
+        )
+    }
+    // else {
+    //     return ''
+    // }
 
 }
 
