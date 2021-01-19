@@ -60,6 +60,7 @@ export const fetchAllPosts = () => {
   return (dispatch) => {
     return axios.get(`${apiUrl}/getAllPosts`)
       .then(response => {
+        console.log(response.data)
         dispatch(fetchPosts(response.data))
       })
       .catch(error => {

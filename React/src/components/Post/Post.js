@@ -23,13 +23,14 @@ const Post = () => {
 
 
     const imageHandler = () => {
+        console.log(postImage)
         if (postImage != null) {
             postImage.click();
 
 
             postImage.onchange = () => {
                 file = postImage.files[0];
-
+                console.log(file.name);
 
 
                 let reader = new FileReader();
@@ -53,7 +54,7 @@ const Post = () => {
     //all we need is the url to the image and the message body sent together at once in this function
     const postHandler = (ev) => {
         ev.preventDefault()
-        
+        console.log(file)
 
         const config = {
             bucketName: 'socialmediasite',
@@ -86,6 +87,7 @@ const Post = () => {
             ).then(response => response.text()
 
             ).then(data => {
+                console.log(data)
             });
         }
 
@@ -110,7 +112,10 @@ const Post = () => {
                         }
                     ).then(response => response.text()
 
-                    ).then(data => {}
+                    ).then(data => {
+                        console.log(data)
+
+                    }
                     )
                         .catch(err => console.error(err))
                 );
