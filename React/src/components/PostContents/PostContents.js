@@ -1,5 +1,5 @@
 import { BorderVerticalRounded } from '@material-ui/icons';
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Button, Image, Col, } from 'react-bootstrap';
 import ShowMoreText from 'react-show-more-text';
 import BioMini from '../BioMini/BioMini';
@@ -12,8 +12,65 @@ const PostContents = (props) => {
         console.log(isExpanded);
     }
 
+    const [liked, setLiked] = useState(false);
+    const { postId, message, likes } = props.pData;
+    const [active, setActive] = useState(false);
+    const [like, setLike] = useState(likes);
 
-    const { user, message, picture, likes } = props.pData;
+    const toggleLike = () => {
+        setActive(true);
+        if (liked) {
+
+
+            setLike(like - 1);
+            setLiked(false);
+
+
+        } else {
+
+            setLike(like + 1);
+            setLiked(true);
+
+        }
+
+    }
+
+    useEffect(() => {
+        //console.log("like is:" + like)
+
+        if (active) {
+            updatePost();
+        }
+
+    })
+
+    const updatePost = () => {
+        console.log("like is:" + like);
+
+        fetch('http://localhost:9001/SocialApp/api/updatePost',
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Access-Control-Allow-Origin': '*'
+
+                },
+                body: JSON.stringify({
+                    postId: postId,
+                    likes: like
+                })
+            }
+        ).then(response => response.text()
+
+        ).then(data => {
+            console.log(data)
+            alert('Post has been updated');
+
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
 
     return (
         <div className="postContent-container">
@@ -34,9 +91,8 @@ const PostContents = (props) => {
                 <div>
                     <Image className="post-image" src={props.pData.postPicURL} rounded />
                 </div>
-                <div className="likesDisplay">{likes}</div>
-                <Button id="likeBtn" variant="light">like</Button>
-                <Button id="commentBtn" variant="light">comment</Button>
+                <Button variant="light" onClick={toggleLike}>likes {like}</Button>
+                <Button variant="light">comment</Button>
             </Container>
 
         </div>

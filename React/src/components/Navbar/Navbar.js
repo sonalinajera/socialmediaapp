@@ -4,6 +4,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import TokenService from '../../services/token-service'
 import { useHistory } from "react-router-dom";
 import './Navbar.css'
+import axios from 'axios'
 const NavigationBar = (props) => {
 
 
@@ -19,6 +20,11 @@ const NavigationBar = (props) => {
         history.push('/');
 
         props.setLoggedIn(false);
+        axios.get('http://localhost:9001/SocialApp/logout').then((response)=>{
+            if(response){
+                console.log(response.data);
+            }
+        })
 
     }
 

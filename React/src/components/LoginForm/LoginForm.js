@@ -29,21 +29,29 @@ const LoginForm = (props) => {
         })
             .then((response) => {
                 if (response) {
-
-                    /*check user's password input against the password that comes from the server
-                    if they are the same, then   TokenService.saveUser(response.data), if wrong, display an error message  */
-                    /* in the home page and navbar, call TokenService.hasAuthToken to make sure user had authorization. */
-
-                    if (bcrypt.compareSync(password.value, response.data.password) === true) {
-                        console.log(response.data)
-                        //set the user object to the localStorage for persistence as "user".
-                        TokenService.saveUser(response.data);
-                        props.setLoggedIn(true);
-                        //route to the user home if credentials are correct
-                        history.push('/user/home');
-                    } else {
-                        console.log("password is wrong");
+                    console.log(response);
+                    if (response.data.userId) {
+                        /*check user's password input against the password that comes from the server
+                  if they are the same, then   TokenService.saveUser(response.data), if wrong, display an error message  */
+                        /* in the home page and navbar, call TokenService.hasAuthToken to make sure user had authorization. */
+                        if (bcrypt.compareSync(password.value, response.data.password) === true) {
+                            console.log(response.data)
+                            //set the user object to the localStorage for persistence as "user".
+                            TokenService.saveUser(response.data);
+                            props.setLoggedIn(true);
+                            //route to the user home if credentials are correct
+                            history.push('/user/home');
+                        } else {
+                            alert("Incorrect password")
+                        }
                     }
+                    else{
+                        alert("Incorrect email")
+                    }
+
+
+
+                   
 
                 } else {
                     console.log("no response");

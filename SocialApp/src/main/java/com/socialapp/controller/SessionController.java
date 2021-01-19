@@ -30,10 +30,10 @@ public class SessionController {
 		this.userRepo = userRepo;
 	}
 
-	@GetMapping(value = "/getUser")
-	public User getLoggedInUser(HttpSession session) {
-		User currentUser = (User) session.getAttribute("loggedInUser");
-		return currentUser;
+	@PostMapping(value = "/getUser")
+	public User getLoggedInUser(HttpSession session, @RequestBody User user) {
+		System.out.println(user.getUserId());
+		return userRepo.selectUserById(user.getUserId());
 	}
 	
 	

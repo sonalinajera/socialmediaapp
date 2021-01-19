@@ -22,15 +22,22 @@
   margin: auto;
   position: relative;
   padding: 5px;
-  width: 30em;
+  width: 25em;
   background-color: white;
   max-height: auto;
   word-wrap: break-word;
+  border-top: 1px orange solid;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+  0 2px 2px rgba(0,0,0,0.12), 
+  0 4px 4px rgba(0,0,0,0.12), 
+  0 8px 8px rgba(0,0,0,0.12),
+  0 16px 16px rgba(0,0,0,0.12);
+
 }
 
-#post-body {
+/* #post-body {
   width: 50vw;
-}
+} */
 
 #createPostHeader{
   margin-top: 30px;
