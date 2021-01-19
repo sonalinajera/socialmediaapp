@@ -27,24 +27,12 @@ const HomePage = (props) => {
     })
   })
 
-  // var i;
-  // for (i in postsArray) {
-  //   console.log("postsArray[i]", postsArray[i]);
-  // }
 
   var i;
   for (i in postsArray) {
-    // console.log("Postsarray[i]", postsArray[i]);
     posts = posts.concat(postsArray[i]);
   }
 
-  console.log("POSTS:", posts);
-
-  // var p;
-  // for (p in posts) {
-  //   console.log("posts[p][0]", posts[p][0]);
-  //   console.log("posts[p][1]", posts[p][1]);
-  // }
 
   function dateCheck(postUser1, postUser2) {
     return postUser2[0].postDate - postUser1[0].postDate;
@@ -57,8 +45,8 @@ const HomePage = (props) => {
         <Post />
         {/* Each postUser has the post in postUser[0], and the user in postUser[1] */}
         {posts.sort(dateCheck).map((postUser, key) => {
-            return (<PostContents key={key} pData={postUser[0]} uData={postUser[1]} numOfUsers={props.userData.length} />)
-          })
+          return (<PostContents key={key} pData={postUser[0]} uData={postUser[1]} numOfUsers={props.userData.length} />)
+        })
         }
       </div>
     )

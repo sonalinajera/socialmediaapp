@@ -14,15 +14,13 @@ const BioCard = (props) => {
         setUser(TokenService.getUser());
     }, [])
 
-    console.log(props);
+
 
     if (user && props.userData) {
-        const user_match = props.userData.filter(function(u) {
+        const user_match = props.userData.filter(function (u) {
             return u.userId.toString() === props.userId;
         });
         const user_to_view = user_match[0];
-        console.log("User matches:", user_match);
-        console.log("User to view:", user_to_view);
         if (!user_to_view) {
             return (<></>);
         } else {
@@ -38,7 +36,7 @@ const BioCard = (props) => {
 
                             {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                             <p>some cheesy Tagline</p>
-    
+
                             {/* <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p> */}
                         </Col>
                     </Row>

@@ -36,7 +36,6 @@ const UserSettings = (props) => {
     const getAllEmails = () => {
         axios.get('http://localhost:9001/SocialApp/api/getAllEmails')
             .then((response) => {
-                //console.log(response.data)
                 setEmails(response.data)
             })
             .catch((error) => {
@@ -44,13 +43,9 @@ const UserSettings = (props) => {
             });
     }
 
-    ///console.log(user);
-    ///console.log(updatedUser);
 
     const patchEmail = (e) => {
         e.preventDefault();
-        console.log('update email being clicked');
-        console.log(user.userId)
         if (email.value) {
             fetch('http://localhost:9001/SocialApp/api/updateEmail',
                 {
@@ -69,8 +64,8 @@ const UserSettings = (props) => {
 
             ).then(data => {
                 window.localStorage.setItem('email', data);
-                console.log(data)
-                history.push('/user/home');
+                // history.push('/user/home');
+                props.getUpdatedUser(user);
             });
         }
     }
@@ -92,10 +87,6 @@ const UserSettings = (props) => {
 
     const patchImage = (e) => {
         e.preventDefault();
-        console.log(user)
-        ///console.log('update image being clicked');
-        ///console.log(user.userId)
-        ///console.log(file.value);
         const config = {
             bucketName: 'socialmediasite',
             dirName: `${email.value}/profilepic`, /* optional */
@@ -106,7 +97,7 @@ const UserSettings = (props) => {
         const ReactS3Client = new S3(config);
         ReactS3Client
             .uploadFile(file.value)
-            .then(data => {///console.log(data);
+            .then(data => {
 
                 fetch('http://localhost:9001/SocialApp/api/updatePic',
                     {
@@ -124,13 +115,9 @@ const UserSettings = (props) => {
                     }
                 ).then((response) => {
                     response.text();
-                    console.log(response)
                     props.getUpdatedUser(user);
                 }
                 ).then(data => {
-                    console.log(user)
-                    // window.location.reload()
-                    // history.push(`/user/profile/${user.userId}`);
                 });
             })
     }
@@ -155,37 +142,20 @@ const UserSettings = (props) => {
                         <h4>Edit email</h4>
 
                         <Form.Group>
-                            <Form.Control type="text" defaultValue={user.email} onChange={e => updateEmail(e.target.value)} />
+                            <Form.Control type="text" defaultValue={email.value} onChange={e => updateEmail(e.target.value)} />
                             {email.touched && <ValidationError message={validateEmail()} />}
                             <Button type="submit">update</Button>
                         </Form.Group>
                     </Form>
 
                 </div>
-                {/* <div className="edit-bio-wrapper">
-                    <Form.Group>
-                        <h4>Edit First and Last Name</h4>
-                        <Form.Control type="text" placeholder="Normal text" />
-                        <Button>update</Button>
-                    </Form.Group>
-                </div> */}
                 <div>
                     <ResetPassword />
                 </div>
-                {/* <div className="edit-bio-wrapper">
-                    <Form.Group>
-                        <h4>Edit tagline</h4>
-                        <Form.Control type="text" />
-                        <Button>update</Button>
-                    </Form.Group>
-                </div> */}
-
             </section>
         )
     }
     else {
-        console.log(user)
-        console.log(props.updatedUser)
         return (
             <section className="user-settings">
                 <h2>Edit Profile</h2>
@@ -212,31 +182,13 @@ const UserSettings = (props) => {
                     </Form>
 
                 </div>
-                {/* <div className="edit-bio-wrapper">
-                    <Form.Group>
-                        <h4>Edit First and Last Name</h4>
-                        <Form.Control type="text" placeholder="Normal text" />
-                        <Button>update</Button>
-                    </Form.Group>
-                </div> */}
                 <div>
                     <ResetPassword />
                 </div>
-                {/* <div className="edit-bio-wrapper">
-                    <Form.Group>
-                        <h4>Edit tagline</h4>
-                        <Form.Control type="text" />
-                        <Button>update</Button>
-                    </Form.Group>
-                </div> */}
 
             </section>
         )
     }
-    // else {
-    //     return ''
-    // }
-
 }
 
 export default UserSettings

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import NavigationBar from '../../components/Navbar/Navbar'
@@ -12,6 +12,7 @@ import UserSettings from '../../routes/UserSettings/UserSettings'
 import ProfilePageContainer from '../../routes/ProfilePage/ProfilePageContainer'
 import { useParams } from 'react-router'
 import axios from 'axios';
+import TokenService from '../../services/token-service';
 
 const App = () => {
 
@@ -20,15 +21,11 @@ const App = () => {
 
 
   const getUpdatedUser = (user) => {
-    console.log("inside getUpdatedUser: ", user)
-    //console.log(user)
     axios.post('http://localhost:9001/SocialApp/getUser', {
       userId: user.userId
     })
       .then((response) => {
-        console.log(response.data);
         setUpdatedUser(response.data)
-        console.log(response.data)
         window.localStorage.setItem('updatedProfilePic', response.data.profilePicURL);
       })
       .catch((error) => {

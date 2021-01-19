@@ -23,14 +23,13 @@ const Post = () => {
 
 
     const imageHandler = () => {
-        console.log(postImage)
         if (postImage != null) {
             postImage.click();
 
 
             postImage.onchange = () => {
                 file = postImage.files[0];
-                console.log(file.name);
+
 
 
                 let reader = new FileReader();
@@ -87,7 +86,6 @@ const Post = () => {
             ).then(response => response.text()
 
             ).then(data => {
-                console.log(data)
             });
         }
 
@@ -112,10 +110,7 @@ const Post = () => {
                         }
                     ).then(response => response.text()
 
-                    ).then(data => {
-                        console.log(data)
-
-                    }
+                    ).then(data => {}
                     )
                         .catch(err => console.error(err))
                 );
