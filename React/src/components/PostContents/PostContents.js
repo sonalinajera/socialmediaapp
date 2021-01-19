@@ -71,6 +71,14 @@ const PostContents = (props) => {
         });
     }
 
+    function getDate() {
+        let date = new Date(parseInt(props.pData.postDate));
+        let ds = date.toString().split(" ");
+        let dsJoined = ds.slice(0, 4).join(" ");
+        return dsJoined;
+    }
+
+    const displayableDate = getDate();
 
     return (
         <div className="postContent-container">
@@ -92,7 +100,8 @@ const PostContents = (props) => {
                     <Image className="post-image" src={props.pData.postPicURL} rounded />
                 </div>
                 <Button variant="light" onClick={toggleLike}>likes {like}</Button>
-                <Button variant="light">comment</Button>
+                <span id="date">{displayableDate}</span>
+                {/* <Button variant="light">comment</Button> */}
             </Container>
 
         </div>
