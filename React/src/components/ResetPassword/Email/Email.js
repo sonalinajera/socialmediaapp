@@ -14,6 +14,7 @@ function ResetPassword(props) {
         //keep the page from reloading after submission
         ev.preventDefault()
         const { userEmail } = ev.target
+        console.log(userEmail.value)
         window.localStorage.setItem('email', userEmail.value);
         //  let userEmail = document.getElementById('to-email').value;
 

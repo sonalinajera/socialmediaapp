@@ -9,8 +9,7 @@ const NavigationBar = (props) => {
 
 
 
-    const [user, setUser] = useState({})
-    const [loaded, setLoaded] = useState(false);
+    const [user, setUser] = useState([])
 
     let history = useHistory();
 
@@ -18,30 +17,27 @@ const NavigationBar = (props) => {
     //logout
     const logout = () => {
         TokenService.clearAuthToken();
-        setUser({});
-        props.setLoggedIn(false);
-        setLoaded(false);
-        axios.get('http://localhost:9001/SocialApp/logout').then((response) => {
-            if (response) {
+        history.push('/');
 
+        props.setLoggedIn(false);
+        axios.get('http://localhost:9001/SocialApp/logout').then((response)=>{
+            if(response){
+                console.log(response.data);
             }
         })
-        history.push('/');
-    }
 
-
-
-    const populateUser = () => {
-        if (TokenService.hasAuthToken()) {
-            setUser(TokenService.getUser())
-            props.setLoggedIn(true);
-        }
     }
 
     useEffect(() => {
         //if user is logged in
-        populateUser();
-        setLoaded(true);
+
+        if (TokenService.hasAuthToken()) {
+            setUser(TokenService.getUser())
+            props.setLoggedIn(true);
+
+        } else {
+            props.setLoggedIn(false)
+        }
     }, [])
 
 
@@ -53,10 +49,12 @@ const NavigationBar = (props) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
+                            {console.log(user)}
                             <Nav.Link href="/user/home">Home</Nav.Link>
                             <Nav.Link href={"/user/profile/" + user.userId}>{user.firstName}</Nav.Link>
                             <Nav.Link href="/user/settings">Edit Profile</Nav.Link>
                             <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+
                         </Nav>
                         <SearchBar />
                     </Navbar.Collapse>
