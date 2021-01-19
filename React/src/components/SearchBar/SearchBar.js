@@ -55,7 +55,6 @@ const SearchBar = (props) => {
                     <div key={item.userId} style={{ background: isHighlighted ? 'lightgray' : 'orange' }}>
                         {/*This is where we grab the item's(friend's) id to redirect to that friend's page*/}
                         <span onClick={() => {
-                            console.log(item)
                             //set the url to route to the selected user's profile.
                             history.push(`/user/profile/${item.userId}`)
                         }}>{item.firstName} {item.lastName}</span>
@@ -66,7 +65,6 @@ const SearchBar = (props) => {
                 onChange={(e) => setSearch(e.target.value.substr(0, 20).toLowerCase())}
                 onSelect={(value) => {
                     setSearch(value)
-                    console.log(value)
 
                 }}
             />

@@ -9,7 +9,7 @@ import "./PostContents.css";
 const PostContents = (props) => {
 
     const executeOnClick = (isExpanded) => {
-        console.log(isExpanded);
+        ///console.log(isExpanded);
     }
 
     const [liked, setLiked] = useState(false);
@@ -36,16 +36,13 @@ const PostContents = (props) => {
     }
 
     useEffect(() => {
-        //console.log("like is:" + like)
-
         if (active) {
             updatePost();
         }
-
     })
 
+
     const updatePost = () => {
-        console.log("like is:" + like);
 
         fetch('http://localhost:9001/SocialApp/api/updatePost',
             {
@@ -63,8 +60,6 @@ const PostContents = (props) => {
         ).then(response => response.text()
 
         ).then(data => {
-            console.log(data)
-            alert('Post has been updated');
 
         }).catch((err) => {
             console.log(err);
