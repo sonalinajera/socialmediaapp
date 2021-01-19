@@ -1,0 +1,52 @@
+INFO    2021-01-18 22:29:22,691 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:29:25,822 [Catalina-utility-1] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:29:26,158 [Catalina-utility-1] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:29:27,515 [Catalina-utility-1] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:29:31,907 [Catalina-utility-1] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:29:32,885 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 10191 ms
+INFO    2021-01-18 22:30:24,656 [Catalina-utility-2] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:30:27,981 [Catalina-utility-2] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:30:28,314 [Catalina-utility-2] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:30:29,682 [Catalina-utility-2] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:30:34,179 [Catalina-utility-2] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:30:35,145 [Catalina-utility-2] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 10488 ms
+INFO    2021-01-18 22:31:26,844 [Catalina-utility-2] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:31:29,664 [Catalina-utility-2] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:31:30,020 [Catalina-utility-2] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:31:31,533 [Catalina-utility-2] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:31:35,785 [Catalina-utility-2] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:31:36,685 [Catalina-utility-2] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 9840 ms
+INFO    2021-01-18 22:33:00,366 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:33:03,280 [Catalina-utility-1] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:33:03,605 [Catalina-utility-1] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN    2021-01-18 22:33:13,935 [Catalina-utility-1] org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator  - HHH000342: Could not obtain connection to query metadata : The connection attempt failed.
+INFO    2021-01-18 22:33:13,966 [Catalina-utility-1] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:33:21,819 [Catalina-utility-1] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:33:22,747 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 22380 ms
+INFO    2021-01-18 22:33:46,045 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:33:49,103 [Catalina-utility-1] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:33:49,478 [Catalina-utility-1] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:33:50,862 [Catalina-utility-1] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:33:55,351 [Catalina-utility-1] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:33:56,357 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 10311 ms
+INFO    2021-01-18 22:36:36,291 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:36:39,200 [Catalina-utility-1] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:36:39,517 [Catalina-utility-1] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:36:40,893 [Catalina-utility-1] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:36:46,073 [Catalina-utility-1] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:36:46,980 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 10688 ms
+INFO    2021-01-18 22:37:24,809 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:37:27,642 [Catalina-utility-1] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:37:27,962 [Catalina-utility-1] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:37:29,247 [Catalina-utility-1] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:37:33,584 [Catalina-utility-1] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:37:34,469 [Catalina-utility-1] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 9659 ms
+INFO    2021-01-18 22:37:50,317 [main] org.springframework.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+INFO    2021-01-18 22:37:53,736 [main] org.hibernate.Version  - HHH000412: Hibernate ORM core version 5.4.21.Final
+INFO    2021-01-18 22:37:54,060 [main] org.hibernate.annotations.common.Version  - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+INFO    2021-01-18 22:37:55,552 [main] org.hibernate.dialect.Dialect  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+INFO    2021-01-18 22:37:59,901 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO    2021-01-18 22:38:01,018 [main] org.springframework.web.context.ContextLoader  - Root WebApplicationContext initialized in 10699 ms
+INFO    2021-01-18 22:38:01,132 [http-nio-9001-exec-1] org.springframework.web.servlet.DispatcherServlet  - Initializing Servlet 'dispatcher'
+INFO    2021-01-18 22:38:01,202 [http-nio-9001-exec-1] org.springframework.web.servlet.DispatcherServlet  - Completed initialization in 70 ms
+INFO    2021-01-18 22:38:01,265 [http-nio-9001-exec-1] com.socialapp.controller.PostController  - User requesting all posts! Ooo lah lah
