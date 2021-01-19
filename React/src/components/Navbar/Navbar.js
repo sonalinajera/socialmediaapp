@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import SearchBar from '../SearchBar/SearchBar'
 import TokenService from '../../services/token-service'
 import { useHistory } from "react-router-dom";
@@ -9,7 +9,12 @@ const NavigationBar = (props) => {
 
 
 
+<<<<<<< HEAD
     const [user, setUser] = useState([])
+=======
+    const [user, setUser] = useState({})
+
+>>>>>>> dev
 
     let history = useHistory();
 
@@ -17,7 +22,14 @@ const NavigationBar = (props) => {
     //logout
     const logout = () => {
         TokenService.clearAuthToken();
+<<<<<<< HEAD
         history.push('/');
+=======
+        setUser({});
+        props.setLoggedIn(false);
+        axios.get('http://localhost:9001/SocialApp/logout').then((response) => {
+            if (response) {
+>>>>>>> dev
 
         props.setLoggedIn(false);
         axios.get('http://localhost:9001/SocialApp/logout').then((response)=>{
@@ -35,9 +47,15 @@ const NavigationBar = (props) => {
             setUser(TokenService.getUser())
             props.setLoggedIn(true);
 
+<<<<<<< HEAD
         } else {
             props.setLoggedIn(false)
         }
+=======
+    useEffect(() => {
+        //if user is logged in
+        populateUser();
+>>>>>>> dev
     }, [])
 
 
@@ -66,7 +84,7 @@ const NavigationBar = (props) => {
     //if user isn't logged in
     else {
         return (
-            <section className="navbar=wrapper">
+            <section className="navbar-wrapper">
                 <Navbar fixed="top" expand="lg" className="navbar">
                     <Navbar.Brand href="#home">Embers</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

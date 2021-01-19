@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 import ValidationError from '../../RegistrationForm/ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
 import './ResetPassword.css'
@@ -16,7 +15,7 @@ const ResetPassword = (props) => {
     const [password, setPassword] = useState({ value: '', touched: false })
     const [repeatPassword, setRepeatPassword] = useState({ value: '', touched: false })
 
-    let history = useHistory();
+
 
     const updatePassword = (password) => {
         setPassword({ value: password, touched: true })

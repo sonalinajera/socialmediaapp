@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './UserSettings.css';
 import TokenService from '../../services/token-service';
-import { Form, Col, Button, InputGroup, FormControl, Label } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import ProfilePic from '../../components/ProfilePic/ProfilePic';
 import ValidationError from '../../components/RegistrationForm/ValidationError/ValidationError'
 import axios from 'axios';
 import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPassword';
 import S3 from 'react-aws-s3';
-import { useHistory } from "react-router-dom";
 
 
 
+<<<<<<< HEAD
 const UserSettings = () => {
     let history = useHistory();
+=======
+const UserSettings = (props) => {
+
+>>>>>>> dev
 
     const [user, setUser] = useState({});
     const [email, setEmail] = useState({ value: '', touched: false })

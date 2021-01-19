@@ -10,7 +10,13 @@ import ResetPassword from '../../components/ResetPassword/ResetPassword/ResetPas
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import UserSettings from '../../routes/UserSettings/UserSettings'
 import ProfilePageContainer from '../../routes/ProfilePage/ProfilePageContainer'
+<<<<<<< HEAD
 import {useParams} from 'react-router'
+=======
+import { useParams } from 'react-router'
+import axios from 'axios';
+
+>>>>>>> dev
 
 const App = () => {
 

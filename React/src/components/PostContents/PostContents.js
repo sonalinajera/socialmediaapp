@@ -1,6 +1,6 @@
 import { BorderVerticalRounded } from '@material-ui/icons';
 import React, { useState, useEffect } from 'react'
-import { Container, Button, Image, Col, } from 'react-bootstrap';
+import { Container, Button, Image } from 'react-bootstrap';
 import ShowMoreText from 'react-show-more-text';
 import BioMini from '../BioMini/BioMini';
 import "./PostContents.css";

@@ -7,7 +7,7 @@ it('ProfilePic renders successfully', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <Router>
-            <ProfilePic />
+            <ProfilePic profilePic={'www.google.com'} />
         </Router>, div)
     ReactDOM.unmountComponentAtNode(div)
 })
