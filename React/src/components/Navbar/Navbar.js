@@ -67,7 +67,7 @@ const NavigationBar = (props) => {
     else {
         return (
             <section className="navbar=wrapper">
-                <Navbar expand="lg" className="navbar">
+                <Navbar fixed="top" expand="lg" className="navbar">
                     <Navbar.Brand href="#home">Embers</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
