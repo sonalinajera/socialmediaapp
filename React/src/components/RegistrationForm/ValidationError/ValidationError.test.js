@@ -7,7 +7,7 @@ it('ValidationError renders successfully', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <Router>
-            <ValidationError />
+            <ValidationError message='test' />
         </Router>, div)
     ReactDOM.unmountComponentAtNode(div)
 })
