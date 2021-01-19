@@ -53,7 +53,7 @@ const Post = () => {
     //all we need is the url to the image and the message body sent together at once in this function
     const postHandler = (ev) => {
         ev.preventDefault()
-        console.log(file)
+        
 
         const config = {
             bucketName: 'socialmediasite',

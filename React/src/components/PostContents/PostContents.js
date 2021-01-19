@@ -9,7 +9,7 @@ import "./PostContents.css";
 const PostContents = (props) => {
 
     const executeOnClick = (isExpanded) => {
-        console.log(isExpanded);
+        ///console.log(isExpanded);
     }
 
     const [liked, setLiked] = useState(false);
