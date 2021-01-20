@@ -19,6 +19,18 @@ const HomePage = (props) => {
   //router props history to change the URI.
   let history = useHistory();
 
+<<<<<<< HEAD
+  if (TokenService.hasAuthToken()) {
+    return (
+      <div className="homepage">
+        <BioCard />
+        <Post />
+        {props.userData.map((user, index) => {
+          return user.posts.map((post, key) => {
+            return (<PostContents key={key} pData={post} uData={user} numOfUsers={props.userData.length} />)
+          })
+        })}
+=======
   let posts = [];
 
   let postsArray = props.userData.map((user) => {
@@ -48,6 +60,7 @@ const HomePage = (props) => {
           return (<PostContents key={key} pData={postUser[0]} uData={postUser[1]} numOfUsers={props.userData.length} />)
         })
         }
+>>>>>>> c041e87eb6831fc000139e8486d70083def1cdbf
       </div>
     )
   } else {

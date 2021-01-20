@@ -55,14 +55,18 @@ const BioCard = (props) => {
                         {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                         <p>some cheesy Tagline</p>
 
+<<<<<<< HEAD
+                    <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p>
+=======
                         {/* <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p> */}
+>>>>>>> c041e87eb6831fc000139e8486d70083def1cdbf
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         )
     } else {
-        return <span>No Data</span>
-    }
+    return <span>No Data</span>
+}
 
 }
 
