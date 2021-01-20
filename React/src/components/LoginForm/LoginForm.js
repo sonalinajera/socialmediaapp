@@ -29,20 +29,22 @@ const LoginForm = (props) => {
         })
             .then((response) => {
                 if (response) {
-
-                    /*check user's password input against the password that comes from the server
-                    if they are the same, then   TokenService.saveUser(response.data), if wrong, display an error message  */
-                    /* in the home page and navbar, call TokenService.hasAuthToken to make sure user had authorization. */
-
-                    if (bcrypt.compareSync(password.value, response.data.password) === true) {
-                        console.log(response.data)
-                        //set the user object to the localStorage for persistence as "user".
-                        TokenService.saveUser(response.data);
-                        props.setLoggedIn(true);
-                        //route to the user home if credentials are correct
-                        history.push('/user/home');
-                    } else {
-                        console.log("password is wrong");
+                    if (response.data.userId) {
+                        /*check user's password input against the password that comes from the server
+                  if they are the same, then   TokenService.saveUser(response.data), if wrong, display an error message  */
+                        /* in the home page and navbar, call TokenService.hasAuthToken to make sure user had authorization. */
+                        if (bcrypt.compareSync(password.value, response.data.password) === true) {
+                            //set the user object to the localStorage for persistence as "user".
+                            TokenService.saveUser(response.data);
+                            props.setLoggedIn(true);
+                            //route to the user home if credentials are correct
+                            history.push('/user/home');
+                        } else {
+                            alert("Incorrect password")
+                        }
+                    }
+                    else {
+                        alert("Incorrect email")
                     }
 
                 } else {
@@ -69,7 +71,7 @@ const LoginForm = (props) => {
         <section className="login-form-wrapper">
 
             <Form className="login-form" method="get" onSubmit={(ev) => checkLogin(ev)}>
-            <h2 className="login-page-h2">Welcome! Please Login</h2>
+                <h2 className="login-page-h2">Welcome! Please Login</h2>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email"

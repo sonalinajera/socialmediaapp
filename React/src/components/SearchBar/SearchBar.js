@@ -1,9 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
-import SearchResults from '../../routes/SearchResults/SearchResults';
+import React, { useState, useEffect } from 'react';
 /*The Sevice file from which the "users" JSON which carries the firstNames to 
 display as search results and allow the user to click to go to the selected user's profile. 
 */
-import PostsApiService from '../../services/PostsApiService';
 import './SearchBar.css';
 //Do NOT delete the next line. "M" is necessary for using materialize css.
 import M from "materialize-css";
@@ -55,7 +53,6 @@ const SearchBar = (props) => {
                     <div key={item.userId} style={{ background: isHighlighted ? 'lightgray' : 'orange' }}>
                         {/*This is where we grab the item's(friend's) id to redirect to that friend's page*/}
                         <span onClick={() => {
-                            console.log(item)
                             //set the url to route to the selected user's profile.
                             history.push(`/user/profile/${item.userId}`)
                         }}>{item.firstName} {item.lastName}</span>
@@ -66,7 +63,6 @@ const SearchBar = (props) => {
                 onChange={(e) => setSearch(e.target.value.substr(0, 20).toLowerCase())}
                 onSelect={(value) => {
                     setSearch(value)
-                    console.log(value)
 
                 }}
             />

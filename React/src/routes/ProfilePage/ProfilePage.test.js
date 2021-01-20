@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Email from './Email'
+import ProfilePage from './ProfilePage'
 
-it('Email renders successfully', () => {
+it('ProfilePage renders successfully', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <Router>
-            <Email />
+            <ProfilePage postData={[]} userData={[]} userId={2} />
         </Router>, div)
     ReactDOM.unmountComponentAtNode(div)
 })

@@ -7,7 +7,7 @@ it('Navbar renders successfully', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <Router>
-            <Navbar />
+            <Navbar setLoggedIn={() => { }} loggedIn={false} />
         </Router>, div)
     ReactDOM.unmountComponentAtNode(div)
 })

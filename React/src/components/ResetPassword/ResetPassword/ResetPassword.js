@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 import ValidationError from '../../RegistrationForm/ValidationError/ValidationError'
 import bcrypt from 'bcryptjs'
 import './ResetPassword.css'
@@ -16,7 +15,7 @@ const ResetPassword = (props) => {
     const [password, setPassword] = useState({ value: '', touched: false })
     const [repeatPassword, setRepeatPassword] = useState({ value: '', touched: false })
 
-    let history = useHistory();
+
 
     const updatePassword = (password) => {
         setPassword({ value: password, touched: true })
@@ -26,11 +25,9 @@ const ResetPassword = (props) => {
         setRepeatPassword({ value: repeatPassword, touched: true })
     }
 
-    
+
 
     const handleSubmit = (event) => {
-        console.log(password.value)
-        console.log(repeatPassword.value)
         event.preventDefault()
 
         let salt = bcrypt.genSaltSync(10);
@@ -52,7 +49,6 @@ const ResetPassword = (props) => {
         ).then(response => response.text()
 
         ).then(data => {
-            console.log(data)
         });
     }
 
@@ -66,12 +62,12 @@ const ResetPassword = (props) => {
             return "Password must contain at least one number"
         }
     }
-    
-    
+
+
     const validateRepeatPassword = () => {
         const userRepeatPassword = repeatPassword.value.trim()
         const userPassword = password.value.trim()
-    
+
         if (userRepeatPassword !== userPassword) {
             return 'Passwords do not match'
         }
@@ -80,8 +76,8 @@ const ResetPassword = (props) => {
     return (
         <section className="reset-password-wrapper">
             <Form onSubmit={e => handleSubmit(e)} className="reset-password-form">
-            <h4 className="resetPass-header">Reset Password</h4>
-            <Form.Group controlId="formGridPassword">
+                <h4 className="resetPass-header">Reset Password</h4>
+                <Form.Group controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         className="registration-control" type="password"
@@ -99,7 +95,7 @@ const ResetPassword = (props) => {
                 <Button className="registration-btn"
                     variant="primary" type="submit"
                     disabled={
-                         validatePassword() || validateRepeatPassword()
+                        validatePassword() || validateRepeatPassword()
                     }
                 >
                     Save

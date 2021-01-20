@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Image, Col, } from 'react-bootstrap';
+import { Container, Row, Col, } from 'react-bootstrap';
 import './BioCard.css';
 import TokenService from '../../services/token-service';
 import ProfilePic from '../ProfilePic/ProfilePic';
@@ -15,13 +15,12 @@ const BioCard = (props) => {
     }, [])
 
 
+
     if (user && props.userData) {
-        const user_match = props.userData.filter(function(u) {
+        const user_match = props.userData.filter(function (u) {
             return u.userId.toString() === props.userId;
         });
         const user_to_view = user_match[0];
-        console.log("User matches:", user_match);
-        console.log("User to view:", user_to_view);
         if (!user_to_view) {
             return (<></>);
         } else {
@@ -33,10 +32,12 @@ const BioCard = (props) => {
                         </Col>
                         <Col xs={10} md={6} className="bioDetails">
                             <h1>{user_to_view.firstName} {user_to_view.lastName}</h1>
+                            {/* <h1>{user.firstName} {user.lastName}</h1> */}
+
                             {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                             <p>some cheesy Tagline</p>
-    
-                            <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p>
+
+                            {/* <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p> */}
                         </Col>
                     </Row>
                 </Container>
@@ -54,14 +55,18 @@ const BioCard = (props) => {
                         {/* <h3>@{user.firstName.toLowerCase()}{user.lastName.toLowerCase()}</h3> */}
                         <p>some cheesy Tagline</p>
 
-                        <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p>
+<<<<<<< HEAD
+                    <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p>
+=======
+                        {/* <p>from Fire Island <span style={{ color: "red" }}>31</span> connections</p> */}
+>>>>>>> c041e87eb6831fc000139e8486d70083def1cdbf
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         )
     } else {
-        return <span>No Data</span>
-    }
+    return <span>No Data</span>
+}
 
 }
 

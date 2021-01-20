@@ -7,10 +7,7 @@ const BioMini = (props) => {
     //If user exists
     if (props.userData.length !== 0) {
         const { firstName, lastName, profilePicURL } = props.userData;
-
-        let user = props.userData;
-        let post = props.postData;
-
+        
         return (
             <Container key={props.key} className="miniBio">
                 <Row className="miniBio-container">

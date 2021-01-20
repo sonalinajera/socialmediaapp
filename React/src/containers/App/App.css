@@ -6,5 +6,7 @@
 
 
 .App {
-  background-color: #f4eeee;
+  background-image: url("../../images/flame.png");
+  background-repeat: repeat;
+  background-color:whitesmoke;
 } 
