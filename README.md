@@ -33,7 +33,7 @@ Run as project on Tomcat Server at localhost
 
 A successful start up means you'll see this in your browser:
 
-![homepage view](./login.png)
+![homepage view](./login.JPG)
 
 
 ## Contributors
