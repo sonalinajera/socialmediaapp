@@ -5,6 +5,7 @@ RemoveSystemsTempFiles/
 .settings
 /Servers/
 applicationContext.xml
+.env
 
 /.recommenders/
 
