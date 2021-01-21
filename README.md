@@ -7,11 +7,11 @@ In Revature's Social Network everyone is friends with everyone else. Users can r
 
 ## Technologies Used
 
-Java - version 8
-JUnit - version 4.13
-log4j - version 1.2.17
-Materialize
-Axios
+* Java - version 8
+* JUnit - version 4.13
+* log4j - version 1.2.17
+* Materialize
+* Axios
 
 ## Features
 
@@ -23,6 +23,16 @@ Axios
 
 To-do list:
 * Implement user-to-user communication
+
+## Getting started 
+Clone project to your local computer
+
+set up environmental variables: DB_URL: [your db connection url] DB_USERNAME: [database username] DB_PASSWORD: [database password]
+
+Run as project on Tomcat Server at localhost
+
+A successful start up means you'll see this in your browser:
+
 
 
 ## Contributors
