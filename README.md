@@ -35,6 +35,13 @@ A successful start up means you'll see this in your browser:
 
 ![homepage view](./login.JPG)
 
+## Usage
+  
+  User can register
+  User can reset password
+  user can modify information
+  
+
 
 ## Contributors
 
