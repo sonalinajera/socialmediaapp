@@ -40,9 +40,9 @@ A successful start up means you'll see this in your browser:
   User can register
   User can reset password
   user can modify information
-  
-
-
+  ![edit info view](./editProfile.JPG)
+  ![create post view](./CreatePost.JPG)
+  ![feed view](./SearchingFriends.JPG)
 ## Contributors
 
 This was a team project created with Tim Hammes, Orkun Orzekin, Cody Moody, and Corbin Creedon
